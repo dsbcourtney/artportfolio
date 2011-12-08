@@ -1,0 +1,40 @@
+Getting Started...
+
+George **Site Admin** needs to be able to:
+
+- Add  artwork to the site
+- Remove artwork from the site
+- Access the site securely
+- Keep track of what people have been buying
+- Keep track of what people have been looking at
+- Have some editorial control over some peripheral pages:
+	-- Homepage
+	-- About the Gallery
+	-- Contact Us
+	
+Artwork is created by an artist and can be defined something like this:
+
+Artist : 
+	+ name 
+	+ description
+	+ url ??
+	+ artwork []
+		+ image
+		+ title
+		+ sizes [ ] :
+			+ description
+			+ price
+		+ description
+		+ collection ?
+	
+
+	
+A site **User** need to be able to 
+ - purchase artwork on the site
+ - browse the artwork in a continuous fashion
+ - find a specific piece easily
+ - find a specific artist easily
+ -  share artwork on the site (through Twitter and Facebook) 
+
+
+ 
