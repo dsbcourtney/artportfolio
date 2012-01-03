@@ -1,0 +1,97 @@
+
+Users of the site will generally be doing one of the following:
+1. Viewing an artist's art looking for a specific piec of art to purcahse
+2. Browsing all artwork considering a purchase 
+3. Browsing all artwork not looking to purchase
+ 
+Users are likely to have reached the site via:
+1. Search result on google, or similar, for a specific artist or the gallery itself
+2. Social network
+3. Through a link from an affilliated site
+4. Direct entry of url into browser 
+
+* essential to go live
+= not essential to go live 
+
+
+* able to navigate Artwork through web pages : Purpose built through HTML, CSS, JavaScript / NodeJs / MongoDB
+* able to navigate Artists through web pages : Purpose built through HTML, CSS, JavaScript / NodeJs / MongoDB
+  1. Homepage (including list of artists)
+  **getArtists(order, orderDirection)
+    - share functionality
+  2. Artist Homepage (including list of artwork for artist)
+    **getArtwork(artist)
+    - purchase art
+    **purchaseArtwork(artwork)
+    - share functionality
+* Database : Mongo DB
+* Image hosting : either via a service (free or very cheap please) or a purpose built one.
+--- 
+* Purchase tracking system : Purpose built through HTML, CSS, JavaScript / NodeJs / MongoDB
+* Integrate Payment mechanism : ??
+* Share this (or other integration) : ShareThis / HTML, JavaScript
+* Peripheral pages built : HTML
+* Admin site security : ??
+* Site analytics (Google Analytics)
+= Content management : ??
+= Stock control mechanism  : Purpose built through HTML, CSS, JavaScript / NodeJs / MongoDB
+= Stock / purchase analytics : Purpose built through HTML, CSS, JavaScript / NodeJs / MongoDB
+
+ 
+ArtRebellion Schema:
+
+
+  "artist" :[
+    {
+      "firstname"   : "",
+      "lastname"    : "",
+      "description" : "",
+      "datecreated" : "",
+      "dateupdated" : "",
+      "url"         : "", 
+      "artwork"     : [
+        {
+          "title"       : "",
+          "imageUrl"   : {
+            "square"            : "",
+            "200px"             : "",
+            "500px"             : "",
+          },
+          "description  : "",
+          "version" : [
+            {
+              "type"    : "",
+              "price"   : 0.00,
+              "inStock" : false,
+               "size"   : "",
+               "notes"  : "",
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  
+  "purchase" : [
+    {
+      "customer"  :{
+        "name"    : "",
+        "email"   : ""
+      },
+      "timestamp" : "",
+      "items" :[
+        {
+          "title"       : "",
+          "description" : "",
+          "price"       : "",
+          "notes"       : []
+        } 
+      ],
+      "transaction" : {
+        "id"            : "",
+        "result"        : "",
+        "timestamp"     : ""
+      }
+    }
+  ]
+  

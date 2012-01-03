@@ -11,6 +11,7 @@ George **Site Admin** needs to be able to:
 	-- Homepage
 	-- About the Gallery
 	-- Contact Us
+	-- News
 	
 Artwork is created by an artist and can be defined something like this:
 
@@ -34,7 +35,7 @@ A site **User** need to be able to
  - browse the artwork in a continuous fashion
  - find a specific piece easily
  - find a specific artist easily
- -  share artwork on the site (through Twitter and Facebook) 
-
+ - share artwork on the site (through Twitter and Facebook) 
+ - contact the gallery or find contact details for the gallery 
 
  
