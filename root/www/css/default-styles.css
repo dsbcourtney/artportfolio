@@ -1,135 +1,186 @@
 /* ---- ----  ---- ----  ---- ----  ---- ---- BASE ---- ----  ---- ----  ---- ----  ---- ---- */
-body{
-    margin:20px;
+body {
+    margin: 20px;
     text-align: center;
+    font: normal normal 14px/18px Arial, Helvatica, san-serif;
 }
 
-ul{
+ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-li{
+li {
     padding: 0;
     margin: 0;
 }
 
 /* ---- ----  ---- ----  ---- ----  ---- ---- LAYOUT ---- ----  ---- ----  ---- ----  ---- ---- */
 
-.page-container{
-    width:940px;
-    margin:0 auto;
+.page-container {
+    width: 940px;
+    margin: 0 auto;
     text-align: left;
 }
 
-header{
+header {
     position: relative;
     height: 40px;
     margin-bottom: 10px;
 }
 
-header h1{
-    width:50%;
+header h1 {
+    width: 50%;
     float: left;
 }
 
-header nav{
-    width:40%;
+header nav {
+    width: 45%;
     float: right;
     vertical-align: top;
 }
 
-header nav .artists{
+header nav .artists {
     display: inline-block;
     max-width: 250px;
 }
 
-header nav .periphery{
+header nav .periphery {
     position: absolute;
     right: 5px;
     display: inline-block;
-    max-width: 250px;
+    max-width: 350px;
 }
 
-header nav .periphery li{
+header nav .periphery li {
+    display: inline;
+    padding-right: 2px;
+}
+
+.breadcrumbs li {
     display: inline;
 }
 
-.breadcrumbs li{
-    display: inline;
+.content-body {
+    margin: 10px 0;
 }
 
-.content-body{
-    margin: 10px 0;    
-}
-
-.introduction{
+.introduction {
     position: relative;
 }
 
-.hero{
-    width:940px;
-    height:450px;
+.hero {
+    width: 940px;
+    height: 450px;
     margin: 5px 0;
 }
 
-.introduction p{
+.introduction p {
     position: absolute;
     padding: 10px;
-    bottom:10px ;
-    right:0;
+    bottom: 10px;
+    right: 0;
     width: 33%;
 }
 
-.featured-artwork li,
-.collections li{
-    display:inline-block;
+/* ---- ARTIST ---- */
+.gallery .featured-artwork li,
+.artist .collections li {
+    display: inline-block;
 }
 
-.featured-artwork img,
-.collections img{
-    width:300px;
-    height:300px;
+.gallery .featured-artwork img,
+.artist .collections img {
+    width: 300px;
+    height: 300px;
     margin: 5px;
 }
 
-.collections li{
+.artist .collections li {
     position: relative;
 }
 
-.collections li span{
+.artist .collections li span {
     position: absolute;
-    bottom:15px;
+    bottom: 15px;
     right: 15px;
     max-width: 75%;
     max-height: 75%;
     overflow: hidden;
 }
 
-
-footer{
-    
+/* ---- COLLECTION / ART BY TAG ---- */
+.collection .artwork {
+    margin-top: 20px;
 }
 
-.hcard span{
-    display: block;   
+.collection .artwork>li {
+    position: relative;
+    display: inline-block;
+    width: 49.5%;
+    margin-bottom: 20px;
+    vertical-align: top;
+}
+
+.collection .artwork li .title {
+    display: block;
+    padding: 10px 0 5px 0px;
+}
+
+.collection .artwork li img {
+    position: relative;
+    display: block;
+    width: 440px;
+    height: 440px;
+}
+
+.collection .artwork li ul {
+    margin: 5px 0 15px 5px;
+}
+
+.collection .artwork li ul li {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.collection .artwork li .tagCloud {
+    margin-right: 30px;
+    text-align: right;
+}
+
+/* ---- ARTWORK PAGE----*/
+.artwork .artwork-image{
+    width:640px;
+    height:800px;
+}
+
+footer {
+
+}
+
+.hcard span {
+    display: block;
 }
 
 /* ---- ----  ---- ----  ---- ----  ---- ---- MODULE ---- ----  ---- ----  ---- ----  ---- ---- */
 
-header nav .artists{
+header nav .artists {
     max-width: 250px;
-    float:left;
+    float: left;
 }
 
+ul.artwork li .title {
+    font-weight: bold;
+    text-indent: 5px;
+}
 
 /* ---- ----  ---- ----  ---- ----  ---- ---- STATE ---- ----  ---- ----  ---- ----  ---- ---- */
 
 header nav .artists li {
-    display:none;
+    display: none;
 }
 
-header nav .artists li.active{
-    display:block;
+header nav .artists li.active {
+    display: block;
 }
