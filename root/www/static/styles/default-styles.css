@@ -73,7 +73,7 @@ header nav .periphery li {
 .hero {
     width: 940px;
     height: 450px;
-    margin: 5px 0;
+    margin: 0 0;
 }
 
 .introduction p {
@@ -112,7 +112,7 @@ header nav .periphery li {
 
 /* ---- COLLECTION / ART BY TAG ---- */
 .collection .artwork {
-    margin-top: 20px;
+    
 }
 
 .collection .artwork>li {
