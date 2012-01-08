@@ -1,5 +1,8 @@
-var express = require("./node_modules/express/lib/express.js"),
-        app = express.createServer();
+var express = require('./node_modules/express/lib/express.js'),
+        app = express.createServer(),
+        arMongoose = require('./models/Schema.js');
+
+arMongoose.connect('mongodb://localhost:27017/artrebellion');
 
 // config
 app.set('views', __dirname + '/views');
@@ -8,7 +11,7 @@ app.set('view engine', 'jade');
 
 
 // middleware
-app.configure(function(){
+app.configure(function() {
 //  app.use(express.logger('dev'));
 //  app.use(express.bodyParser());
 //  app.use(express.methodOverride());
@@ -23,11 +26,12 @@ app.configure(function(){
 
 
 //routes
-require('./routes/default')(app);
-require('./routes/artist')(app);
-require('./routes/collection')(app);
-require('./routes/artwork')(app);
-require('./routes/art-list')(app);
+//site
+require('./routes/default')(app, arMongoose);
+require('./routes/artist')(app, arMongoose);
+require('./routes/collection')(app, arMongoose);
+require('./routes/artwork')(app, arMongoose);
+require('./routes/art-list')(app, arMongoose);
 
 //
 app.listen(3000);
