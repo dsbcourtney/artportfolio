@@ -1,6 +1,6 @@
-// Including the needed frameworks
-var express = require('express');
-var form = require('connect-form');
+// Including the needed modules
+var express = require('./node_modules/express/lib/express.js');
+var form = require('./node_modules/connect-form/lib/connect-form.js');
 var util = require('util');
 var fs = require('fs');
 
@@ -10,7 +10,7 @@ var app = express.createServer(
 );
 
 app.configure(function(){
-    app.use(express.bodyParser());
+    //app.use(express.bodyParser()); // For some reason this stops the upload
     app.use(express.methodOverride());
 });
 
@@ -52,11 +52,10 @@ app.get('/uploaded/', function(req, res){
 });
 
 // On post do something with the data
-
 app.post('/upload/', function(req, res, next){
     req.form.complete(function(err, fields, files) {
         ins = fs.createReadStream(files.photo.path);
-        ous = fs.createWriteStream(__dirname + './uploads/' + files.photo.filename);
+        ous = fs.createWriteStream('./uploads/' + files.photo.filename);
         util.pump(ins, ous, function(err) {
             res.redirect('/uploaded/');
         });
