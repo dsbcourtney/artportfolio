@@ -1,6 +1,4 @@
-form(name="uploadForm", method="post")
+form(method="post", enctype="multipart/form-data", action="/upload/")
     fieldset
-        input(type="file", name="imageFile")
+        input(type="file", name="photo")
         input(type="submit", value="Upload")
-p Filename:
-    span #{fileName}
