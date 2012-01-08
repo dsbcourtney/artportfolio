@@ -1,0 +1,135 @@
+/* ---- ----  ---- ----  ---- ----  ---- ---- BASE ---- ----  ---- ----  ---- ----  ---- ---- */
+body{
+    margin:20px;
+    text-align: center;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li{
+    padding: 0;
+    margin: 0;
+}
+
+/* ---- ----  ---- ----  ---- ----  ---- ---- LAYOUT ---- ----  ---- ----  ---- ----  ---- ---- */
+
+.page-container{
+    width:940px;
+    margin:0 auto;
+    text-align: left;
+}
+
+header{
+    position: relative;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+header h1{
+    width:50%;
+    float: left;
+}
+
+header nav{
+    width:40%;
+    float: right;
+    vertical-align: top;
+}
+
+header nav .artists{
+    display: inline-block;
+    max-width: 250px;
+}
+
+header nav .periphery{
+    position: absolute;
+    right: 5px;
+    display: inline-block;
+    max-width: 250px;
+}
+
+header nav .periphery li{
+    display: inline;
+}
+
+.breadcrumbs li{
+    display: inline;
+}
+
+.content-body{
+    margin: 10px 0;    
+}
+
+.introduction{
+    position: relative;
+}
+
+.hero{
+    width:940px;
+    height:450px;
+    margin: 5px 0;
+}
+
+.introduction p{
+    position: absolute;
+    padding: 10px;
+    bottom:10px ;
+    right:0;
+    width: 33%;
+}
+
+.featured-artwork li,
+.collections li{
+    display:inline-block;
+}
+
+.featured-artwork img,
+.collections img{
+    width:300px;
+    height:300px;
+    margin: 5px;
+}
+
+.collections li{
+    position: relative;
+}
+
+.collections li span{
+    position: absolute;
+    bottom:15px;
+    right: 15px;
+    max-width: 75%;
+    max-height: 75%;
+    overflow: hidden;
+}
+
+
+footer{
+    
+}
+
+.hcard span{
+    display: block;   
+}
+
+/* ---- ----  ---- ----  ---- ----  ---- ---- MODULE ---- ----  ---- ----  ---- ----  ---- ---- */
+
+header nav .artists{
+    max-width: 250px;
+    float:left;
+}
+
+
+/* ---- ----  ---- ----  ---- ----  ---- ---- STATE ---- ----  ---- ----  ---- ----  ---- ---- */
+
+header nav .artists li {
+    display:none;
+}
+
+header nav .artists li.active{
+    display:block;
+}
