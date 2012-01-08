@@ -1,8 +1,18 @@
-// Equivalent of include, this time including the express framework
+// Including the needed frameworks
 var express = require('express');
+var form = require('connect-form');
+var util = require('util');
+var fs = require('fs');
 
 // Creating the http instance
-var app = express.createServer();
+var app = express.createServer(
+    form({keepExtensions: true})
+);
+
+app.configure(function(){
+    app.use(express.bodyParser());
+    app.use(express.methodOverride());
+});
 
 // Sets some configuration development and production
 // NODE_ENV sets which one is used
@@ -26,7 +36,6 @@ app.configure('production', function(){
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.set('view options', {layout:true});
-app.use(express.bodyParser());
 
 // When the root path / in the url is called run the template file root.jade
 app.get('/', function(req, res){
@@ -35,14 +44,25 @@ app.get('/', function(req, res){
 
 // Upload path when this is entered run the upload.jade template
 app.get('/upload/', function(req, res){
-    res.render('upload.jade', {fileName:null});
+    res.render('upload.jade');
+});
+
+app.get('/uploaded/', function(req, res){
+    res.render('uploaded.jade');
 });
 
 // On post do something with the data
-app.post('/upload/', function(req, res){
-    var imgName = req.param('imageFile', null);
-    res.render('upload.jade', {fileName:imgName});
-    //upload_file(req, res);
+
+app.post('/upload/', function(req, res, next){
+    req.form.complete(function(err, fields, files) {
+        ins = fs.createReadStream(files.photo.path);
+        ous = fs.createWriteStream(__dirname + './uploads/' + files.photo.filename);
+        util.pump(ins, ous, function(err) {
+            res.redirect('/uploaded/');
+        });
+        //console.log('\nUploaded %s to %s', files.photo.filename, files.photo.path);
+        //res.send('Uploaded ' + files.photo.filename + ' to ' + files.photo.path);
+    });
 });
 
 app.listen(4000);
