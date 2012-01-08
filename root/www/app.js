@@ -22,19 +22,8 @@ app.configure(function(){
 });
 
 
-//app.get('/all-artwork', function(req, res){
-//   res.render('index.jade', {title : 'Art Rebellion', pageTitle: 'The Gallery'});
-//});
-
-
-
-
-
-
-app.get('/', function(req, res){
-   res.render('index.jade', {title : 'Art Rebellion', pageTitle: 'The Gallery'});
-});
-
+//routes
+require('./routes/default')(app);
 require('./routes/artist')(app);
 require('./routes/collection')(app);
 require('./routes/artwork')(app);

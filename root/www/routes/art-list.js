@@ -1,5 +1,5 @@
 
-this.exports = function(app){
+module.exports = function(app){
   
   app.get('/art-list', function(req, res){
      res.render('tagged-artwork.jade', {title : 'Art Rebellion', pageTitle: '[All Art]'});
