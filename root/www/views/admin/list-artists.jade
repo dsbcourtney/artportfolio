@@ -1,0 +1,12 @@
+section.artists-list
+  h3 some title
+  table.artists
+    thead
+      tr
+        td name
+        td 
+    each artist in artists
+      tr
+        td= artist.name
+        td 
+          a(href="/admin/artists/"+artist.slug) edit 
