@@ -1,0 +1,15 @@
+section.artists-list
+  h3 Artists currently on the Site
+  div
+    table.artists
+      thead
+        tr
+          td name
+          td
+      tbody     
+        each artist in artists
+          tr
+            td= artist.name
+            td 
+              a(href="/admin/artists/"+artist.slug) edit 
+    a(href="/admin/artists/new") Add New        

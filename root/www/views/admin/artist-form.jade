@@ -1,0 +1,16 @@
+form(action="/admin/artists/", method=method)
+  section.artistsForm
+    h3 some title
+    div
+      label(for="name") Artist Name
+      input#name(type="text", name="artist[name]", placeholder="Artist Name", value=artist.name)
+
+      label(for="biography") Artist Biography
+      textarea#biography(name="artist[biography]", placeholder="Artist Biography")= artist.biography
+
+      label(for="websiteUrl") Website Url
+      input#websiteUrl(type="text", name="artist[websiteUrl]", placeholder="Website Url", value=artist.websiteUrl)
+      div.controls
+        input.button.cancel(type="reset", value="Cancel")
+        input.button.submit(type="submit", value="Submit")
+                                       

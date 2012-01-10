@@ -82,6 +82,24 @@ var Artwork = new Schema({
   tag:[String]
 });
 
+/**
+ * Plugins
+ */
+
+function slugGenerator (options){
+  options = options || {};
+  var key = options.key || 'title';
+
+  return function slugGenerator(schema){
+    schema.path(key).set(function(v){
+      this.slug = v.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/-+/g, '');
+      return v;
+    });
+  };
+};
+
+Artist.plugin(slugGenerator({key : 'name'}));
+
 mongoose.model('Artist', Artist);
 mongoose.model('Artwork', Artwork);
 mongoose.model('Collection', ArtCollection);
