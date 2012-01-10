@@ -1,12 +1,19 @@
 module.exports = function(app, mongoose) {
 
+  //TODO - some form of validation on the artist data?
+  
   app.get('/artists/:artistSlug', function(req, res) {
     res.render('artist.jade', {title : 'Art Rebellion: [Artist Name]', pageTitle: '[Artist Name]'});
   });
 
+  /* --- --- --- 
+  ADMIN >>
+  REST compliant interface
+   */
+  
   //read all artists
   app.get('/admin/artists', function(req, res) {
-    
+
     //Get an Artist Model instance
     var Artist = mongoose.model('Artist');
 
@@ -24,19 +31,22 @@ module.exports = function(app, mongoose) {
     //Get an Artist Model instance
     var Artist = mongoose.model('Artist');
     var newArtist = new Artist();
-    
-    res.render('admin/artist-form.jade', {title : 'Art Rebellion Admin: Add Artist', pageTitle: 'Add Artist', method:"POST",
+
+    res.render('admin/artist-form.jade', {title : 'Art Rebellion Admin: Add Artist', pageTitle: 'Add Artist',
+      method:"POST", methodOverride:null, formAction : "/admin/artists/",
       artist: newArtist});
   });
 
   //read single artist into form
   app.get('/admin/artists/:artistSlug', function(req, res) {
-    
+
     //Get an Artist Model instance
     var Artist = mongoose.model('Artist');
 
-    Artist.findOne({slug:req.artistSlug}, function(err, artist){
-      res.render('admin/artist-form.jade', {title : 'Art Rebellion: [Artist Name]', pageTitle: '[Artist Name]', method:"PUT", artist:artist});      
+    Artist.findOne({slug:req.params.artistSlug}, function(err, artist) {
+      res.render('admin/artist-form.jade', {title : 'Art Rebellion: [Artist Name]', pageTitle: '[Artist Name]',
+        method:"POST", methodOverride:"PUT", formAction : "/admin/artists/" + artist.slug,
+        artist:artist});
     });
   });
 
@@ -49,13 +59,26 @@ module.exports = function(app, mongoose) {
     var newArtist = new Artist(req.body.artist);
 
     newArtist.save();
+
     res.redirect('/admin/artists');
+
     //res.render('artist.jade', {title : 'Art Rebellion: [Artist Name]', pageTitle: '[Artist Name]'});
   });
 
   //update single artist
   app.put('/admin/artists/:artistSlug', function(req, res) {
-    res.render('artist.jade', {title : 'Art Rebellion: [Artist Name]', pageTitle: '[Artist Name]'});
+
+    var Artist = mongoose.model('Artist');
+
+    //HACK
+    //in case name has been updated, reset the slug value - could be some problems with 
+    //duplicate keys though.
+    req.body.artist.slug = mongoose.utilities.getSlug(req.body.artist.name);
+
+    Artist.update({slug:req.params.artistSlug}, req.body.artist, {multi:false, upsert:false}, function() {
+      res.redirect('/admin/artists');
+    });
+
   });
 
   //update single artist
@@ -63,19 +86,3 @@ module.exports = function(app, mongoose) {
     res.render('artist.jade', {title : 'Art Rebellion: [Artist Name]', pageTitle: '[Artist Name]'});
   });
 };
-
-/*
- var Artist = mongoose.model('Artist');
-
- var tempArtist = new Artist({
- slug        : "temp-artist1",
- name        : "Artist Name",
- biography   : "biography",
- dateAdded   : new Date(),
- dateUpdated : new Date(),
- websiteUrl  : "http://www.domain.com"
- });
-
- tempArtist.save();
-
- */

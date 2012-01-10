@@ -1,4 +1,4 @@
-form(action="/admin/artists/", method=method)
+form(action=formAction, method=method)
   section.artistsForm
     h3 some title
     div
@@ -10,6 +10,8 @@ form(action="/admin/artists/", method=method)
 
       label(for="websiteUrl") Website Url
       input#websiteUrl(type="text", name="artist[websiteUrl]", placeholder="Website Url", value=artist.websiteUrl)
+      if(methodOverride)
+        input(type="hidden", name="_method", value=methodOverride)
       div.controls
         input.button.cancel(type="reset", value="Cancel")
         input.button.submit(type="submit", value="Submit")

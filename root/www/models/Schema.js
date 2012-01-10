@@ -10,16 +10,18 @@ var Artist = new Schema({
   slug        : { type: String, lowercase: true, trim: true, unique: true},
   name        : { type : String, index : true},
   biography   : String,
-  dateAdded   : Date,
-  dateUpdated : Date,
-  websiteUrl  : String
+  dateAdded   : {type :Date, 'default': new Date()},
+  dateUpdated : {type :Date, 'default': new Date()},
+  websiteUrl  : String,
+  state       : { type: String, 'default':'offline'}
 });
 
 
 var ArtCollection = new Schema({
   slug              : { type: String, lowercase: true, trim: true, unique: true},
   title             : {type: String, index: true},
-  releaseDate       : Date
+  releaseDate       : Date,
+  state       : { type: String, 'default':'offline'}
 });
 
 
@@ -79,12 +81,19 @@ var Artwork = new Schema({
     max800px  : String,
     large     : String
   },
-  tag:[String]
+  tag:[String],
+  state       : { type: String, 'default':'offline'}
 });
 
 /**
  * Plugins
  */
+
+mongoose.utilities = {};
+
+mongoose.utilities.getSlug = function(v){
+  return v.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/-+/g, '');
+};
 
 function slugGenerator (options){
   options = options || {};
@@ -92,11 +101,13 @@ function slugGenerator (options){
 
   return function slugGenerator(schema){
     schema.path(key).set(function(v){
-      this.slug = v.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/-+/g, '');
+      this.slug = mongoose.utilities.getSlug(v);//v.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/-+/g, '');
       return v;
     });
   };
-};
+}
+
+
 
 Artist.plugin(slugGenerator({key : 'name'}));
 
