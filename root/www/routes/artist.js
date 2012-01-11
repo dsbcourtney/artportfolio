@@ -1,23 +1,24 @@
 module.exports = function(app, mongoose) {
 
   //TODO - some validation on the request data?
-
-  app.get('/admin/artists.:format?', function(req, res) {
+  app.get('/artists.:format?', function(req, res) {
 
     //Get an Artist Model instance
-    var Artist = mongoose.model('Artist');
-
+    var Artist = mongoose.model('Artist'),
+            pageTitle = 'Art Rebellion : Artists';
+    
     //find all artists
     Artist.find({}, function(err, artists) {
-      res.render('admin/artists.jade',
-              {title : 'Art Rebellion Admin: List Artists', pageTitle: 'List Artists', artists:artists});
+      res.render('admin/artists.jade', {title : pageTitle, pageTitle: pageTitle, artists: artists});
     });
-
   });
 
   app.get('/artists/:artistSlug.:format?', function(req, res) {
     //Get an Artist Model instance
     var Artist = mongoose.model('Artist');
+
+    Artist.find({}, function(err, artists) {
+    });
 
     Artist.findOne({slug:req.params.artistSlug}, function(err, artist) {
       if (err || !artist) {
@@ -27,6 +28,7 @@ module.exports = function(app, mongoose) {
         res.render('artist.jade', {title : 'Art Rebellion: [' + artist.name + ']', pageTitle: '[' + artist.name + ']'});
       }
     });
+
   });
 
   /* --- --- --- 

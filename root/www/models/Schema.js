@@ -20,7 +20,8 @@ var Artist = new Schema({
 var ArtCollection = new Schema({
   slug              : { type: String, lowercase: true, trim: true, unique: true},
   title             : {type: String, index: true},
-  releaseDate       : Date,
+  dateAdded   : {type :Date, 'default': new Date()},
+  dateUpdated : {type :Date, 'default': new Date()},
   state       : { type: String, 'default':'offline'}
 });
 
@@ -40,38 +41,7 @@ var Artwork = new Schema({
       printsRun : Number,
       width : Number,
       height : Number,
-      price : Number
-    },
-    {
-      type : String,
-      detail : String,
-      printsRun : Number,
-      width : Number,
-      height : Number,
-      price : Number
-    },
-    {
-      type : String,
-      detail : String,
-      printsRun : Number,
-      width : Number,
-      height : Number,
-      price : Number
-    },
-    {
-      type : String,
-      detail : String,
-      printsRun : Number,
-      width : Number,
-      height : Number,
-      price : Number
-    },
-    {
-      type : String,
-      detail : String,
-      printsRun : Number,
-      width : Number,
-      height : Number,
+      released : Date,
       price : Number
     }
   ],
@@ -79,9 +49,11 @@ var Artwork = new Schema({
     max200px  : String,
     max500px  : String,
     max800px  : String,
-    large     : String
+    max1024px  : String
   },
   tag:[String],
+  dateAdded   : {type :Date, 'default': new Date()},
+  dateUpdated : {type :Date, 'default': new Date()},
   state       : { type: String, 'default':'offline'}
 });
 
