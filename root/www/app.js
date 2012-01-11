@@ -13,8 +13,11 @@ app.set('view engine', 'jade');
 // middleware
 app.configure(function() {
 //  app.use(express.logger('dev'));
-    app.use(express.bodyParser());
-    app.use(express.methodOverride());
+  app.use(express.bodyParser({
+    uploadDir: __dirname + '/uploads',
+    keepExtensions: true
+  }));
+  app.use(express.methodOverride());
 //  app.use(express.cookieParser('load of cobblers'));
 //  app.use(express.session());
 //  app.use(require('./middleware/locals'));

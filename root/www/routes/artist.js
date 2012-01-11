@@ -1,16 +1,39 @@
 module.exports = function(app, mongoose) {
 
-  //TODO - some form of validation on the artist data?
-  
-  app.get('/artists/:artistSlug', function(req, res) {
-    res.render('artist.jade', {title : 'Art Rebellion: [Artist Name]', pageTitle: '[Artist Name]'});
+  //TODO - some validation on the request data?
+
+  app.get('/admin/artists.:format?', function(req, res) {
+
+    //Get an Artist Model instance
+    var Artist = mongoose.model('Artist');
+
+    //find all artists
+    Artist.find({}, function(err, artists) {
+      res.render('admin/artists.jade',
+              {title : 'Art Rebellion Admin: List Artists', pageTitle: 'List Artists', artists:artists});
+    });
+
+  });
+
+  app.get('/artists/:artistSlug.:format?', function(req, res) {
+    //Get an Artist Model instance
+    var Artist = mongoose.model('Artist');
+
+    Artist.findOne({slug:req.params.artistSlug}, function(err, artist) {
+      if (err || !artist) {
+        res.send('not found', 404);
+      }
+      else {
+        res.render('artist.jade', {title : 'Art Rebellion: [' + artist.name + ']', pageTitle: '[' + artist.name + ']'});
+      }
+    });
   });
 
   /* --- --- --- 
-  ADMIN >>
-  REST compliant interface
+   ADMIN >>
+   REST compliant interface
    */
-  
+
   //read all artists
   app.get('/admin/artists', function(req, res) {
 
