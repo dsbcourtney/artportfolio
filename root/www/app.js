@@ -1,8 +1,11 @@
 // Including the needed modules
-var express = require('./node_modules/express/lib/express.js');
-var form = require('./node_modules/connect-form/lib/connect-form.js');
-var util = require('util');
-var fs = require('fs');
+var express = require('./node_modules/express/lib/express.js'),
+    form = require('./node_modules/connect-form/lib/connect-form.js'),
+    arMongoose = require('./models/Schema.js'),
+    util = require('util'),
+    fs = require('fs');
+
+arMongoose.connect('mongodb://localhost:27017/artrebellion');
 
 // Creating the http instance
 var app = express.createServer(
@@ -37,32 +40,12 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.set('view options', {layout:true});
 
-// When the root path / in the url is called run the template file root.jade
-app.get('/', function(req, res){
-    res.render('root.jade');
-});
-
-// Upload path when this is entered run the upload.jade template
-app.get('/upload/', function(req, res){
-    res.render('upload.jade');
-});
-
-app.get('/uploaded/', function(req, res){
-    res.render('uploaded.jade');
-});
-
-// On post do something with the data
-app.post('/upload/', function(req, res, next){
-    req.form.complete(function(err, fields, files) {
-        ins = fs.createReadStream(files.photo.path);
-        ous = fs.createWriteStream('./uploads/' + files.photo.filename);
-        util.pump(ins, ous, function(err) {
-            res.redirect('/uploaded/');
-        });
-        //console.log('\nUploaded %s to %s', files.photo.filename, files.photo.path);
-        //res.send('Uploaded ' + files.photo.filename + ' to ' + files.photo.path);
-    });
-});
+//require('./routes/default')(app, arMongoose);
+//require('./routes/artist')(app, arMongoose);
+//require('./routes/collection')(app, arMongoose);
+//require('./routes/artwork')(app, arMongoose);
+//require('./routes/art-list')(app, arMongoose);
+require('./routes/admin-upload')(app, arMongoose);
 
 // Get Node to listen on the requested Port no.
 app.listen(4000);
