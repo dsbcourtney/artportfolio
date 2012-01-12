@@ -6,7 +6,7 @@ module.exports = function(app, mongoose) {
     //Get an Artist Model instance
     var Artist = mongoose.model('Artist'),
             pageTitle = 'Art Rebellion : Artists';
-    
+
     //find all artists
     Artist.find({}, function(err, artists) {
       res.render('admin/artists.jade', {title : pageTitle, pageTitle: pageTitle, artists: artists});
@@ -83,9 +83,16 @@ module.exports = function(app, mongoose) {
     var Artist = mongoose.model('Artist');
     var newArtist = new Artist(req.body.artist);
 
-    newArtist.save();
+    newArtist.save(function(err) {
+      if (err) {
+        throw err;
+      }
 
-    res.redirect('/admin/artists');
+      res.redirect('/admin/artists');
+      return;
+    });
+
+    throw 'shouldnt have got here';
 
     //res.render('artist.jade', {title : 'Art Rebellion: [Artist Name]', pageTitle: '[Artist Name]'});
   });
@@ -100,7 +107,12 @@ module.exports = function(app, mongoose) {
     //duplicate keys though.
     req.body.artist.slug = mongoose.utilities.getSlug(req.body.artist.name);
 
-    Artist.update({slug:req.params.artistSlug}, req.body.artist, {multi:false, upsert:false}, function() {
+    Artist.update({slug:req.params.artistSlug}, req.body.artist, {multi:false, upsert:false}, function(err) {
+
+      if (err) {
+        throw err;
+      }
+
       res.redirect('/admin/artists');
     });
 

@@ -3,6 +3,7 @@
  */
 
 var mongoose = require('mongoose')
+//  , artworkExtensions = require('./extensions/artwork.js')
   , Schema = mongoose.Schema
   , ObjectId = Schema.ObjectId;
 
@@ -18,7 +19,7 @@ var Artist = new Schema({
 
 
 var ArtCollection = new Schema({
-  slug              : { type: String, lowercase: true, trim: true, unique: true},
+  slug              : { type: String, lowercase: true, trim: true, unique: true},  
   title             : {type: String, index: true},
   dateAdded   : {type :Date, 'default': new Date()},
   dateUpdated : {type :Date, 'default': new Date()},
@@ -27,12 +28,12 @@ var ArtCollection = new Schema({
 
 
 var Artwork = new Schema({
-  slug  : { type: String, lowercase: true, trim: true, unique: true},
+  slug  : { type: String, lowercase: true, trim: true, unique: true},//, 
   title : String,
   type      : String,
   description : String,
   artist : Schema.ObjectId,
-  inCollection : [ArtCollection],
+//  inCollection : [ArtCollection],
   totalEditions : Number,
   format :[
     {
@@ -80,8 +81,8 @@ function slugGenerator (options){
 }
 
 
-
 Artist.plugin(slugGenerator({key : 'name'}));
+Artwork.plugin(slugGenerator({key : 'title'}));
 
 mongoose.model('Artist', Artist);
 mongoose.model('Artwork', Artwork);
