@@ -1,7 +1,12 @@
 !!! 5
-html
+html(lang="en-GB")
   head
-    title
+    meta(charset="UTF-8")
+    title!=title
+    link(rel='stylesheet', href= '/styles/reset.css')
+    link(rel='stylesheet', href= '/styles/default-styles.css')
   body
-    H1 Upload image
-    #container!= body
+    .page-container
+      include header
+      section!= body
+      include footer

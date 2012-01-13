@@ -1,51 +1,41 @@
-// Including the needed modules
 var express = require('./node_modules/express/lib/express.js'),
-    form = require('./node_modules/connect-form/lib/connect-form.js'),
-    arMongoose = require('./models/Schema.js'),
-    util = require('util'),
-    fs = require('fs');
+    app = express.createServer(),
+    arMongoose = require('./models/Schema.js');
 
 arMongoose.connect('mongodb://localhost:27017/artrebellion');
 
-// Creating the http instance
-var app = express.createServer(
-    form({keepExtensions: true})
-);
-
-app.configure(function(){
-    //app.use(express.bodyParser()); // For some reason this stops the upload
-    app.use(express.methodOverride());
-});
-
-// Sets some configuration development and production
-// NODE_ENV sets which one is used
-// Development throws exceptions to the browser
-app.configure('development', function(){
-    app.use(express.logger());
-    app.use(express.errorHandler({
-        dumpExceptions: true,
-        showStack: true
-    }));
-});
-
-app.configure('production', function(){
-    app.use(express.logger());
-    app.use(express.errorHandler());
-});
-
-// By using the app.set we can set some settings
-// Express holds certain allowable settings
-// http://expressjs.com/guide.html#settings
+// config
 app.set('views', __dirname + '/views');
+app.set('view options', { pretty: true });
 app.set('view engine', 'jade');
-app.set('view options', {layout:true});
 
-//require('./routes/default')(app, arMongoose);
-//require('./routes/artist')(app, arMongoose);
-//require('./routes/collection')(app, arMongoose);
-//require('./routes/artwork')(app, arMongoose);
-//require('./routes/art-list')(app, arMongoose);
-require('./routes/admin-upload')(app, arMongoose);
 
-// Get Node to listen on the requested Port no.
-app.listen(4000);
+// middleware
+app.configure(function() {
+//  app.use(express.logger('dev'));
+    app.use(express.bodyParser({
+        uploadDir: __dirname + '/uploads',
+        keepExtensions: true
+    }));
+    app.use(express.methodOverride());
+//  app.use(express.cookieParser('load of cobblers'));
+//  app.use(express.session());
+//  app.use(require('./middleware/locals'));
+//  app.use(messages());
+    app.use(app.router);
+    app.use(express.static(__dirname + '/static'));
+    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+});
+
+
+//routes
+//site
+require('./routes/default')(app, arMongoose);
+require('./routes/artist')(app, arMongoose);
+require('./routes/collection')(app, arMongoose);
+require('./routes/artwork')(app, arMongoose);
+require('./routes/art-list')(app, arMongoose);
+
+//
+app.listen(3000);
+console.log('Art Rebellion site started on port 3000');
