@@ -9,6 +9,10 @@ module.exports = function(app, mongoose) {
 
     //find all artists
     Artist.find({}, function(err, artists) {
+      if (err) {
+        res.send(err, 500);
+      }
+      
       res.render('admin/artists.jade', {title : pageTitle, pageTitle: pageTitle, artists: artists});
     });
   });
@@ -44,6 +48,10 @@ module.exports = function(app, mongoose) {
 
     //find all artists
     Artist.find({}, function(err, artists) {
+      if (err) {
+        res.send(err, 500);
+      }
+      
       res.render('admin/artists-list.jade',
               {title : 'Art Rebellion Admin: List Artists', pageTitle: 'List Artists', artists:artists});
     });
@@ -85,16 +93,11 @@ module.exports = function(app, mongoose) {
 
     newArtist.save(function(err) {
       if (err) {
-        throw err;
+        res.send(err, 500);
       }
 
       res.redirect('/admin/artists');
-      return;
     });
-
-    throw 'shouldnt have got here';
-
-    //res.render('artist.jade', {title : 'Art Rebellion: [Artist Name]', pageTitle: '[Artist Name]'});
   });
 
   //update single artist
@@ -110,16 +113,16 @@ module.exports = function(app, mongoose) {
     Artist.update({slug:req.params.artistSlug}, req.body.artist, {multi:false, upsert:false}, function(err) {
 
       if (err) {
-        throw err;
+        res.send(err, 500);
       }
 
       res.redirect('/admin/artists');
     });
-
   });
 
-  //update single artist
+  //delete single artist
   app.del('/admin/artists/:artistSlug', function(req, res) {
+    //TODPO: implement delete
     res.render('artist.jade', {title : 'Art Rebellion: [Artist Name]', pageTitle: '[Artist Name]'});
   });
 };

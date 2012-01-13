@@ -42,7 +42,6 @@ var Artwork = new Schema({
       printsRun : Number,
       width : Number,
       height : Number,
-      released : Date,
       price : Number
     }
   ],
@@ -53,6 +52,7 @@ var Artwork = new Schema({
     max1024px  : String
   },
   tag:[String],
+  released : Date,
   dateAdded   : {type :Date, 'default': new Date()},
   dateUpdated : {type :Date, 'default': new Date()},
   state       : { type: String, 'default':'offline'}

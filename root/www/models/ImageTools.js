@@ -1,9 +1,9 @@
 var im = require('imagemagick'),
         imagesDir = '/Users/lewis/github/artportfolio/root/www/static/img/artwork';//TODO : change to environment var
 
-
+//  https://github.com/rsms/node-imagemagick
 var ImageTools = {
-  createCopies : function(file, next, destPath, sizes) {
+  createCopies : function(file, onFinish, destPath, sizes) {
     var sizes = sizes || [200, 500, 800, 1024],
             destPath = destPath || imagesDir,
             imageFiles = {}, currentSize, counter = 1;
@@ -20,7 +20,7 @@ var ImageTools = {
           imageFiles[op] = filename;
           
           if(counter == sizes.length){
-            next(imageFiles);
+            onFinish(imageFiles);
           }
           counter++;
         });
