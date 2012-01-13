@@ -1,6 +1,7 @@
 module.exports = function(app, mongoose){
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     app.get('/art-list', function(req, res){
         res.render('tagged-artwork.jade', {title : 'Art Rebellion', pageTitle: '[All Art]'});
     });
@@ -12,6 +13,8 @@ module.exports = function(app, mongoose){
 
 };
 =======
+=======
+>>>>>>> lewis_working
 module.exports = function(app, mongoose){
   
   app.get('/art-list', function(req, res){

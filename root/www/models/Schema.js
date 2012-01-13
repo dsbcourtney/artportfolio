@@ -4,6 +4,7 @@
 
 var mongoose = require('mongoose')
 <<<<<<< HEAD
+<<<<<<< HEAD
     , Schema = mongoose.Schema
     , ObjectId = Schema.ObjectId;
 
@@ -16,6 +17,8 @@ var Artist = new Schema({
     websiteUrl  : String,
     state       : { type: String, 'default':'offline'}
 =======
+=======
+>>>>>>> lewis_working
 //  , artworkExtensions = require('./extensions/artwork.js')
   , Schema = mongoose.Schema
   , ObjectId = Schema.ObjectId;
@@ -28,27 +31,37 @@ var Artist = new Schema({
   dateUpdated : {type :Date, 'default': new Date()},
   websiteUrl  : String,
   state       : { type: String, 'default':'offline'}
+<<<<<<< HEAD
+>>>>>>> lewis_working
+=======
 >>>>>>> lewis_working
 });
 
 
 var ArtCollection = new Schema({
 <<<<<<< HEAD
+<<<<<<< HEAD
     slug              : { type: String, lowercase: true, trim: true, unique: true},
     title             : {type: String, index: true},
     releaseDate       : Date,
     state       : { type: String, 'default':'offline'}
 =======
+=======
+>>>>>>> lewis_working
   slug              : { type: String, lowercase: true, trim: true, unique: true},  
   title             : {type: String, index: true},
   dateAdded   : {type :Date, 'default': new Date()},
   dateUpdated : {type :Date, 'default': new Date()},
   state       : { type: String, 'default':'offline'}
+<<<<<<< HEAD
+>>>>>>> lewis_working
+=======
 >>>>>>> lewis_working
 });
 
 
 var Artwork = new Schema({
+<<<<<<< HEAD
 <<<<<<< HEAD
     slug  : { type: String, lowercase: true, trim: true, unique: true},
     title : String,
@@ -108,6 +121,8 @@ var Artwork = new Schema({
     tag:[String],
     state       : { type: String, 'default':'offline'}
 =======
+=======
+>>>>>>> lewis_working
   slug  : { type: String, lowercase: true, trim: true, unique: true},//, 
   title : String,
   type      : String,
@@ -136,6 +151,9 @@ var Artwork = new Schema({
   dateAdded   : {type :Date, 'default': new Date()},
   dateUpdated : {type :Date, 'default': new Date()},
   state       : { type: String, 'default':'offline'}
+<<<<<<< HEAD
+>>>>>>> lewis_working
+=======
 >>>>>>> lewis_working
 });
 
@@ -146,6 +164,7 @@ var Artwork = new Schema({
 mongoose.utilities = {};
 
 mongoose.utilities.getSlug = function(v){
+<<<<<<< HEAD
 <<<<<<< HEAD
     return v.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/-+/g, '');
 };
@@ -166,6 +185,8 @@ function slugGenerator (options){
 
 Artist.plugin(slugGenerator({key : 'name'}));
 =======
+=======
+>>>>>>> lewis_working
   return v.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/-+/g, '');
 };
 
@@ -184,6 +205,9 @@ function slugGenerator (options){
 
 Artist.plugin(slugGenerator({key : 'name'}));
 Artwork.plugin(slugGenerator({key : 'title'}));
+<<<<<<< HEAD
+>>>>>>> lewis_working
+=======
 >>>>>>> lewis_working
 
 mongoose.model('Artist', Artist);

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 module.exports = function(app, mongoose){
 
     app.get('/', function(req, res){
@@ -7,6 +8,8 @@ module.exports = function(app, mongoose){
 
 };
 =======
+=======
+>>>>>>> lewis_working
 
 module.exports = function(app, mongoose){
   
@@ -15,4 +18,7 @@ module.exports = function(app, mongoose){
   });  
   
 };
+<<<<<<< HEAD
+>>>>>>> lewis_working
+=======
 >>>>>>> lewis_working

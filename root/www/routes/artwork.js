@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 // http://nyteshade.posterous.com/posting-files-with-node-and-expressjs
 module.exports = function(app, mongoose){
 
@@ -23,6 +24,8 @@ module.exports = function(app, mongoose){
         res.send('ok');
     });
 =======
+=======
+>>>>>>> lewis_working
 var im = require('imagemagick'),
         imagesDir = '/Users/lewis/github/artportfolio/root/www/static/img/artwork',
         ImageTools = require('../models/ImageTools.js');
@@ -77,5 +80,8 @@ module.exports = function(app, mongoose) {
     })
 
   });
+<<<<<<< HEAD
+>>>>>>> lewis_working
+=======
 >>>>>>> lewis_working
 };

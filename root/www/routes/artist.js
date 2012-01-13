@@ -1,6 +1,7 @@
 module.exports = function(app, mongoose) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     //TODO - some validation on the request data?
 
     app.get('/admin/artists.:format?', function(req, res) {
@@ -114,6 +115,11 @@ module.exports = function(app, mongoose) {
   //TODO - some validation on the request data?
   app.get('/artists.:format?', function(req, res) {
 
+=======
+  //TODO - some validation on the request data?
+  app.get('/artists.:format?', function(req, res) {
+
+>>>>>>> lewis_working
     //Get an Artist Model instance
     var Artist = mongoose.model('Artist'),
             pageTitle = 'Art Rebellion : Artists';
