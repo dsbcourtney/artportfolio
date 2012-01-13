@@ -1,5 +1,6 @@
 module.exports = function(app, mongoose){
 
+<<<<<<< HEAD
     app.get('/art-list', function(req, res){
         res.render('tagged-artwork.jade', {title : 'Art Rebellion', pageTitle: '[All Art]'});
     });
@@ -10,3 +11,17 @@ module.exports = function(app, mongoose){
 
 
 };
+=======
+module.exports = function(app, mongoose){
+  
+  app.get('/art-list', function(req, res){
+     res.render('tagged-artwork.jade', {title : 'Art Rebellion', pageTitle: '[All Art]'});
+  });
+  
+  app.get('/art-list/:tag', function(req, res){
+     res.render('tagged-artwork.jade', {title : 'Art Rebellion', pageTitle: '[Tag]'});
+  }); 
+  
+    
+};
+>>>>>>> lewis_working

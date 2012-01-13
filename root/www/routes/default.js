@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 module.exports = function(app, mongoose){
 
     app.get('/', function(req, res){
@@ -5,3 +6,13 @@ module.exports = function(app, mongoose){
     });
 
 };
+=======
+
+module.exports = function(app, mongoose){
+  
+  app.get('/', function(req, res){
+     res.render('index.jade', {title : 'Art Rebellion', pageTitle: 'The Gallery'});
+  });  
+  
+};
+>>>>>>> lewis_working
