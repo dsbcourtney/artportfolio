@@ -1,28 +1,30 @@
-form(method="POST", action="/admin/artwork")
+form(method="POST", action=formAction)
   img(src="/img/artwork/"+artwork.image.max200px, style="display:block; padding:5px; border:solid 1px #666;") 
-  label(for="artist[title]") Title
-  input(name="artist[title]", type="text", placeholder="title", value=artwork.title)    
-  label(for="artist[type]") Type
-  input(name="artist[type]", type="text", placeholder="type", value=artwork.type)
-  label(for="artist[description]") Description
-  textarea(name="artist[description]")
-  label(for="artist[released]") Date Released
-  input(name="artist[released]", type="text", placeholder="Date Released", value=artwork.released)       
+  label(for="artwork[title]") Title
+  input(name="artwork[title]", type="text", placeholder="title", value=artwork.title)    
+  label(for="artwork[type]") Type
+  input(name="artwork[type]", type="text", placeholder="type", value=artwork.type)
+  label(for="artwork[description]") Description
+  textarea(name="artwork[description]")= artwork.description
+  label(for="artwork[released]") Date Released
+  input(name="artwork[released]", type="text", placeholder="Date Released", value=artwork.released)       
   fieldset#formats
     legend Formats
-    label(for="artist[format][0][type]") Type
-    input(name="artist[format][0][type]", type="text", placeholder="Type")
-    label(for="artist[format][0][detail]") Detail
-    input(name="artist[format][0][detail]", type="text", placeholder="Detail")
-    label(for="artist[format][0][printsRun]") Prints Run
-    input(name="artist[format][0][printsRun]", type="text", placeholder="Prints Run")        
-    label(for="artist[format][0][width]") Width in centimeters
-    input(name="artist[format][0][width]", type="text", placeholder="Width Centimeters")
-    label(for="artist[format][0][height]") Height in centimeters
-    input(name="artist[format][0][height]", type="text", placeholder="Height Centimeters")                
-    label(for="artist[format][0][price]") Price &pound; (GBP)
-    input(name="artist[format][0][price]", type="text", placeholder="Price &pound; (GBP)")    
-   
+    label(for="artwork[format][0][type]") Type
+    input(name="artwork[format][0][type]", type="text", placeholder="Type", value=artwork.format[0].type)
+    label(for="artwork[format][0][detail]") Detail
+    input(name="artwork[format][0][detail]", type="text", placeholder="Detail", value=artwork.format[0].detail)
+    label(for="artwork[format][0][printsRun]") Prints Run
+    input(name="artwork[format][0][printsRun]", type="text", placeholder="Prints Run", value=artwork.format[0].printsRun)        
+    label(for="artwork[format][0][width]") Width in centimeters
+    input(name="artwork[format][0][width]", type="text", placeholder="Width Centimeters", value=artwork.format[0].width)
+    label(for="artwork[format][0][height]") Height in centimeters
+    input(name="artwork[format][0][height]", type="text", placeholder="Height Centimeters", value=artwork.format[0].height)                
+    label(for="artwork[format][0][price]") Price &pound; (GBP)
+    input(name="artwork[format][0][price]", type="text", placeholder="Price &pound; (GBP)", value=artwork.format[0].price)
+  label(for="artwork[tag]") Tags 
+  textarea(name="artwork[tag]")= artwork.tag       
+  input(type="hidden", name="_method", value=methodOverride)
   div.controls    
     input(type="reset", value="cancel")
     input(type="submit", value="submit")

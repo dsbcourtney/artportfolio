@@ -24,6 +24,11 @@ input, textarea {
     font: normal normal 20px/26px Arial, Helvatica, san-serif;
 }
 
+.adminmenu a:after{
+    content:" ";
+    margin-right:5px;
+}
+
 /* ---- ----  ---- ----  ---- ----  ---- ---- LAYOUT ---- ----  ---- ----  ---- ----  ---- ---- */
 
 form {

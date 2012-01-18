@@ -1,3 +1,5 @@
+var viewData = require('../models/viewData');
+
 module.exports = function(app, mongoose) {
 
   //TODO - some validation on the request data?
@@ -13,10 +15,11 @@ module.exports = function(app, mongoose) {
         res.send(err, 500);
       }
       
-      res.render('admin/artists.jade', {title : pageTitle, pageTitle: pageTitle, artists: artists});
+      res.render('admin/artists.jade', viewData.isPublic({title : pageTitle, pageTitle: pageTitle, artists: artists}));
     });
   });
 
+  
   app.get('/artists/:artistSlug.:format?', function(req, res) {
     //Get an Artist Model instance
     var Artist = mongoose.model('Artist');
@@ -29,7 +32,7 @@ module.exports = function(app, mongoose) {
         res.send('not found', 404);
       }
       else {
-        res.render('artist.jade', {title : 'Art Rebellion: [' + artist.name + ']', pageTitle: '[' + artist.name + ']'});
+        res.render('artist.jade', viewData.isPublic({title : 'Art Rebellion: [' + artist.name + ']', pageTitle: '[' + artist.name + ']'}));
       }
     });
 
@@ -53,7 +56,7 @@ module.exports = function(app, mongoose) {
       }
       
       res.render('admin/artists-list.jade',
-              {title : 'Art Rebellion Admin: List Artists', pageTitle: 'List Artists', artists:artists});
+              viewData.isAdmin({title : 'Art Rebellion Admin: List Artists', pageTitle: 'List Artists', artists:artists}));
     });
 
   });
@@ -65,9 +68,9 @@ module.exports = function(app, mongoose) {
     var Artist = mongoose.model('Artist');
     var newArtist = new Artist();
 
-    res.render('admin/artist-form.jade', {title : 'Art Rebellion Admin: Add Artist', pageTitle: 'Add Artist',
+    res.render('admin/artist-form.jade', viewData.isAdmin({title : 'Art Rebellion Admin: Add Artist', pageTitle: 'Add Artist',
       method:"POST", methodOverride:null, formAction : "/admin/artists/",
-      artist: newArtist});
+      artist: newArtist}));
   });
 
   //read single artist into form
@@ -77,9 +80,9 @@ module.exports = function(app, mongoose) {
     var Artist = mongoose.model('Artist');
 
     Artist.findOne({slug:req.params.artistSlug}, function(err, artist) {
-      res.render('admin/artist-form.jade', {title : 'Art Rebellion: [Artist Name]', pageTitle: '[Artist Name]',
+      res.render('admin/artist-form.jade', viewData.isAdmin({title : 'Art Rebellion: [Artist Name]', pageTitle: '[Artist Name]',
         method:"POST", methodOverride:"PUT", formAction : "/admin/artists/" + artist.slug,
-        artist:artist});
+        artist:artist}));
     });
   });
 
@@ -123,6 +126,6 @@ module.exports = function(app, mongoose) {
   //delete single artist
   app.del('/admin/artists/:artistSlug', function(req, res) {
     //TODPO: implement delete
-    res.render('artist.jade', {title : 'Art Rebellion: [Artist Name]', pageTitle: '[Artist Name]'});
+    res.render('artist.jade', viewData.isAdmin({title : 'Art Rebellion: [Artist Name]', pageTitle: '[Artist Name]'}));
   });
 };
