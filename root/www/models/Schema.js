@@ -14,7 +14,7 @@ var Artist = new Schema({
   dateAdded   : {type :Date, 'default': new Date()},
   dateUpdated : {type :Date, 'default': new Date()},
   websiteUrl  : String,
-  state       : { type: String, 'default':'offline'}
+  status       : { type: String, 'default':'offline'}
 });
 
 var Artwork = new Schema({
@@ -34,7 +34,7 @@ var Artwork = new Schema({
   released : Date,
   dateAdded   : {type :Date, 'default': new Date()},
   dateUpdated : {type :Date, 'default': new Date()},
-  state       : { type: String, 'default':'offline'}
+  status       : { type: String, 'default':'offline'}
 });
 
 var Format = new Schema({
@@ -86,6 +86,5 @@ Artwork.plugin(slugGenerator({key : 'title'}));
 mongoose.model('Artist', Artist);
 mongoose.model('Artwork', Artwork);
 mongoose.model('Format', Format);
-mongoose.model('Collection', ArtCollection);
 
 module.exports = mongoose;

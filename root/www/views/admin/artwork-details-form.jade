@@ -23,7 +23,15 @@ form(method="POST", action=formAction)
     label(for="artwork[format][0][price]") Price &pound; (GBP)
     input(name="artwork[format][0][price]", type="text", placeholder="Price &pound; (GBP)", value=artwork.format[0].price)
   label(for="artwork[tag]") Tags 
-  textarea(name="artwork[tag]")= artwork.tag       
+  textarea(name="artwork[tag]")= artwork.tag
+  label(for="artwork[status]") Site Status
+  select(name="artwork[status]")
+    - var statuses = ['offline', 'published']
+    each status in statuses 
+      if artwork.status == status 
+        option(value=status, selected="selected")= status
+      else
+        option(value=status)= status
   input(type="hidden", name="_method", value=methodOverride)
   div.controls    
     input(type="reset", value="cancel")
