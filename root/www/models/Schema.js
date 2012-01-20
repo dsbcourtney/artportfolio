@@ -3,7 +3,6 @@
  */
 
 var mongoose = require('mongoose')
-//  , artworkExtensions = require('./extensions/artwork.js')
         , Schema = mongoose.Schema
         , ObjectId = Schema.ObjectId;
 
@@ -16,6 +15,7 @@ var Artist = new Schema({
   websiteUrl  : String,
   status       : { type: String, 'default':'offline'}
 });
+
 
 var Artwork = new Schema({
   slug  : { type: String, lowercase: true, trim: true, unique: true},//, 
@@ -36,6 +36,7 @@ var Artwork = new Schema({
   dateUpdated : {type :Date, 'default': new Date()},
   status       : { type: String, 'default':'offline'}
 });
+
 
 var Format = new Schema({
   type : String,

@@ -2,13 +2,14 @@ var im = require('imagemagick'),
         imagesDir = '/Users/lewis/github/artportfolio/root/www/static/img/artwork',
         ImageTools = require('../models/ImageTools.js');
 
-var viewData = require('../models/viewData');
-
 // http://nyteshade.posterous.com/posting-files-with-node-and-expressjs
-module.exports = function(app, mongoose) {
+module.exports = function(app, mongoose, vdp) {
+  
   //view artwork
-  app.get('/artwork/:artistName/:collectionName/:artworkTitle', function(req, res) {
-    res.render('artwork.jade', viewData.isPublic({title : 'Art Rebellion: [Artwork]', pageTitle: '[Artwork]'}));
+  app.get('/artwork/:artistName/:artworkTitle', function(req, res) {
+    var locals = {title : 'Art Rebellion: [Artwork]', pageTitle: '[Artwork]'};
+
+    vdp.getPublicViewData(thenRender, 'artwork.jade', locals, res);
   });
 
 
@@ -16,7 +17,9 @@ module.exports = function(app, mongoose) {
 
   //upload artwork image form
   app.get('/admin/artwork/new.:format?', function(req, res) {
-    res.render('admin/artwork-image-form.jade', viewData.isAdmin({title : 'Art Rebellion: Add artwork images', pageTitle: 'Add artwork images'}));
+    var locals = {title : 'Art Rebellion: Add artwork images', pageTitle: 'Add artwork images'};
+    
+    vdp.getAdminViewData(thenRender, 'admin/artwork-image-form.jade', locals, res);
   });
 
 
@@ -50,28 +53,40 @@ module.exports = function(app, mongoose) {
   app.get('/admin/artwork.:format?', function(req, res) {
 
     //Get an Artist Model instance
-    var Artwork = mongoose.model('Artwork'),
-            pageTitle = 'Art Rebellion : Artwork';
+    var Artwork = mongoose.model('Artwork')
+      , pageTitle = 'Art Rebellion : Artwork'
+      , locals = {title : pageTitle, pageTitle: pageTitle};
 
     //find all artists
     Artwork.find({}, function(err, artworks) {
       if (err) {
         res.send(err, 500);
+        return;
       }
+      
+      locals.artworks = artworks;
 
-      res.render('admin/artwork-list.jade', viewData.isAdmin({title : pageTitle, pageTitle: pageTitle, artworks: artworks}));
+      vdp.getAdminViewData(thenRender, 'admin/artwork-list.jade', locals, res);
     });
   });
 
 
   //update artwork form
   app.get('/admin/artwork/:artworkSlug', function(req, res) {
-    var Artwork = mongoose.model('Artwork'), pageTitle;
+    var Artwork = mongoose.model('Artwork')
+      , pageTitle
+      , locals = {  method:"POST", 
+                    methodOverride:"PUT"};
 
     Artwork.findOne({slug : req.params.artworkSlug}, function(err, artwork) {
-      pageTitle = "Art Rebellion : Edit Artwork : " + artwork.title;
-      res.render('admin/artwork-details-form.jade', viewData.isAdmin({title : pageTitle, pageTitle: pageTitle,
-        method:"POST", methodOverride:"PUT", formAction : "/admin/artwork/" + artwork.slug, artwork:artwork}));
+
+      locals.artwork = artwork;
+      locals.formAction = "/admin/artwork/" + artwork.slug; 
+      locals.title =  "Art Rebellion : Edit Artwork : " + artwork.title;
+      locals.pageTitle = locals.title;
+      
+      vdp.getAdminViewData(thenRender, 'admin/artwork-details-form.jade', locals, res);
+      
     });
 
   });
@@ -100,7 +115,13 @@ module.exports = function(app, mongoose) {
 
 };
 
-/* ---- ---- private helpers ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- */
+/* --- --- --- private helper methods --- --- --- */
+
+function thenRender(template, model, res){
+  res.render(template, model);
+}
+
+
 function createArtwork(res, mongoose, image, next) {
   var Artwork = mongoose.model('Artwork'),
           newArtwork, newTitle, newSlug;
