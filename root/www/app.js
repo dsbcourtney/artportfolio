@@ -1,6 +1,7 @@
 var express = require('./node_modules/express/lib/express.js'),
         app = express.createServer(),
-        arMongoose = require('./models/Schema.js');
+        arMongoose = require('./models/Schema.js'),
+        sessions = require('./node_modules/cookie-sessions/lib/cookie-sessions.js');
 
 arMongoose.connect('mongodb://localhost:27017/artrebellion');
 
@@ -35,6 +36,7 @@ require('./routes/artist')(app, arMongoose);
 require('./routes/collection')(app, arMongoose);
 require('./routes/artwork')(app, arMongoose);
 require('./routes/art-list')(app, arMongoose);
+require('./routes/user')(app, arMongoose);
 
 //
 app.listen(3000);

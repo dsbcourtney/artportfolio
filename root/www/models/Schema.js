@@ -58,6 +58,20 @@ var Artwork = new Schema({
   state       : { type: String, 'default':'offline'}
 });
 
+
+var User = new Schema({
+  slug        : { type: String, lowercase: true, trim: true, unique: true},
+  firstname : { type: String },
+  lastname : { type: String },
+  email : { type: String },
+  mobile : { type: String },
+  pass : { type: String },
+  newsletterOptIn : { type: Boolean, 'default':false },
+  emailsOptIn : { type: Boolean, 'default':false },
+  dateAdded   : {type :Date, 'default': new Date()},
+  dateUpdated : {type :Date, 'default': new Date()}
+});
+
 /**
  * Plugins
  */
@@ -87,5 +101,6 @@ Artwork.plugin(slugGenerator({key : 'title'}));
 mongoose.model('Artist', Artist);
 mongoose.model('Artwork', Artwork);
 mongoose.model('Collection', ArtCollection);
+mongoose.model('User', User);
 
 module.exports = mongoose;
