@@ -17,6 +17,6 @@
 
 .idea/vcs.xml
 
-./root/www/uploads/
+./root/www/uploads/*
 
-./root/static/img/artwork/
+./root/static/img/artwork/*
