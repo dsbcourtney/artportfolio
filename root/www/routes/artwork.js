@@ -80,6 +80,8 @@ module.exports = function(app, mongoose, vdp) {
 
     Artwork.findOne({slug : req.params.artworkSlug}, function(err, artwork) {
 
+      locals.visitor = req.session.visitor;
+      
       locals.artwork = artwork;
       locals.formAction = "/admin/artwork/" + artwork.slug; 
       locals.title =  "Art Rebellion : Edit Artwork : " + artwork.title;
@@ -99,9 +101,9 @@ module.exports = function(app, mongoose, vdp) {
 
     //create a new slug if needed.
     req.body.artwork.slug = mongoose.utilities.getSlug(req.body.artwork.title);
-    
     req.body.artwork.tag = req.body.artwork.tag.split(','); 
-
+    req.body.artwork.featured = (req.body.artwork.featured == "on");
+    
     Artwork.update({slug:req.params.artworkSlug}, req.body.artwork, {multi:false, upsert:false}, function(err) {
 
       if (err) {

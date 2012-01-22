@@ -104,6 +104,7 @@ module.exports = function(app, mongoose, vdp) {
     newArtist.save(function(err) {
       if (err) {
         res.send(err, 500);
+        return;
       }
 
       res.redirect('/admin/artists');
@@ -114,11 +115,18 @@ module.exports = function(app, mongoose, vdp) {
   app.put('/admin/artists/:artistSlug', function(req, res) {
 
     var Artist = mongoose.model('Artist');
+    
 
+    console.log(req.body.artist);
+    
     //HACK
     //in case name has been updated, reset the slug value - could be some problems with 
     //duplicate keys though.
     req.body.artist.slug = mongoose.utilities.getSlug(req.body.artist.name);
+    
+    //HACK
+    //need to explicitly set the value to false?
+    req.body.artist.featured = (req.body.artist.featured == "on");
 
     Artist.update({slug:req.params.artistSlug}, req.body.artist, {multi:false, upsert:false}, function(err) {
 

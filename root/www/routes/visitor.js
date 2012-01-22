@@ -10,7 +10,9 @@ module.exports = function(app, mongoose, vdp) {
                 message = 'Sorry your log in details seem to incorrect, please try again.';
             } else { // Found so store some session stuff
                 message = 'Log in successful, please wait whilst we redirect you back to the page you were on.';
+              
                 req.session.visitor = visitor;
+              
                 visitor.dateLoggedIn = Date.now();
                 visitor.loggedIn = true;
                 visitor.save(function(err){
