@@ -10,6 +10,7 @@ var Artist = new Schema({
   slug        : { type: String, lowercase: true, trim: true, unique: true},
   name        : { type : String, index : true},
   biography   : String,
+  featured    : ObjectId,
   dateAdded   : {type :Date, 'default': new Date()},
   dateUpdated : {type :Date, 'default': new Date()},
   websiteUrl  : String,
@@ -32,6 +33,7 @@ var Artwork = new Schema({
   },
   tag:[String],
   released : Date,
+  featured : Boolean,
   dateAdded   : {type :Date, 'default': new Date()},
   dateUpdated : {type :Date, 'default': new Date()},
   status       : { type: String, 'default':'offline'}
