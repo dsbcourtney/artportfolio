@@ -3,27 +3,18 @@
  */
 
 var mongoose = require('mongoose')
-//  , artworkExtensions = require('./extensions/artwork.js')
-  , Schema = mongoose.Schema
-  , ObjectId = Schema.ObjectId;
+        , Schema = mongoose.Schema
+        , ObjectId = Schema.ObjectId;
 
 var Artist = new Schema({
   slug        : { type: String, lowercase: true, trim: true, unique: true},
   name        : { type : String, index : true},
   biography   : String,
+  featured    : ObjectId,
   dateAdded   : {type :Date, 'default': new Date()},
   dateUpdated : {type :Date, 'default': new Date()},
   websiteUrl  : String,
-  state       : { type: String, 'default':'offline'}
-});
-
-
-var ArtCollection = new Schema({
-  slug              : { type: String, lowercase: true, trim: true, unique: true},  
-  title             : {type: String, index: true},
-  dateAdded   : {type :Date, 'default': new Date()},
-  dateUpdated : {type :Date, 'default': new Date()},
-  state       : { type: String, 'default':'offline'}
+  status       : { type: String, 'default':'offline'}
 });
 
 
@@ -33,7 +24,7 @@ var Artwork = new Schema({
   type      : String,
   description : String,
   artist : Schema.ObjectId,
-//  inCollection : [ArtCollection],
+  format :[Format],
   totalEditions : Number,
   format :[
     {
@@ -42,6 +33,7 @@ var Artwork = new Schema({
       printsRun : Number,
       width : Number,
       height : Number,
+      released : Date,
       price : Number
     }
   ],
@@ -52,26 +44,9 @@ var Artwork = new Schema({
     max1024px  : String
   },
   tag:[String],
-  released : Date,
   dateAdded   : {type :Date, 'default': new Date()},
   dateUpdated : {type :Date, 'default': new Date()},
-  state       : { type: String, 'default':'offline'}
-});
-
-
-var User = new Schema({
-  slug        : { type: String, lowercase: true, trim: true, unique: true},
-  firstname : { type: String },
-  lastname : { type: String },
-  email : { type: String },
-  mobile : { type: String },
-  pass : { type: String },
-  newsletterOptIn : { type: Boolean, 'default':false },
-  emailsOptIn : { type: Boolean, 'default':false },
-  dateAdded   : {type :Date, 'default': new Date()},
-  dateUpdated : {type :Date, 'default': new Date()},
-  loggedIn : {type: Boolean, 'default':false },
-  dateLoggedIn : {type :Date, 'default': new Date()}
+  status       : { type: String, 'default':'offline'}
 });
 
 /**
@@ -80,30 +55,27 @@ var User = new Schema({
 
 mongoose.utilities = {};
 
-mongoose.utilities.getSlug = function(v){
+mongoose.utilities.getSlug = function(v) {
   return v.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/-+/g, '');
 };
 
-function slugGenerator (options){
+function slugGenerator(options) {
   options = options || {};
   var key = options.key || 'title';
 
-  return function slugGenerator(schema){
-    schema.path(key).set(function(v){
+  return function slugGenerator(schema) {
+    schema.path(key).set(function(v) {
       this.slug = mongoose.utilities.getSlug(v);//v.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/-+/g, '');
       return v;
     });
   };
 }
 
-
 Artist.plugin(slugGenerator({key : 'name'}));
 Artwork.plugin(slugGenerator({key : 'title'}));
-User.plugin(slugGenerator({key : 'email'})); // What if we want the slug to be the name but the key to be the email
 
 mongoose.model('Artist', Artist);
 mongoose.model('Artwork', Artwork);
 mongoose.model('Collection', ArtCollection);
-mongoose.model('User', User);
 
 module.exports = mongoose;

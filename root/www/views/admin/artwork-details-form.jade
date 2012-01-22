@@ -1,3 +1,43 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+form(method="POST", action=formAction)
+  img(src="/img/artwork/"+artwork.image.max200px, style="display:block; padding:5px; border:solid 1px #666;") 
+  label(for="artwork[title]") Title
+  input(name="artwork[title]", type="text", placeholder="title", value=artwork.title)    
+  label(for="artwork[type]") Type
+  input(name="artwork[type]", type="text", placeholder="type", value=artwork.type)
+  label(for="artwork[description]") Description
+  textarea(name="artwork[description]")= artwork.description
+  label(for="artwork[released]") Date Released
+  input(name="artwork[released]", type="text", placeholder="Date Released", value=artwork.released)       
+  fieldset#formats
+    legend Formats
+    label(for="artwork[format][0][type]") Type
+    input(name="artwork[format][0][type]", type="text", placeholder="Type", value=artwork.format[0].type)
+    label(for="artwork[format][0][detail]") Detail
+    input(name="artwork[format][0][detail]", type="text", placeholder="Detail", value=artwork.format[0].detail)
+    label(for="artwork[format][0][printsRun]") Prints Run
+    input(name="artwork[format][0][printsRun]", type="text", placeholder="Prints Run", value=artwork.format[0].printsRun)        
+    label(for="artwork[format][0][width]") Width in centimeters
+    input(name="artwork[format][0][width]", type="text", placeholder="Width Centimeters", value=artwork.format[0].width)
+    label(for="artwork[format][0][height]") Height in centimeters
+    input(name="artwork[format][0][height]", type="text", placeholder="Height Centimeters", value=artwork.format[0].height)                
+    label(for="artwork[format][0][price]") Price &pound; (GBP)
+    input(name="artwork[format][0][price]", type="text", placeholder="Price &pound; (GBP)", value=artwork.format[0].price)
+  label(for="artwork[tag]") Tags 
+  textarea(name="artwork[tag]")= artwork.tag
+  label(for="artwork[status]") Site Status
+  select(name="artwork[status]")
+    - var statuses = ['offline', 'published']
+    each status in statuses 
+      if artwork.status == status 
+        option(value=status, selected="selected")= status
+      else
+        option(value=status)= status
+  input(type="hidden", name="_method", value=methodOverride)
+=======
+>>>>>>> lewis_working
 form(method="POST", action="/admin/artwork")
   img(src="/img/artwork/"+artwork.image.max200px, style="display:block; padding:5px; border:solid 1px #666;") 
   label(for="artist[title]") Title
@@ -23,6 +63,10 @@ form(method="POST", action="/admin/artwork")
     label(for="artist[format][0][price]") Price &pound; (GBP)
     input(name="artist[format][0][price]", type="text", placeholder="Price &pound; (GBP)")    
    
+<<<<<<< HEAD
+=======
+>>>>>>> b940d78501fd694674c424fbdd0833737d74c537
+>>>>>>> lewis_working
   div.controls    
     input(type="reset", value="cancel")
     input(type="submit", value="submit")
