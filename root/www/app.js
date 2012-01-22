@@ -32,13 +32,11 @@ app.configure(function() {
 
 //routes
 //site
-
 require('./routes/default')(app, arMongoose);
 require('./routes/artist')(app, arMongoose);
 require('./routes/artwork')(app, arMongoose);
 require('./routes/art-list')(app, arMongoose);
 require('./routes/user')(app, arMongoose);
 
-//
 app.listen(3000);
 console.log('Art Rebellion site started on port 3000');

@@ -1,18 +1,4 @@
 !!! 5
-<<<<<<< HEAD
-html(lang="en-GB")
-	head
-		meta(charset="UTF-8")
-		title!=title
-		script(type='text/javascript', src= '/js/libs/jquery-1.7.min.js')
-		link(rel='stylesheet', href= '/styles/reset.css')
-		link(rel='stylesheet', href= '/styles/default-styles.css')
-	body
-	.page-container
-		include header
-		section!= body
-		include footer  
-=======
 html(lang="en-GB")
   head
     meta(charset="UTF-8")
@@ -24,11 +10,11 @@ html(lang="en-GB")
     <link type="text/css" rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/styles/phone.css" />
     <link type="text/css" rel="stylesheet" media="only screen and (min-device-width: 768px) and (max-device-width: 1024px)" href="/styles/tablet.css" />
     //<![endif]>
+    script(type='text/javascript', src= '/js/libs/jquery-1.7.min.js')
   body
     .page-container
       include header
       if(viewType === 'admin')
         include /includes/admin-menu
       section!= body
-      include footer  
->>>>>>> f827746403b21768fba1351cd6c855e8a29d864b
+      include footer

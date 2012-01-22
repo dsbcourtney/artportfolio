@@ -9,7 +9,7 @@ module.exports = function(app, mongoose, vdp) {
   app.get('/artwork/:artistName/:artworkTitle', function(req, res) {
     var locals = {title : 'Art Rebellion: [Artwork]', pageTitle: '[Artwork]'};
 
-    vdp.getPublicViewData(thenRender, 'artwork.jade', locals, res);
+    vdp.getPublicViewData(thenRender, 'artist.jade', locals, res);
   });
 
 

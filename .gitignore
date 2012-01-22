@@ -27,4 +27,11 @@
 ./root/www/uploads/*
 
 ./root/static/img/artwork/*
+<<<<<<< HEAD
 >>>>>>> f827746403b21768fba1351cd6c855e8a29d864b
+=======
+
+.idea/scopes/scope_settings.xml
+
+.idea/dictionaries/davecourtney.xml
+>>>>>>> 6c09661086ac9699439255b16a71a898a2c494a0

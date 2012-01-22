@@ -145,9 +145,6 @@ module.exports = function(app, mongoose, vdp) {
 /* --- --- --- private helper methods --- --- --- */
 
 function thenRender(template, model, res){
-  console.log(model);
-  
-  
   res.render(template, model);
 }
 
