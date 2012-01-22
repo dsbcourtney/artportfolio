@@ -1,0 +1,18 @@
+section.artwork-list
+  h3 Artwork currently created
+  div
+    table.artworks
+      thead
+        tr
+          td
+          td title
+          td
+      tbody     
+        each art in artworks
+          tr
+            td 
+              img(src="/img/artwork/"+art.image.max200px, style="max-width:40px; max-height:40px;")
+            td= art.title
+            td 
+              a(href="/admin/artwork/"+art.slug) edit 
+    a(href="/admin/artwork/new") Add New        
