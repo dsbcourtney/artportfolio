@@ -2,7 +2,7 @@ module.exports = function(app, mongoose, vdp){
   
   app.get('/', function(req, res){
     var locals = {title : 'Art Rebellion', pageTitle: 'The Gallery'};
-    vdp.getPublicViewData(thenRender, 'index.jade', locals, res);
+    vdp.getPublicViewData(thenRender, 'index.jade', locals, req, res);
   });  
   
 };

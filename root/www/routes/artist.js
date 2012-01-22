@@ -13,7 +13,7 @@ module.exports = function(app, mongoose, vdp) {
         res.send(err, 500);
       }
       
-      vdp.getAdminViewData(thenRender, 'artists.jade', locals);
+      vdp.getAdminViewData(thenRender, 'artists.jade', locals, req, res);
     });
   });
   
@@ -31,7 +31,7 @@ module.exports = function(app, mongoose, vdp) {
         res.send('not found', 404);
       }
       else {
-        vdp.getPublicViewData(thenRender, 'artist.jade', locals, res);
+        vdp.getPublicViewData(thenRender, 'artist.jade', locals, req, res);
       }
     });
 
@@ -54,7 +54,7 @@ module.exports = function(app, mongoose, vdp) {
       }
       
       locals.artists = artists;
-      vdp.getAdminViewData(thenRender, 'admin/artist-list.jade', locals, res);
+      vdp.getAdminViewData(thenRender, 'admin/artist-list.jade', locals, req, res);
     });
   });
 
@@ -71,7 +71,7 @@ module.exports = function(app, mongoose, vdp) {
                     formAction : "/admin/artists/",
                     artist: newArtist};
 
-    vdp.getAdminViewData(thenRender, 'admin/artist-form.jade', locals, res);
+    vdp.getAdminViewData(thenRender, 'admin/artist-form.jade', locals, req, res);
   });
 
   //read single artist into form
@@ -89,7 +89,7 @@ module.exports = function(app, mongoose, vdp) {
       locals.formAction = "/admin/artists/" + artist.slug;
       locals.artist = artist;
       
-      vdp.getAdminViewData(thenRender, 'admin/artist-form.jade', locals, res);
+      vdp.getAdminViewData(thenRender, 'admin/artist-form.jade', locals, req, res);
     });
   });
 
@@ -142,7 +142,7 @@ module.exports = function(app, mongoose, vdp) {
   app.del('/admin/artists/:artistSlug', function(req, res) {
     //TODPO: implement delete
     var locals = {title : 'Art Rebellion: [Artist Name]', pageTitle: '[Artist Name]'};
-    vdp.getAdminViewData(thenRender, 'admin/artists-form.jade', locals, res);
+    vdp.getAdminViewData(thenRender, 'admin/artists-form.jade', locals, req, res);
   });
 };
 

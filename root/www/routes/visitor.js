@@ -2,7 +2,7 @@ module.exports = function(app, mongoose, vdp) {
 
     app.post('/visitor/login', function(req, res) {
         var Visitor = mongoose.model('Visitor'),
-            pageTitle = 'Art Rebellion : Visitors',
+            pageTitle = 'Art Rebellion : Visitor',
             message = '';
 
         Visitor.findOne({'email':req.body.visitor.email,'pass':req.body.visitor.pass}, function(err, visitor){
@@ -21,13 +21,38 @@ module.exports = function(app, mongoose, vdp) {
                    }
                 });
             }
-            var locals = {title : pageTitle, pageTitle: pageTitle, message: message, visitor: visitor};
-            vdp.getPublicViewData(thenRender, 'login.jade', locals, res);
+            var locals = {title : pageTitle, pageTitle: pageTitle, message: message};
+            vdp.getPublicViewData(thenRender, 'login.jade', locals, req, res);
         });
     });
 
     app.get('/visitor/register', function(req, res){
 
+
+    });
+
+    app.get('/visitor/logout', function(req, res){
+        var Visitor = mongoose.model('Visitor'),
+            pageTitle = 'Art Rebellion : Visitor',
+            message = '';
+        var locals = {title:pageTitle, pageTitle:pageTitle, message:message};
+
+        console.log(req.session.visitor.email);
+
+        Visitor.findOne({'email':req.session.visitor.email}, function(err, visitor){
+           if (err || !visitor) {
+
+           } else {
+               visitor.loggedIn = false;
+               visitor.save(function(err){
+                   if (err){
+                       res.send(err, 500);
+                   }
+               });
+               delete req.session.visitor;
+               vdp.getPublicViewData(thenRender, 'logout.jade', locals, req, res);
+           }
+        });
 
     });
 
@@ -67,3 +92,5 @@ module.exports = function(app, mongoose, vdp) {
 function thenRender(template, model, res){
     res.render(template, model);
 }
+
+
