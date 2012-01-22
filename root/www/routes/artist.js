@@ -1,4 +1,4 @@
-module.exports = function(app, mongoose) {
+module.exports = function(app, mongoose, vdp) {
 
   //TODO - some validation on the request data?
   app.get('/artists.:format?', function(req, res) {

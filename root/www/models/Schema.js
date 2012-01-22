@@ -26,16 +26,7 @@ var Artwork = new Schema({
   artist : Schema.ObjectId,
   format :[Format],
   totalEditions : Number,
-  format :[
-    {
-      type : String,
-      detail : String,
-      printsRun : Number,
-      width : Number,
-      height : Number,
-      price : Number
-    }
-  ],
+  format :[Format],
   image:{
     max200px  : String,
     max500px  : String,
@@ -48,7 +39,6 @@ var Artwork = new Schema({
   dateUpdated : {type :Date, 'default': new Date()},
   status       : { type: String, 'default':'offline'}
 });
-
 
 var Format = new Schema({
   type : String,
