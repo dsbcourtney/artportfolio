@@ -69,7 +69,9 @@ var User = new Schema({
   newsletterOptIn : { type: Boolean, 'default':false },
   emailsOptIn : { type: Boolean, 'default':false },
   dateAdded   : {type :Date, 'default': new Date()},
-  dateUpdated : {type :Date, 'default': new Date()}
+  dateUpdated : {type :Date, 'default': new Date()},
+  loggedIn : {type: Boolean, 'default':false },
+  dateLoggedIn : {type :Date, 'default': new Date()}
 });
 
 /**
@@ -97,6 +99,7 @@ function slugGenerator (options){
 
 Artist.plugin(slugGenerator({key : 'name'}));
 Artwork.plugin(slugGenerator({key : 'title'}));
+User.plugin(slugGenerator({key : 'email'})); // What if we want the slug to be the name but the key to be the email
 
 mongoose.model('Artist', Artist);
 mongoose.model('Artwork', Artwork);
