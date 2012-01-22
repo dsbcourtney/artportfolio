@@ -1,53 +1,53 @@
 module.exports = function(app, mongoose, vdp) {
 
-    app.post('/user/login', function(req, res) {
-        var User = mongoose.model('User'),
-            pageTitle = 'Art Rebellion : Users',
+    app.post('/visitor/login', function(req, res) {
+        var Visitor = mongoose.model('Visitor'),
+            pageTitle = 'Art Rebellion : Visitors',
             message = '';
 
-        User.findOne({'email':req.body.user.email,'pass':req.body.user.pass}, function(err, user){
-            if (err || !user){
+        Visitor.findOne({'email':req.body.visitor.email,'pass':req.body.visitor.pass}, function(err, visitor){
+            if (err || !visitor){
                 message = 'Sorry your log in details seem to incorrect, please try again.';
             } else { // Found so store some session stuff
                 message = 'Log in successful, please wait whilst we redirect you back to the page you were on.';
-                req.session.user = user;
-                //user.lastLogin = Date.now();
-                //user.loggedIn = TRUE;
-                user.save(function(err){
+                req.session.visitor = visitor;
+                visitor.dateLoggedIn = Date.now();
+                visitor.loggedIn = true;
+                visitor.save(function(err){
                    if (err){
                        res.send(err, 500);
                    }
                 });
             }
-            var locals = {title : pageTitle, pageTitle: pageTitle, message: message, user: user};
+            var locals = {title : pageTitle, pageTitle: pageTitle, message: message, visitor: visitor};
             vdp.getPublicViewData(thenRender, 'login.jade', locals, res);
         });
     });
 
-    app.get('/user/register', function(req, res){
+    app.get('/visitor/register', function(req, res){
 
 
     });
 
-    app.post('/user/register', function(req, res) {
+    app.post('/visitor/register', function(req, res) {
 
         var pageTitle = 'Art Rebellion : Users';
         var message = '';
 
-        console.log(req.body.user);
+        console.log(req.body.visitor);
         console.log(req.sessionID);
         //Get an User Model instance
-        var User = mongoose.model('User');
+        var Visitor = mongoose.model('Visitor');
 
-        User.findOne({'email':req.body.user.email}, function(err, user) { // Check for existing user using email
-            if (err || !user) {
-                newUser = new User(req.body.user);
-                newUser.save(function(err) { // Add the user
+        Visitor.findOne({'email':req.body.visitor.email}, function(err, visitor) { // Check for existing user using email
+            if (err || !visitor) {
+                newVisitor = new Visitor(req.body.visitor);
+                newVisitor.save(function(err) { // Add the visitor
                     if (err) {
                         res.send(err, 500);
                     }
                 });
-                console.log('New registered user');
+                console.log('New registered visitor');
                 message = 'Thank you for registering with us. You will shortly receive an email from us to confirm your identity after which you will be able to log in.';
             }
             else {

@@ -50,7 +50,7 @@ var Format = new Schema({
   price : Number
 });
 
-var User = new Schema({
+var Visitor = new Schema({
   slug        : { type: String, lowercase: true, trim: true, unique: true},
   firstname : { type: String },
   lastname : { type: String },
@@ -89,11 +89,11 @@ function slugGenerator(options) {
 
 Artist.plugin(slugGenerator({key : 'name'}));
 Artwork.plugin(slugGenerator({key : 'title'}));
-User.plugin(slugGenerator({key : 'email'})); // What if we want the slug to be the name but the key to be the email
+Visitor.plugin(slugGenerator({key : 'email'})); // What if we want the slug to be the name but the key to be the email
 
 mongoose.model('Artist', Artist);
 mongoose.model('Artwork', Artwork);
 mongoose.model('Format', Format);
-mongoose.model('User', User);
+mongoose.model('Visitor', Visitor);
 
 module.exports = mongoose;
