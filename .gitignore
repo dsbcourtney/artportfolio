@@ -19,9 +19,11 @@
 
 .idea/vcs.xml
 
+root/www/uploads/*
 ./root/www/uploads/*
 
-./root/static/img/artwork/*
+root/www/static/img/artwork/*
+./root/www/static/img/artwork/*
 
 .idea/scopes/scope_settings.xml
 
