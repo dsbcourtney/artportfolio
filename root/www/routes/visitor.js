@@ -79,10 +79,10 @@ module.exports = function(app, mongoose, vdp) {
             }
             else {
                 console.log('Attempted registration');
-                message = 'Sorry a user with that email address has already registered with us on the ' + user.dateAdded;
+                message = 'Sorry a user with that email address has already registered with us on the ' + visitor.dateAdded;
             }
             var locals = {title:pageTitle, pageTitle:pageTitle, message:message};
-            vdp.getPublicViewData(thenRender, 'register.jade', locals, res);
+            vdp.getPublicViewData(thenRender, 'register.jade', locals, req, res);
         });
 
     });
