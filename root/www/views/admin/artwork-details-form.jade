@@ -24,6 +24,8 @@ form(method="POST", action=formAction)
     input(name="artwork[format][0][price]", type="text", placeholder="Price &pound; (GBP)", value=artwork.format[0].price)
   label(for="artwork[tag]") Tags 
   textarea(name="artwork[tag]")= artwork.tag
+  label(for="artwork[featured]") Featured on Homepage
+    input(name="artwork[featured]", type="checkbox", value=artwork.featured)
   label(for="artwork[status]") Site Status
   select(name="artwork[status]")
     - var statuses = ['offline', 'published']

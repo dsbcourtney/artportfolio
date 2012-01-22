@@ -14,6 +14,7 @@ var Artist = new Schema({
   dateAdded   : {type :Date, 'default': new Date()},
   dateUpdated : {type :Date, 'default': new Date()},
   websiteUrl  : String,
+  featured : Boolean,
   status       : { type: String, 'default':'offline'}
 });
 
@@ -24,7 +25,6 @@ var Artwork = new Schema({
   type      : String,
   description : String,
   artist : Schema.ObjectId,
-  format :[Format],
   totalEditions : Number,
   format :[Format],
   image:{
@@ -37,6 +37,7 @@ var Artwork = new Schema({
   released : Date,
   dateAdded   : {type :Date, 'default': new Date()},
   dateUpdated : {type :Date, 'default': new Date()},
+  featured : Boolean,
   status       : { type: String, 'default':'offline'}
 });
 
