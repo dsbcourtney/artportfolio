@@ -22,3 +22,7 @@
 ./root/www/uploads/*
 
 ./root/static/img/artwork/*
+
+.idea/scopes/scope_settings.xml
+
+.idea/dictionaries/davecourtney.xml

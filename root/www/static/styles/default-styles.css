@@ -67,12 +67,12 @@ header {
 }
 
 header h1 {
-    width: 50%;
+    width: 45%;
     float: left;
 }
 
 header nav {
-    width: 45%;
+    width: 55%;
     float: right;
     vertical-align: top;
 }
@@ -86,7 +86,7 @@ header nav .periphery {
     position: absolute;
     right: 5px;
     display: inline-block;
-    max-width: 350px;
+    max-width: 400px;
 }
 
 header nav .periphery li {
@@ -220,3 +220,38 @@ header nav .artists li {
 header nav .artists li.active {
     display: block;
 }
+
+/* ---- ----  ---- ----  ---- ----  ---- ---- LOGIN / REGISTER ---- ----  ---- ----  ---- ----  ---- ---- */
+
+.userform {
+	display:none;
+	position:absolute;
+	top:100px;
+	left:50%;
+	border:solid black 1px;
+	background:#ffffff;
+	padding:10px;
+	margin-left: -200px;
+	width:400px;
+}
+
+.userform label {
+	float:left;
+	text-align:right;
+	margin-right:2px;
+	width:130px;
+}
+
+.userform input[type=text], .userform input[type=password] {
+	width:250px;
+	float:left;
+}
+
+.userform input[type=checkbox] {
+	text-align:left;
+}
+
+.userform span {
+	float:right;
+}
+

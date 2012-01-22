@@ -1,0 +1,372 @@
+info it worked if it ends with ok
+verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'hashlib' ]
+info using npm@1.1.0-beta-4
+info using node@v0.6.6
+verbose config file /Users/davecourtney/.npmrc
+verbose config file /usr/local/etc/npmrc
+verbose config file /usr/local/lib/node_modules/npm/npmrc
+WARN cookie-sessions@0.0.2 package.json: bugs['web'] should probably be bugs['url']
+verbose caching /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/cookie-sessions/package.json
+verbose loadDefaults cookie-sessions@0.0.2
+verbose caching /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/hooks/package.json
+verbose loadDefaults hooks@0.1.9
+verbose caching /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/imagemagick/package.json
+verbose loadDefaults imagemagick@0.1.2
+verbose caching /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/jade/package.json
+verbose loadDefaults jade@0.20.0
+verbose caching /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/mongodb/package.json
+verbose loadDefaults mongodb@0.9.8-1
+verbose caching /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/mongoose/package.json
+verbose loadDefaults mongoose@2.4.10
+verbose caching /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/express/package.json
+verbose loadDefaults express@2.5.4
+verbose caching /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/markdown-js/package.json
+verbose loadDefaults markdown-js@0.0.3
+verbose into /Users/davecourtney/dev/github/artportfolio/root/www [ 'hashlib' ]
+verbose cache add hashlib
+verbose cache add [ 'hashlib', null ]
+silly cache add: name, spec, args [ undefined, 'hashlib', [ 'hashlib', null ] ]
+verbose parsed url { pathname: 'hashlib', path: 'hashlib', href: 'hashlib' }
+verbose addNamed [ 'hashlib', '' ]
+verbose addNamed [ null, '' ]
+silly name, range, hasData [ 'hashlib', '', false ]
+verbose raw, before any munging hashlib
+verbose url resolving [ 'https://registry.npmjs.org/', './hashlib' ]
+verbose url resolved https://registry.npmjs.org/hashlib
+http GET https://registry.npmjs.org/hashlib
+http 200 https://registry.npmjs.org/hashlib
+silly get cb [ 200,
+silly get cb   { vary: 'Accept',
+silly get cb     server: 'CouchDB/1.1.0 (Erlang OTP/R14B04)',
+silly get cb     etag: '"F4F5F9NKX2USH4W4X2AGSJEW2"',
+silly get cb     date: 'Sat, 21 Jan 2012 20:40:35 GMT',
+silly get cb     'content-type': 'application/json',
+silly get cb     'content-length': '2031' } ]
+verbose mkdir (expected) error ENOENT, no such file or directory '/Users/davecourtney/.npm/hashlib'
+verbose mkdir done: /Users/davecourtney/.npm/hashlib 755
+silly name, range, hasData 2 [ 'hashlib', '', true ]
+silly versions [ 'hashlib', [ '1.0.0', '1.0.1' ] ]
+verbose bin dist [ '0.6-ares1.7.5-DEV-evundefined-openssl0.9.8r-v83.6.6.14-darwin-x64-11.2.0',
+verbose bin dist   { shasum: '68d7c4924c10f2f67dd20ede79316397e772107c',
+verbose bin dist     tarball: 'http://registry.npmjs.org/hashlib/-/hashlib-1.0.1.tgz' } ]
+verbose addRemoteTarball [ 'https://registry.npmjs.org/hashlib/-/hashlib-1.0.1.tgz',
+verbose addRemoteTarball   '68d7c4924c10f2f67dd20ede79316397e772107c' ]
+verbose mkdir (expected) error ENOENT, no such file or directory '/var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392'
+verbose mkdir (expected) error ENOENT, no such file or directory '/var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822'
+verbose mkdir done: /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822 755
+verbose fetch to /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/tmp.tgz
+http GET https://registry.npmjs.org/hashlib/-/hashlib-1.0.1.tgz
+http 200 https://registry.npmjs.org/hashlib/-/hashlib-1.0.1.tgz
+silly updated sha bytes 40960
+silly updated sha bytes 36860
+info shasum 68d7c4924c10f2f67dd20ede79316397e772107c
+info shasum /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/tmp.tgz
+verbose mkdir (expected) error ENOENT, no such file or directory '/var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm'
+verbose mkdir done: /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm 755
+verbose unpack_ uid, gid [ undefined, undefined ]
+verbose unpackTarget /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/package
+silly gunzTarPerm modes [ '755', '644' ]
+silly afterUntar undefined
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/.gitignore
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/hashlib.cc
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/makefile
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/package.json
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/README.md
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/test.file
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/test.js
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/test.php
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/test.py
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/wscript
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/libhash
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/libhash/md4.h
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/libhash/md4c.c
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/libhash/md5.h
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/libhash/md5c.c
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/libhash/ripemd.h
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/libhash/rmd160c.c
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/libhash/rmd_locl.h
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/libhash/rmdconst.h
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/libhash/sha.h
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/libhash/sha0c.c
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/libhash/sha1c.c
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/libhash/sha256.h
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/libhash/sha256c.c
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/libhash/sha_locl.h
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/test
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/test/md5.js
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/debian
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/debian/changelog
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/debian/compat
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/debian/control
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/debian/copyright
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/debian/dirs
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/debian/install
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/debian/rules
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/debian/source
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/debian/source/format
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/md5
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/md5/_hashopenssl.c
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/md5/md5.c
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/md5/md5.h
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/md5/md5module.c
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/md6
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/md6/inttypes.h
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/md6/md6.h
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/md6/md6_compress.c
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/md6/md6_mode.c
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/md6/md6_nist.c
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/md6/md6_nist.h
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/md6/md6sum.c
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/md6/README_Reference.txt
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/md6/stdint.h
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/sha
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/sha/SHA1.cpp
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/sha/SHA1.h
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/sha/sha256module.c
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/sha/sha512module.c
+silly asyncMap in gTP /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package/lib/sha/shamodule.c
+verbose gunzed /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package
+verbose rm'ed /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/package
+verbose renamed [ '/var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/___package.npm/package',
+verbose renamed   '/var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/package' ]
+verbose has wscript [ undefined,
+verbose has wscript   { file: '/var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/package/package.json',
+verbose has wscript     contributors: false,
+verbose has wscript     serverjs: false,
+verbose has wscript     wscript: true } ]
+verbose caching /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/package/package.json
+verbose loadDefaults hashlib@1.0.1
+verbose tarball contents [ 'package', 'tmp.tgz' ]
+verbose from cache /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/package/package.json
+verbose pack /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/package
+verbose pack /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/package /Users/davecourtney/.npm/hashlib/1.0.1/package.tgz
+silly makeList /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/package
+silly dir, dirLen [ '/var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/package',
+silly dir, dirLen   108 ]
+verbose tarball /Users/davecourtney/.npm/hashlib/1.0.1/package.tgz
+verbose parent /var/folders/11/st8c0lh92yn553bjz7thrlth0000gn/T/npm-1327178435392/1327178435392-0.7135194221045822/package
+verbose mkdir (expected) error ENOENT, no such file or directory '/Users/davecourtney/.npm/hashlib/1.0.1/___package.npm'
+verbose mkdir done: /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm 755
+verbose unpack_ uid, gid [ undefined, undefined ]
+verbose unpackTarget /Users/davecourtney/.npm/hashlib/1.0.1/package
+silly gunzTarPerm modes [ '755', '644' ]
+silly afterUntar undefined
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/.npmignore
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/hashlib.cc
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/makefile
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/package.json
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/README.md
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/test.file
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/test.js
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/test.php
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/test.py
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/wscript
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/libhash
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/libhash/md4.h
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/libhash/md4c.c
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/libhash/md5.h
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/libhash/md5c.c
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/libhash/ripemd.h
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/libhash/rmd160c.c
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/libhash/rmd_locl.h
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/libhash/rmdconst.h
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/libhash/sha.h
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/libhash/sha0c.c
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/libhash/sha1c.c
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/libhash/sha256.h
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/libhash/sha256c.c
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/libhash/sha_locl.h
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/test
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/test/md5.js
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/debian
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/debian/changelog
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/debian/compat
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/debian/control
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/debian/copyright
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/debian/dirs
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/debian/install
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/debian/rules
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/debian/source
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/debian/source/format
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/md5
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/md5/_hashopenssl.c
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/md5/md5.c
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/md5/md5.h
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/md5/md5module.c
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/md6
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/md6/inttypes.h
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/md6/md6.h
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/md6/md6_compress.c
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/md6/md6_mode.c
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/md6/md6_nist.c
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/md6/md6_nist.h
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/md6/md6sum.c
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/md6/README_Reference.txt
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/md6/stdint.h
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/sha
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/sha/SHA1.cpp
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/sha/SHA1.h
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/sha/sha256module.c
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/sha/sha512module.c
+silly asyncMap in gTP /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package/lib/sha/shamodule.c
+verbose gunzed /Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package
+verbose rm'ed /Users/davecourtney/.npm/hashlib/1.0.1/package
+verbose renamed [ '/Users/davecourtney/.npm/hashlib/1.0.1/___package.npm/package',
+verbose renamed   '/Users/davecourtney/.npm/hashlib/1.0.1/package' ]
+verbose has wscript [ undefined,
+verbose has wscript   { file: '/Users/davecourtney/.npm/hashlib/1.0.1/package/package.json',
+verbose has wscript     contributors: false,
+verbose has wscript     serverjs: false,
+verbose has wscript     wscript: true } ]
+verbose caching /Users/davecourtney/.npm/hashlib/1.0.1/package/package.json
+verbose loadDefaults hashlib@1.0.1
+silly updated sha bytes 40960
+silly updated sha bytes 37929
+info shasum 583b201cd4ea3fa00cfdb72f22d135d8cc2fc3cb
+info shasum /Users/davecourtney/.npm/hashlib/1.0.1/package.tgz
+verbose from cache /Users/davecourtney/.npm/hashlib/1.0.1/package/package.json
+verbose chmod /Users/davecourtney/.npm/hashlib/1.0.1/package.tgz 644
+verbose chown [ '/Users/davecourtney/.npm/hashlib/1.0.1/package.tgz', 501, 20 ]
+silly resolved [ { name: 'hashlib',
+silly resolved     author: { name: 'Illarionov Oleg' },
+silly resolved     description: 'lib for node which makes hashes',
+silly resolved     version: '1.0.1',
+silly resolved     contributors: 
+silly resolved      [ { name: 'Fedor Indutny', email: 'fedor.indutny@gmail.com' },
+silly resolved        { name: 'Seth Fitzsimmons', email: 'seth@mojodna.net' },
+silly resolved        { name: 'Wade Simmons', email: 'wade@wades.im' } ],
+silly resolved     main: 'build/default/hashlib',
+silly resolved     directories: { lib: './build/default' },
+silly resolved     engines: { node: '>= 0.2.0' },
+silly resolved     _id: 'hashlib@1.0.1',
+silly resolved     scripts: { preinstall: 'node-waf clean || (exit 0); node-waf configure build' },
+silly resolved     dependencies: {},
+silly resolved     devDependencies: {},
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.0-beta-4',
+silly resolved     _nodeVersion: 'v0.6.6',
+silly resolved     _defaultsLoaded: true,
+silly resolved     dist: { shasum: '583b201cd4ea3fa00cfdb72f22d135d8cc2fc3cb' } } ]
+info into /Users/davecourtney/dev/github/artportfolio/root/www hashlib@1.0.1
+info installOne hashlib@1.0.1
+info unbuild /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/hashlib
+verbose from cache /Users/davecourtney/.npm/hashlib/1.0.1/package/package.json
+verbose mkdir (expected) error ENOENT, no such file or directory '/Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm'
+verbose mkdir done: /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm 755
+verbose unpack_ uid, gid [ undefined, undefined ]
+verbose unpackTarget /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/hashlib
+silly gunzTarPerm modes [ '755', '644' ]
+silly afterUntar undefined
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/.npmignore
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/hashlib.cc
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/makefile
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/package.json
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/README.md
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/test.file
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/test.js
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/test.php
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/test.py
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/wscript
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/libhash
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/libhash/md4.h
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/libhash/md4c.c
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/libhash/md5.h
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/libhash/md5c.c
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/libhash/ripemd.h
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/libhash/rmd160c.c
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/libhash/rmd_locl.h
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/libhash/rmdconst.h
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/libhash/sha.h
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/libhash/sha0c.c
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/libhash/sha1c.c
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/libhash/sha256.h
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/libhash/sha256c.c
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/libhash/sha_locl.h
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/test
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/test/md5.js
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/debian
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/debian/changelog
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/debian/compat
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/debian/control
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/debian/copyright
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/debian/dirs
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/debian/install
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/debian/rules
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/debian/source
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/debian/source/format
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/md5
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/md5/_hashopenssl.c
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/md5/md5.c
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/md5/md5.h
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/md5/md5module.c
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/md6
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/md6/inttypes.h
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/md6/md6.h
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/md6/md6_compress.c
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/md6/md6_mode.c
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/md6/md6_nist.c
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/md6/md6_nist.h
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/md6/md6sum.c
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/md6/README_Reference.txt
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/md6/stdint.h
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/sha
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/sha/SHA1.cpp
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/sha/SHA1.h
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/sha/sha256module.c
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/sha/sha512module.c
+silly asyncMap in gTP /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package/lib/sha/shamodule.c
+verbose gunzed /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package
+verbose rm'ed /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/hashlib
+verbose renamed [ '/Users/davecourtney/dev/github/artportfolio/root/www/node_modules/___hashlib.npm/package',
+verbose renamed   '/Users/davecourtney/dev/github/artportfolio/root/www/node_modules/hashlib' ]
+verbose has wscript [ undefined,
+verbose has wscript   { file: '/Users/davecourtney/dev/github/artportfolio/root/www/node_modules/hashlib/package.json',
+verbose has wscript     contributors: false,
+verbose has wscript     serverjs: false,
+verbose has wscript     wscript: true } ]
+verbose caching /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/hashlib/package.json
+verbose loadDefaults hashlib@1.0.1
+info preinstall hashlib@1.0.1
+verbose unsafe-perm in lifecycle true
+silly exec sh "-c" "node-waf clean || (exit 0); node-waf configure build"
+silly spawning [ 'sh',
+silly spawning   [ '-c', 'node-waf clean || (exit 0); node-waf configure build' ],
+silly spawning   '/Users/davecourtney/dev/github/artportfolio/root/www/node_modules/hashlib' ]
+info hashlib@1.0.1 Failed to exec preinstall script
+ERR! error installing hashlib@1.0.1
+info unbuild /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/hashlib
+verbose from cache /Users/davecourtney/dev/github/artportfolio/root/www/node_modules/hashlib/package.json
+info preuninstall hashlib@1.0.1
+info uninstall hashlib@1.0.1
+verbose unbuild hashlib@1.0.1 [ true,
+verbose unbuild hashlib@1.0.1   '/Users/davecourtney/dev/github/artportfolio/root/www/node_modules',
+verbose unbuild hashlib@1.0.1   '/Users/davecourtney/dev/github/artportfolio/root/www/node_modules' ]
+info postuninstall hashlib@1.0.1
+verbose installOne cb hashlib@1.0.1
+ERR! hashlib@1.0.1 preinstall: `node-waf clean || (exit 0); node-waf configure build`
+ERR! `sh "-c" "node-waf clean || (exit 0); node-waf configure build"` failed with 1
+ERR! 
+ERR! Failed at the hashlib@1.0.1 preinstall script.
+ERR! This is most likely a problem with the hashlib package,
+ERR! not with npm itself.
+ERR! Tell the author that this fails on your system:
+ERR!     node-waf clean || (exit 0); node-waf configure build
+ERR! You can get their info via:
+ERR!     npm owner ls hashlib
+ERR! There is likely additional logging output above.
+ERR! 
+ERR! System Darwin 11.2.0
+ERR! command "node" "/usr/local/bin/npm" "install" "hashlib"
+ERR! cwd /Users/davecourtney/dev/github/artportfolio/root/www
+ERR! node -v v0.6.6
+ERR! npm -v 1.1.0-beta-4
+ERR! code ELIFECYCLE
+ERR! message hashlib@1.0.1 preinstall: `node-waf clean || (exit 0); node-waf configure build`
+ERR! message `sh "-c" "node-waf clean || (exit 0); node-waf configure build"` failed with 1
+verbose exit [ 1, true ]

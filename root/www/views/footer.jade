@@ -7,3 +7,54 @@ footer
     span CR5 2NH
     span +44 (0)208 668 0007
     a(href="info@artrebellion.co.uk", title="Email art rebellion") artrebellion@gmail.com
+  form(id="loginform", action="user/login", method="post").userform
+    legend
+      label(for="email") Email:
+      input(type="text", name="user[email]")
+      label(for="pass") Password:
+      input(type="password", name="user[pass]")
+      input(type="submit", value="Login")
+      span
+        em
+        a(href="close", id="aLoginClose") close
+  form(id="registerform", action="user/register", method="post").userform
+    legend
+      label(for="firstname") First name:
+      input(type="text", name="user[firstname]")
+      label(for="lastname") Last name:
+      input(type="text", name="user[lastname]")
+      label(for="email") E-mail:
+      input(type="text", name="user[email]")
+      label(for="mobile") Mobile:
+      input(type="text", name="user[mobile]")
+      label(for="newsletterOptIn") Newsletter Opt In:
+      input(type="checkbox", name="user[newsletterOptIn]")
+      label(for="emailsOptIn") Emails Opt In:
+      input(type="checkbox", name="user[emailsOptIn]")
+      label(for="pass") Password:
+      input(type="password", name="user[pass]")
+      label(for="repeat") Repeat password:
+      input(type="password", name="repeat")
+      input(type="submit", value="Register")
+      span
+        em
+          a(href="close", id="aRegisterClose") close
+    script(type="text/javascript")
+      $(document).ready(function() {
+        $('#aLogin').click(function(){
+          $('#loginform').show();
+          return(false);
+        });
+        $('#aLoginClose').click(function(){
+          $('#loginform').hide();
+          return(false);
+        });
+        $('#aRegister').click(function(){
+          $('#registerform').show();
+          return(false);
+        });
+        $('#aRegisterClose').click(function(){
+          $('#registerform').hide();
+          return(false);
+        });
+      });
