@@ -11,7 +11,7 @@ form(action=formAction, method=method)
       label(for="websiteUrl") Website Url
       input#websiteUrl(type="text", name="artist[websiteUrl]", placeholder="Website Url", value=artist.websiteUrl)
       label(for="artist[featured]") Featured on Homepage
-        input(name="featured", type="checkbox", value=artist.featured)
+        input(name="artist[featured]", type="checkbox", checked=artist.featured)
       label(for="artist[status]") Site Status
       select(name="artist[status]")
         - var statuses = ['offline', 'published']

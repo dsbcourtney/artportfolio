@@ -4,7 +4,7 @@ header
   nav
     ul.artists
     each artist in publishedArtists
-      li.active
+      li
         a(href='/artists/'+artist.slug)= artist.name
     ul.periphery
       li

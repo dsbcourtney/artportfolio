@@ -6,6 +6,11 @@ form(method="POST", action=formAction)
   input(name="artwork[type]", type="text", placeholder="type", value=artwork.type)
   label(for="artwork[description]") Description
   textarea(name="artwork[description]")= artwork.description
+   each status in statuses 
+        if artwork.status == status 
+          option(value=status, selected="selected")= status
+        else
+          option(value=status)= status  
   label(for="artwork[released]") Date Released
   input(name="artwork[released]", type="text", placeholder="Date Released", value=artwork.released)       
   fieldset#formats
@@ -25,7 +30,7 @@ form(method="POST", action=formAction)
   label(for="artwork[tag]") Tags 
   textarea(name="artwork[tag]")= artwork.tag
   label(for="artwork[featured]") Featured on Homepage
-    input(name="artwork[featured]", type="checkbox", value=artwork.featured)
+    input(name="artwork[featured]", type="checkbox", checked=artwork.featured)
   label(for="artwork[status]") Site Status
   select(name="artwork[status]")
     - var statuses = ['offline', 'published']

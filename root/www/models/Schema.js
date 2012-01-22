@@ -10,12 +10,11 @@ var Artist = new Schema({
   slug        : { type: String, lowercase: true, trim: true, unique: true},
   name        : { type : String, index : true},
   biography   : String,
-  featured    : ObjectId,
   dateAdded   : {type :Date, 'default': new Date()},
   dateUpdated : {type :Date, 'default': new Date()},
   websiteUrl  : String,
-  featured : Boolean,
-  status       : { type: String, 'default':'offline'}
+  featured    : Boolean,
+  status      : { type: String, 'default':'offline'}
 });
 
 
@@ -37,8 +36,8 @@ var Artwork = new Schema({
   released : Date,
   dateAdded   : {type :Date, 'default': new Date()},
   dateUpdated : {type :Date, 'default': new Date()},
-  featured : Boolean,
-  status       : { type: String, 'default':'offline'}
+  featured    : Boolean,
+  status      : { type: String, 'default':'offline'}
 });
 
 var Format = new Schema({
