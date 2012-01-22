@@ -1,7 +1,10 @@
 /* ---- ----  ---- ----  ---- ----  ---- ---- BASE ---- ----  ---- ----  ---- ----  ---- ---- */
 body {
-    margin: 20px;
+    margin: 10px 0 30px 0;
     text-align: center;
+}
+
+p, a, li, span, div{
     font: normal normal 14px/18px Arial, Helvatica, san-serif;
 }
 
@@ -55,8 +58,8 @@ form .controls {
 }
 
 .page-container {
-    width: 940px;
-    margin: 0 auto;
+    width: 460px;
+    margin: 0 10px;
     text-align: left;
 }
 
@@ -67,26 +70,26 @@ header {
 }
 
 header h1 {
-    width: 45%;
+    width: 50%;
     float: left;
 }
 
 header nav {
-    width: 55%;
+    width: 45%;
     float: right;
     vertical-align: top;
 }
 
 header nav .artists {
     display: inline-block;
-    max-width: 250px;
+    max-width: 100%;
 }
 
 header nav .periphery {
     position: absolute;
     right: 5px;
-    display: inline-block;
-    max-width: 400px;
+    display: block;
+    max-width: 100%;
 }
 
 header nav .periphery li {
@@ -107,17 +110,16 @@ header nav .periphery li {
 }
 
 .hero {
-    width: 940px;
-    height: 450px;
+    width: 450px;
+    height: 180px;
     margin: 0 0;
 }
 
 .introduction p {
-    position: absolute;
-    padding: 10px;
-    bottom: 10px;
-    right: 0;
-    width: 33%;
+    position: static;
+    padding: 0;
+    margin: 0;
+    width: 100%;
 }
 
 /* ---- ARTIST ---- */
@@ -128,8 +130,8 @@ header nav .periphery li {
 
 .gallery .featured-artwork img,
 .artist .collections img {
-    width: 300px;
-    height: 300px;
+    width: 440px;
+    height: 440px;
     margin: 5px;
 }
 
@@ -141,8 +143,8 @@ header nav .periphery li {
     position: absolute;
     bottom: 15px;
     right: 15px;
-    max-width: 75%;
-    max-height: 75%;
+    max-width: 100%;
+    max-height: 100%;
     overflow: hidden;
 }
 
@@ -181,28 +183,14 @@ header nav .periphery li {
 }
 
 .collection .artwork li .tagCloud {
-    margin-right: 30px;
+    margin-right: 10px;
     text-align: right;
-}
-
-/* ---- ARTWORK PAGE----*/
-.artwork .artwork-image {
-    width: 640px;
-    height: 800px;
-}
-
-footer {
-
-}
-
-.hcard span {
-    display: block;
 }
 
 /* ---- ----  ---- ----  ---- ----  ---- ---- MODULE ---- ----  ---- ----  ---- ----  ---- ---- */
 
 header nav .artists {
-    max-width: 250px;
+    max-width: 49%;
     float: left;
 }
 
@@ -210,48 +198,3 @@ ul.artwork li .title {
     font-weight: bold;
     text-indent: 5px;
 }
-
-/* ---- ----  ---- ----  ---- ----  ---- ---- STATE ---- ----  ---- ----  ---- ----  ---- ---- */
-
-header nav .artists li {
-    display: none;
-}
-
-header nav .artists li.active {
-    display: block;
-}
-
-/* ---- ----  ---- ----  ---- ----  ---- ---- LOGIN / REGISTER ---- ----  ---- ----  ---- ----  ---- ---- */
-
-.userform {
-	display:none;
-	position:absolute;
-	top:100px;
-	left:50%;
-	border:solid black 1px;
-	background:#ffffff;
-	padding:10px;
-	margin-left: -200px;
-	width:400px;
-}
-
-.userform label {
-	float:left;
-	text-align:right;
-	margin-right:2px;
-	width:130px;
-}
-
-.userform input[type=text], .userform input[type=password] {
-	width:250px;
-	float:left;
-}
-
-.userform input[type=checkbox] {
-	text-align:left;
-}
-
-.userform span {
-	float:right;
-}
-

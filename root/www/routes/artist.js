@@ -13,23 +13,26 @@ module.exports = function(app, mongoose) {
         res.send(err, 500);
       }
       
-      res.render('admin/artists.jade', {title : pageTitle, pageTitle: pageTitle, artists: artists});
+      vdp.getAdminViewData(thenRender, 'artists.jade', locals);
     });
   });
-
+  */
+  
   app.get('/artists/:artistSlug.:format?', function(req, res) {
-    //Get an Artist Model instance
-    var Artist = mongoose.model('Artist');
-
-    Artist.find({}, function(err, artists) {
-    });
+    var locals = {}
+      , Artist = mongoose.model('Artist');
 
     Artist.findOne({slug:req.params.artistSlug}, function(err, artist) {
+       
+      locals.title = 'Art Rebellion : ' + artist.name;
+      locals.pageTitle = locals.title;
+      locals.artists = artist;
+      
       if (err || !artist) {
         res.send('not found', 404);
       }
       else {
-        res.render('artist.jade', {title : 'Art Rebellion: [' + artist.name + ']', pageTitle: '[' + artist.name + ']'});
+        vdp.getPublicViewData(thenRender, 'artist.jade', locals, res);
       }
     });
 
@@ -42,44 +45,52 @@ module.exports = function(app, mongoose) {
 
   //read all artists
   app.get('/admin/artists', function(req, res) {
-
-    //Get an Artist Model instance
-    var Artist = mongoose.model('Artist');
-
+    var locals = {title : 'Art Rebellion Admin: List Artists', pageTitle: 'List Artists'}
+      , Artist = mongoose.model('Artist');
+    
     //find all artists
     Artist.find({}, function(err, artists) {
       if (err) {
         res.send(err, 500);
       }
       
-      res.render('admin/artists-list.jade',
-              {title : 'Art Rebellion Admin: List Artists', pageTitle: 'List Artists', artists:artists});
+      locals.artists = artists;
+      vdp.getAdminViewData(thenRender, 'admin/artist-list.jade', locals, res);
     });
-
   });
 
   //show single artist form
   app.get('/admin/artists/new', function(req, res) {
 
     //Get an Artist Model instance
-    var Artist = mongoose.model('Artist');
-    var newArtist = new Artist();
+    var Artist = mongoose.model('Artist')
+      , newArtist = new Artist()
+      , locals = {  title : 'Art Rebellion Admin: Add Artist', 
+                    pageTitle: 'Add Artist',
+                    method:"POST", 
+                    methodOverride:null, 
+                    formAction : "/admin/artists/",
+                    artist: newArtist};
 
-    res.render('admin/artist-form.jade', {title : 'Art Rebellion Admin: Add Artist', pageTitle: 'Add Artist',
-      method:"POST", methodOverride:null, formAction : "/admin/artists/",
-      artist: newArtist});
+    vdp.getAdminViewData(thenRender, 'admin/artist-form.jade', locals, res);
   });
 
   //read single artist into form
   app.get('/admin/artists/:artistSlug', function(req, res) {
 
     //Get an Artist Model instance
-    var Artist = mongoose.model('Artist');
+    var Artist = mongoose.model('Artist')
+      , locals = {  title : 'Art Rebellion: [Artist Name]', 
+                    pageTitle: '[Artist Name]',
+                    method:"POST", 
+                    methodOverride:"PUT"};
 
     Artist.findOne({slug:req.params.artistSlug}, function(err, artist) {
-      res.render('admin/artist-form.jade', {title : 'Art Rebellion: [Artist Name]', pageTitle: '[Artist Name]',
-        method:"POST", methodOverride:"PUT", formAction : "/admin/artists/" + artist.slug,
-        artist:artist});
+
+      locals.formAction = "/admin/artists/" + artist.slug;
+      locals.artist = artist;
+      
+      vdp.getAdminViewData(thenRender, 'admin/artist-form.jade', locals, res);
     });
   });
 
@@ -123,6 +134,15 @@ module.exports = function(app, mongoose) {
   //delete single artist
   app.del('/admin/artists/:artistSlug', function(req, res) {
     //TODPO: implement delete
-    res.render('artist.jade', {title : 'Art Rebellion: [Artist Name]', pageTitle: '[Artist Name]'});
+    var locals = {title : 'Art Rebellion: [Artist Name]', pageTitle: '[Artist Name]'};
+    vdp.getAdminViewData(thenRender, 'admin/artists-form.jade', locals, res);
   });
 };
+
+
+/* --- --- --- private helper methods --- --- --- */
+
+function thenRender(template, model, res){
+  res.render(template, model);
+}
+

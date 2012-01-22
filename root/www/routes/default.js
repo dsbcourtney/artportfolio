@@ -1,8 +1,14 @@
-
-module.exports = function(app, mongoose){
+module.exports = function(app, mongoose, vdp){
   
   app.get('/', function(req, res){
-     res.render('index.jade', {title : 'Art Rebellion', pageTitle: 'The Gallery'});
+    var locals = {title : 'Art Rebellion', pageTitle: 'The Gallery'};
+    vdp.getPublicViewData(thenRender, 'index.jade', locals, res);
   });  
   
 };
+
+/* --- --- --- private helper methods --- --- --- */
+
+function thenRender(template, model, res){
+  res.render(template, model);
+}
