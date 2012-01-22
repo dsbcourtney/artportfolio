@@ -16,7 +16,6 @@ module.exports = function(app, mongoose) {
       vdp.getAdminViewData(thenRender, 'artists.jade', locals);
     });
   });
-  */
   
   app.get('/artists/:artistSlug.:format?', function(req, res) {
     var locals = {}

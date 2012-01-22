@@ -29,13 +29,12 @@ app.configure(function() {
 
 });
 
-
 //routes
 //site
-require('./routes/default')(app, arMongoose);
-require('./routes/artist')(app, arMongoose);
-require('./routes/artwork')(app, arMongoose);
-require('./routes/art-list')(app, arMongoose);
+require('./routes/default')(app, arMongoose, viewDataProvider);
+require('./routes/artist')(app, arMongoose, viewDataProvider);
+require('./routes/artwork')(app, arMongoose, viewDataProvider);
+require('./routes/art-list')(app, arMongoose, viewDataProvider);
 require('./routes/user')(app, arMongoose);
 
 //

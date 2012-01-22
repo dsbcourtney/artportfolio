@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 form(method="POST", action=formAction)
   img(src="/img/artwork/"+artwork.image.max200px, style="display:block; padding:5px; border:solid 1px #666;") 
   label(for="artwork[title]") Title
@@ -36,37 +33,6 @@ form(method="POST", action=formAction)
       else
         option(value=status)= status
   input(type="hidden", name="_method", value=methodOverride)
-=======
->>>>>>> lewis_working
-form(method="POST", action="/admin/artwork")
-  img(src="/img/artwork/"+artwork.image.max200px, style="display:block; padding:5px; border:solid 1px #666;") 
-  label(for="artist[title]") Title
-  input(name="artist[title]", type="text", placeholder="title", value=artwork.title)    
-  label(for="artist[type]") Type
-  input(name="artist[type]", type="text", placeholder="type", value=artwork.type)
-  label(for="artist[description]") Description
-  textarea(name="artist[description]")
-  label(for="artist[released]") Date Released
-  input(name="artist[released]", type="text", placeholder="Date Released", value=artwork.released)       
-  fieldset#formats
-    legend Formats
-    label(for="artist[format][0][type]") Type
-    input(name="artist[format][0][type]", type="text", placeholder="Type")
-    label(for="artist[format][0][detail]") Detail
-    input(name="artist[format][0][detail]", type="text", placeholder="Detail")
-    label(for="artist[format][0][printsRun]") Prints Run
-    input(name="artist[format][0][printsRun]", type="text", placeholder="Prints Run")        
-    label(for="artist[format][0][width]") Width in centimeters
-    input(name="artist[format][0][width]", type="text", placeholder="Width Centimeters")
-    label(for="artist[format][0][height]") Height in centimeters
-    input(name="artist[format][0][height]", type="text", placeholder="Height Centimeters")                
-    label(for="artist[format][0][price]") Price &pound; (GBP)
-    input(name="artist[format][0][price]", type="text", placeholder="Price &pound; (GBP)")    
-   
-<<<<<<< HEAD
-=======
->>>>>>> b940d78501fd694674c424fbdd0833737d74c537
->>>>>>> lewis_working
   div.controls    
     input(type="reset", value="cancel")
     input(type="submit", value="submit")
