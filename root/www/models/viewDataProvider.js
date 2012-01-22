@@ -2,6 +2,7 @@ function createViewData(mongoose) {
 
   return {
 
+    // The rendering function for admin
     getAdminViewData : function(render, template, model, res) {
 
       getCommonAttributes(model, mongoose, function(updatedModel) {
@@ -14,6 +15,7 @@ function createViewData(mongoose) {
 
     },
 
+    // The rendering function for public
     getPublicViewData : function(render, template, model, res) {
 
       getCommonAttributes(model, mongoose, function(updatedModel) {
@@ -23,6 +25,7 @@ function createViewData(mongoose) {
         render(template, updatedModel, res);
 
       });
+
     }
 
   };
@@ -38,6 +41,8 @@ module.exports = function(mongoose) {
 /* --- --- private helper functions --- --- --- --- --- --- --- --- */
 
 function getCommonAttributes(model, mongoose, thenDo) {
+
+    // Stuff required on every page - ie. headers, footers
 
   var Artist = mongoose.model('Artist');
   

@@ -7,7 +7,7 @@ footer
     span CR5 2NH
     span +44 (0)208 668 0007
     a(href="info@artrebellion.co.uk", title="Email art rebellion") artrebellion@gmail.com
-  form(id="loginform", action="user/login", method="post").userform
+  form(id="loginform", action="/user/login", method="post").userform
     legend
       label(for="email") Email:
       input(type="text", name="user[email]")
@@ -17,7 +17,7 @@ footer
       span
         em
         a(href="close", id="aLoginClose") close
-  form(id="registerform", action="user/register", method="post").userform
+  form(id="registerform", action="/user/register", method="post").userform
     legend
       label(for="firstname") First name:
       input(type="text", name="user[firstname]")

@@ -1,4 +1,4 @@
-module.exports = function(app, mongoose) {
+module.exports = function(app, mongoose, vdp) {
 
     app.post('/user/login', function(req, res) {
         var User = mongoose.model('User'),
@@ -19,7 +19,8 @@ module.exports = function(app, mongoose) {
                    }
                 });
             }
-            res.render('login.jade', {title : pageTitle, pageTitle: pageTitle, message: message, user: user});
+            var locals = {title : pageTitle, pageTitle: pageTitle, message: message, user: user};
+            vdp.getPublicViewData(thenRender, 'login.jade', locals, res);
         });
     });
 
@@ -53,9 +54,14 @@ module.exports = function(app, mongoose) {
                 console.log('Attempted registration');
                 message = 'Sorry a user with that email address has already registered with us on the ' + user.dateAdded;
             }
-            res.render('register.jade', {title:pageTitle, pageTitle:pageTitle, message:message});
+            var locals = {title:pageTitle, pageTitle:pageTitle, message:message};
+            vdp.getPublicViewData(thenRender, 'register.jade', locals, res);
         });
 
     });
 
 };
+
+function thenRender(template, model, res){
+    res.render(template, model);
+}

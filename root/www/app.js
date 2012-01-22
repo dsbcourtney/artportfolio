@@ -35,7 +35,7 @@ require('./routes/default')(app, arMongoose, viewDataProvider);
 require('./routes/artist')(app, arMongoose, viewDataProvider);
 require('./routes/artwork')(app, arMongoose, viewDataProvider);
 require('./routes/art-list')(app, arMongoose, viewDataProvider);
-require('./routes/user')(app, arMongoose);
+require('./routes/user')(app, arMongoose, viewDataProvider);
 
 //
 app.listen(3000);
