@@ -3,12 +3,11 @@ function createViewData(mongoose) {
   return {
 
     // The rendering function for admin
-    getAdminViewData : function(render, template, model, res) {
+    getAdminViewData : function(render, template, model, req, res) {
 
-      getCommonAttributes(model, mongoose, function(updatedModel) {
+      getCommonViewData(model, mongoose, req, function(updatedModel) {
 
         updatedModel.viewType = "admin";
-
         render(template, updatedModel, res);
 
       });
@@ -16,15 +15,15 @@ function createViewData(mongoose) {
     },
 
     // The rendering function for public
-    getPublicViewData : function(render, template, model, res) {
+    getPublicViewData : function(render, template, model, req, res) {
 
-      getCommonAttributes(model, mongoose, function(updatedModel) {
+      getCommonViewData(model, mongoose, req, function(updatedModel) {
 
         updatedModel.viewType = "public";
-
         render(template, updatedModel, res);
 
       });
+
 
     }
 
@@ -40,7 +39,13 @@ module.exports = function(mongoose) {
 
 /* --- --- private helper functions --- --- --- --- --- --- --- --- */
 
-function getCommonAttributes(model, mongoose, thenDo) {
+// This gets added to every view 
+function getCommonViewData(model, mongoose, req, thenDo) {
+
+    if (req.session) {
+        model.visitor = req.session.visitor;
+    }
+
 
     // Stuff required on every page - ie. headers, footers
 

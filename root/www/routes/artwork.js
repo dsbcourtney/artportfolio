@@ -9,7 +9,7 @@ module.exports = function(app, mongoose, vdp) {
   app.get('/artwork/:artistName/:artworkTitle', function(req, res) {
     var locals = {title : 'Art Rebellion: [Artwork]', pageTitle: '[Artwork]'};
 
-    vdp.getPublicViewData(thenRender, 'artist.jade', locals, res);
+    vdp.getPublicViewData(thenRender, 'artist.jade', locals, req, res);
   });
 
 
@@ -19,7 +19,7 @@ module.exports = function(app, mongoose, vdp) {
   app.get('/admin/artwork/new.:format?', function(req, res) {
     var locals = {title : 'Art Rebellion: Add artwork images', pageTitle: 'Add artwork images'};
     
-    vdp.getAdminViewData(thenRender, 'admin/artwork-image-form.jade', locals, res);
+    vdp.getAdminViewData(thenRender, 'admin/artwork-image-form.jade', locals, req, res);
   });
 
 
@@ -66,7 +66,7 @@ module.exports = function(app, mongoose, vdp) {
       
       locals.artworks = artworks;
 
-      vdp.getAdminViewData(thenRender, 'admin/artwork-list.jade', locals, res);
+      vdp.getAdminViewData(thenRender, 'admin/artwork-list.jade', locals, req, res);
     });
   });
 
@@ -85,7 +85,7 @@ module.exports = function(app, mongoose, vdp) {
       locals.title =  "Art Rebellion : Edit Artwork : " + artwork.title;
       locals.pageTitle = locals.title;
       
-      vdp.getAdminViewData(thenRender, 'admin/artwork-details-form.jade', locals, res);
+      vdp.getAdminViewData(thenRender, 'admin/artwork-details-form.jade', locals, req, res);
       
     });
 
