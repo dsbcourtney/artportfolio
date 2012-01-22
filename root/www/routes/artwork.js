@@ -38,7 +38,7 @@ module.exports = function(app, mongoose, vdp) {
           }
 
           counter++;
-        });
+        }, (req.body.artist || null));
       }
     }
     else {
@@ -124,7 +124,7 @@ function thenRender(template, model, res){
 }
 
 
-function createArtwork(res, mongoose, image, next) {
+function createArtwork(res, mongoose, image, next, artistSlug) {
   var Artwork = mongoose.model('Artwork'),
           newArtwork, newTitle, newSlug;
 
@@ -135,6 +135,7 @@ function createArtwork(res, mongoose, image, next) {
       title : newTitle,
       image : imageFiles,
       type : 'original',
+      artist : artistSlug,
       description : 'A new piece of work',
       released : new Date(),
       format : [

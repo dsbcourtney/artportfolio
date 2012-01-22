@@ -23,7 +23,7 @@ var Artwork = new Schema({
   title : String,
   type      : String,
   description : String,
-  artist : Schema.ObjectId,
+  artist : String,
   totalEditions : Number,
   format :[Format],
   image:{

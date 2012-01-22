@@ -11,7 +11,10 @@ html(lang="en-GB")
     <link type="text/css" rel="stylesheet" media="only screen and (min-device-width: 768px) and (max-device-width: 1024px)" href="/styles/tablet.css" />
     //<![endif]>
     script(type='text/javascript', src= '/js/libs/jquery-1.7.min.js')
-    script(type='text/javascript', src= '/js/main.js')
+    if(viewType === 'admin')
+      script(type='text/javascript', src= '/js/admin/main.js')
+    else    
+      script(type='text/javascript', src= '/js/main.js')
   body
     .page-container
       include header
