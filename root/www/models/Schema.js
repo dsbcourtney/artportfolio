@@ -33,7 +33,6 @@ var Artwork = new Schema({
       printsRun : Number,
       width : Number,
       height : Number,
-      released : Date,
       price : Number
     }
   ],
@@ -44,9 +43,35 @@ var Artwork = new Schema({
     max1024px  : String
   },
   tag:[String],
+  released : Date,
   dateAdded   : {type :Date, 'default': new Date()},
   dateUpdated : {type :Date, 'default': new Date()},
   status       : { type: String, 'default':'offline'}
+});
+
+
+var Format = new Schema({
+  type : String,
+  detail : String,
+  printsRun : Number,
+  width : Number,
+  height : Number,
+  price : Number
+});
+
+var User = new Schema({
+  slug        : { type: String, lowercase: true, trim: true, unique: true},
+  firstname : { type: String },
+  lastname : { type: String },
+  email : { type: String },
+  mobile : { type: String },
+  pass : { type: String },
+  newsletterOptIn : { type: Boolean, 'default':false },
+  emailsOptIn : { type: Boolean, 'default':false },
+  dateAdded   : {type :Date, 'default': new Date()},
+  dateUpdated : {type :Date, 'default': new Date()},
+  loggedIn : {type: Boolean, 'default':false },
+  dateLoggedIn : {type :Date, 'default': new Date()}
 });
 
 /**
@@ -73,9 +98,11 @@ function slugGenerator(options) {
 
 Artist.plugin(slugGenerator({key : 'name'}));
 Artwork.plugin(slugGenerator({key : 'title'}));
+User.plugin(slugGenerator({key : 'email'})); // What if we want the slug to be the name but the key to be the email
 
 mongoose.model('Artist', Artist);
 mongoose.model('Artwork', Artwork);
-mongoose.model('Collection', ArtCollection);
+mongoose.model('Format', Format);
+mongoose.model('User', User);
 
 module.exports = mongoose;
