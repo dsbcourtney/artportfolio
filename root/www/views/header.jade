@@ -3,28 +3,9 @@ header
     a(href='/') Art Rebellion
   nav
     ul.artists
+    each artist in publishedArtists
       li.active
-        a(href='/artists/select-artist') Select an Artist
-      li
-        a(href='/artists/artist-one') Artitst One
-      li
-        a(href='/artists/artist-two') Second Artist
-      li
-        a(href='/artists/artist-three') Artist Three
-      li
-        a(href='/artists/artist-four') Fourth Artist
-      li
-        a(href='/artists/artist-five') Artist Five
-      li
-        a(href='/artists/artist-six') Sixth Artist
-      li
-        a(href='/artists/artist-seven') Seventh Artist
-      li
-        a(href='/artists/artist-eight') Artist Eight
-      li
-        a(href='/artists/artist-nine') Ninth Artist
-      li
-        a(href='/artists/artist-ten') Artist Ten
+        a(href='/artists/'+artist.slug)= artist.name
     ul.periphery
       li
         a(href='/art-list', title='Browse all artwork') Browse All Artwork

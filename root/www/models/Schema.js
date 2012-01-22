@@ -11,21 +11,12 @@ var Artist = new Schema({
   slug        : { type: String, lowercase: true, trim: true, unique: true},
   name        : { type : String, index : true},
   biography   : String,
+  featured    : ObjectID,
   dateAdded   : {type :Date, 'default': new Date()},
   dateUpdated : {type :Date, 'default': new Date()},
   websiteUrl  : String,
   state       : { type: String, 'default':'offline'}
 });
-
-
-var ArtCollection = new Schema({
-  slug              : { type: String, lowercase: true, trim: true, unique: true},  
-  title             : {type: String, index: true},
-  dateAdded   : {type :Date, 'default': new Date()},
-  dateUpdated : {type :Date, 'default': new Date()},
-  state       : { type: String, 'default':'offline'}
-});
-
 
 var Artwork = new Schema({
   slug  : { type: String, lowercase: true, trim: true, unique: true},//, 
@@ -33,18 +24,7 @@ var Artwork = new Schema({
   type      : String,
   description : String,
   artist : Schema.ObjectId,
-//  inCollection : [ArtCollection],
-  totalEditions : Number,
-  format :[
-    {
-      type : String,
-      detail : String,
-      printsRun : Number,
-      width : Number,
-      height : Number,
-      price : Number
-    }
-  ],
+  format :[Format],
   image:{
     max200px  : String,
     max500px  : String,
@@ -53,11 +33,20 @@ var Artwork = new Schema({
   },
   tag:[String],
   released : Date,
+  featured : Boolean,
   dateAdded   : {type :Date, 'default': new Date()},
   dateUpdated : {type :Date, 'default': new Date()},
-  state       : { type: String, 'default':'offline'}
+  status       : { type: String, 'default':'offline'}
 });
 
+var Format = new Schema({
+  type : String,
+  detail : String,
+  printsRun : Number,
+  width : Number,
+  height : Number,
+  price : Number
+});
 
 var User = new Schema({
   slug        : { type: String, lowercase: true, trim: true, unique: true},
@@ -80,22 +69,21 @@ var User = new Schema({
 
 mongoose.utilities = {};
 
-mongoose.utilities.getSlug = function(v){
+mongoose.utilities.getSlug = function(v) {
   return v.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/-+/g, '');
 };
 
-function slugGenerator (options){
+function slugGenerator(options) {
   options = options || {};
   var key = options.key || 'title';
 
-  return function slugGenerator(schema){
-    schema.path(key).set(function(v){
+  return function slugGenerator(schema) {
+    schema.path(key).set(function(v) {
       this.slug = mongoose.utilities.getSlug(v);//v.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/-+/g, '');
       return v;
     });
   };
 }
-
 
 Artist.plugin(slugGenerator({key : 'name'}));
 Artwork.plugin(slugGenerator({key : 'title'}));
@@ -103,7 +91,7 @@ User.plugin(slugGenerator({key : 'email'})); // What if we want the slug to be t
 
 mongoose.model('Artist', Artist);
 mongoose.model('Artwork', Artwork);
-mongoose.model('Collection', ArtCollection);
 mongoose.model('User', User);
+mongoose.model('Format', Format);
 
 module.exports = mongoose;

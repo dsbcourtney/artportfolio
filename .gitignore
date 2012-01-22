@@ -1,4 +1,6 @@
 
+.DS_Store 
+
 .idea/workspace.xml
 
 .idea/modules.xml
@@ -17,6 +19,12 @@
 
 .idea/vcs.xml
 
+<<<<<<< HEAD
 .idea/scopes/scope_settings.xml
 
 .idea/dictionaries/davecourtney.xml
+=======
+./root/www/uploads/*
+
+./root/static/img/artwork/*
+>>>>>>> f827746403b21768fba1351cd6c855e8a29d864b

@@ -1,6 +1,7 @@
-var express = require('./node_modules/express/lib/express.js'),
-        app = express.createServer(),
-        arMongoose = require('./models/Schema.js');
+var express = require('./node_modules/express/lib/express.js')
+        , app = express.createServer()
+        , arMongoose = require('./models/Schema.js')
+        , viewDataProvider = require('./models/viewDataProvider')(arMongoose);
 
 arMongoose.connect('mongodb://localhost:27017/artrebellion');
 
@@ -31,9 +32,9 @@ app.configure(function() {
 
 //routes
 //site
+
 require('./routes/default')(app, arMongoose);
 require('./routes/artist')(app, arMongoose);
-require('./routes/collection')(app, arMongoose);
 require('./routes/artwork')(app, arMongoose);
 require('./routes/art-list')(app, arMongoose);
 require('./routes/user')(app, arMongoose);
