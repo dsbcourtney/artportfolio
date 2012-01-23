@@ -16,6 +16,9 @@ html(lang="en-GB")
       script(type='text/javascript', src= '/js/admin/main.js')
     else    
       script(type='text/javascript', src= '/js/main.js')
+    - if(typeof(scripts) !== 'undefined') 
+      each scr in scripts      
+        script(type='text/javascript', src=scr)
   body
     .page-container
       include header

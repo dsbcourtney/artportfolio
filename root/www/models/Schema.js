@@ -41,6 +41,7 @@ var Artwork = new Schema({
 });
 
 var Format = new Schema({
+  hash : {type:String, lowercase: true, trim: true, unique: true},
   type : String,
   detail : String,
   printsRun : Number,
@@ -75,6 +76,20 @@ mongoose.utilities.getSlug = function(v) {
   return v.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/-+/g, '');
 };
 
+mongoose.utilities.getFormatHash = function(prefix, f) {
+  var hash = '',
+    ignores = ['hash', 'printsRun', 'price', 'stock'];
+  
+  for(var prop in f){
+    if(f.hasOwnProperty(prop) && ignores.indexOf(prop) === -1){
+      hash += prop.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/-+/g, '') + ':' + 
+              f[prop].toString().toLowerCase().replace(/[^a-z0-9]/g, '').replace(/-+/g, '') + '|';    
+    }
+  }
+  
+  return prefix + "_" + hash;
+};
+
 function slugGenerator(options) {
   options = options || {};
   var key = options.key || 'title';
@@ -87,9 +102,14 @@ function slugGenerator(options) {
   };
 }
 
+function formatHash(schema){
+  this.hash = getFormatHash(this);
+}
+
 Artist.plugin(slugGenerator({key : 'name'}));
 Artwork.plugin(slugGenerator({key : 'title'}));
 Visitor.plugin(slugGenerator({key : 'email'})); // What if we want the slug to be the name but the key to be the email
+
 
 mongoose.model('Artist', Artist);
 mongoose.model('Artwork', Artwork);

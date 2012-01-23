@@ -76,7 +76,8 @@ module.exports = function(app, mongoose, vdp) {
     var Artwork = mongoose.model('Artwork')
       , pageTitle
       , locals = {  method:"POST", 
-                    methodOverride:"PUT"};
+                    methodOverride:"PUT",
+                    scripts : ['/js/admin/update-artwork.js']};
 
     Artwork.findOne({slug : req.params.artworkSlug}, function(err, artwork) {
 
@@ -103,6 +104,13 @@ module.exports = function(app, mongoose, vdp) {
     req.body.artwork.slug = mongoose.utilities.getSlug(req.body.artwork.title);
     req.body.artwork.tag = req.body.artwork.tag.split(','); 
     req.body.artwork.featured = (req.body.artwork.featured == "on");
+    
+    //mongoose.utilities.getFormatHash
+    //TODO: figure out a way to add this as a Mongoose plugin.
+    for(var i = 0; i < req.body.artwork.format.length; i++){
+      req.body.artwork.format[i].hash = mongoose.utilities.getFormatHash(req.body.artwork.slug,
+              req.body.artwork.format[i]);
+    }
     
     Artwork.update({slug:req.params.artworkSlug}, req.body.artwork, {multi:false, upsert:false}, function(err) {
 
@@ -148,6 +156,9 @@ function createArtwork(res, mongoose, image, next, artistSlug) {
           stock : 0}
       ]
     });
+    
+    newArtwork.format[0].hash = mongoose.utilities.getFormatHash(mongoose.utilities.getSlug(newArtwork.title), 
+            newArtwork.format[0]);
 
     newArtwork.save(function(err) {
       if (err) {
