@@ -34,6 +34,11 @@ form(method="POST", action=formAction)
         input(name="artwork[format]["+i+"][height]", type="text", placeholder="Height Centimeters", value=format.height)                
         label(for="artwork[format]["+i+"][price]") Price &pound; (GBP)
         input(name="artwork[format]["+i+"][price]", type="text", placeholder="Price &pound; (GBP)", value=format.price)
+        label(for="artwork[format]["+i+"][stock]") Stock
+        input(name="artwork[format]["+i+"][stock]", type="text", placeholder="Stock", value=format.stock)
+        div.controls
+          input(id="removeFormat", type="button", value="Remove")
+        hr                          
   div.controls
     input(id="newFormat", type="button", value="New")
   label(for="artwork[tag]") Tags 

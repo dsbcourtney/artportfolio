@@ -46,7 +46,8 @@ var Format = new Schema({
   printsRun : Number,
   width : Number,
   height : Number,
-  price : Number
+  price : Number,
+  stock : {type: Number, 'default' : 0}
 });
 
 var Visitor = new Schema({

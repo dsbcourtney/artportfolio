@@ -38,13 +38,13 @@ module.exports = function(app, mongoose, vdp) {
           }
 
           counter++;
-        }, (req.body.artist || null));
+        }, req.body.artist);
       }
     }
     else {
       createArtwork(res, mongoose, req.files.artImages, function() {
         res.redirect('/admin/artwork');
-      });
+      }, req.body.artist);
     }
   });
 
@@ -144,7 +144,8 @@ function createArtwork(res, mongoose, image, next, artistSlug) {
           printsRun : 0,
           height : 0,
           width : 0,
-          price : 100000.00}
+          price : 100000.00,
+          stock : 0}
       ]
     });
 
