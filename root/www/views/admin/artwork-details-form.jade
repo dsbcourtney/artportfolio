@@ -1,4 +1,5 @@
 form(method="POST", action=formAction)
+  input(name="artwork[slug]", type="hidden", value=artwork.slug)
   img(src="/img/artwork/"+artwork.image.max200px, style="display:block; padding:5px; border:solid 1px #666;") 
   label(for="artwork[title]") Title
   input(name="artwork[title]", type="text", placeholder="title", value=artwork.title)
@@ -19,27 +20,8 @@ form(method="POST", action=formAction)
   fieldset#formats
     legend Formats
     each format, i in artwork.format
-      div.controls
-        input(class="showHideFormat", type="button", value="Show / Hide")
-      div.format
-        label(for="artwork[format]["+i+"][type]") Type
-        input(name="artwork[format]["+i+"][type]", type="text", placeholder="Type", value=format.type)
-        label(for="artwork[format]["+i+"][detail]") Detail
-        input(name="artwork[format]["+i+"][detail]", type="text", placeholder="Detail", value=format.detail)
-        label(for="artwork[format]["+i+"][printsRun]") Prints Run
-        input(name="artwork[format]["+i+"][printsRun]", type="text", placeholder="Prints Run", value=format.printsRun)        
-        label(for="artwork[format]["+i+"][width]") Width in centimeters
-        input(name="artwork[format]["+i+"][width]", type="text", placeholder="Width Centimeters", value=format.width)
-        label(for="artwork[format]["+i+"][height]") Height in centimeters
-        input(name="artwork[format]["+i+"][height]", type="text", placeholder="Height Centimeters", value=format.height)                
-        label(for="artwork[format]["+i+"][price]") Price &pound; (GBP)
-        input(name="artwork[format]["+i+"][price]", type="text", placeholder="Price &pound; (GBP)", value=format.price)
-        label(for="artwork[format]["+i+"][stock]") Stock
-        input(name="artwork[format]["+i+"][stock]", type="text", placeholder="Stock", value=format.stock)
-        div.controls
-          input(id="removeFormat", type="button", value="Remove")
-        hr                          
-  div.controls
+      include artwork-format
+  .controls
     input(id="newFormat", type="button", value="New")
   label(for="artwork[tag]") Tags 
   textarea(name="artwork[tag]")= artwork.tag

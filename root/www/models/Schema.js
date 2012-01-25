@@ -18,6 +18,18 @@ var Artist = new Schema({
 });
 
 
+var Format = new Schema({
+  hash : {type:String, lowercase: true, trim: true, unique: true},
+  type : String,
+  detail : String,
+  printsRun : Number,
+  width : Number,
+  height : Number,
+  price : Number,
+  stock : {type: Number, 'default' : 0}
+});
+
+
 var Artwork = new Schema({
   slug  : { type: String, lowercase: true, trim: true, unique: true},//, 
   title : String,
@@ -40,16 +52,6 @@ var Artwork = new Schema({
   status      : { type: String, 'default':'offline'}
 });
 
-var Format = new Schema({
-  hash : {type:String, lowercase: true, trim: true, unique: true},
-  type : String,
-  detail : String,
-  printsRun : Number,
-  width : Number,
-  height : Number,
-  price : Number,
-  stock : {type: Number, 'default' : 0}
-});
 
 var Visitor = new Schema({
   slug        : { type: String, lowercase: true, trim: true, unique: true},
@@ -76,19 +78,20 @@ mongoose.utilities.getSlug = function(v) {
   return v.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/-+/g, '');
 };
 
-mongoose.utilities.getFormatHash = function(prefix, f) {
-  var hash = '',
-    ignores = ['hash', 'printsRun', 'price', 'stock'];
+mongoose.utilities.getFormatHash = function(f) {
+  var hash = '';
   
-  for(var prop in f){
-    if(f.hasOwnProperty(prop) && ignores.indexOf(prop) === -1){
-      hash += prop.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/-+/g, '') + ':' + 
-              f[prop].toString().toLowerCase().replace(/[^a-z0-9]/g, '').replace(/-+/g, '') + '|';    
-    }
-  }
+  hash = [f.type, f.detail, f.height, f.width].join('|');
   
-  return prefix + "_" + hash;
+  return hash;
 };
+
+function createFormatHashes(schema, options){
+  schema.pre('save', function (next) {
+    this.lastMod = new Date
+    next()
+  })  
+}
 
 function slugGenerator(options) {
   options = options || {};
@@ -102,18 +105,14 @@ function slugGenerator(options) {
   };
 }
 
-function formatHash(schema){
-  this.hash = getFormatHash(this);
-}
-
 Artist.plugin(slugGenerator({key : 'name'}));
 Artwork.plugin(slugGenerator({key : 'title'}));
+Artwork.plugin(createFormatHashes);
 Visitor.plugin(slugGenerator({key : 'email'})); // What if we want the slug to be the name but the key to be the email
 
-
 mongoose.model('Artist', Artist);
-mongoose.model('Artwork', Artwork);
 mongoose.model('Format', Format);
+mongoose.model('Artwork', Artwork);
 mongoose.model('Visitor', Visitor);
 
 module.exports = mongoose;

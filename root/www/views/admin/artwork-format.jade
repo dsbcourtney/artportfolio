@@ -1,0 +1,21 @@
+div.controls
+  input(class="showHideFormat", type="button", value="Show / Hide")
+div.format
+  input(name="ignore._id", type="hidden", value=format._id)
+  label(for="artwork[format]["+i+"][type]") Type
+  input(name="artwork[format]["+i+"][type]", type="text", placeholder="Type", value=format.type)
+  label(for="artwork[format]["+i+"][detail]") Detail
+  input(name="artwork[format]["+i+"][detail]", type="text", placeholder="Detail", value=format.detail)
+  label(for="artwork[format]["+i+"][printsRun]") Prints Run
+  input(name="artwork[format]["+i+"][printsRun]", type="text", placeholder="Prints Run", value=format.printsRun)        
+  label(for="artwork[format]["+i+"][width]") Width in centimeters
+  input(name="artwork[format]["+i+"][width]", type="text", placeholder="Width Centimeters", value=format.width)
+  label(for="artwork[format]["+i+"][height]") Height in centimeters
+  input(name="artwork[format]["+i+"][height]", type="text", placeholder="Height Centimeters", value=format.height)                
+  label(for="artwork[format]["+i+"][price]") Price &pound; (GBP)
+  input(name="artwork[format]["+i+"][price]", type="text", placeholder="Price &pound; (GBP)", value=format.price)
+  label(for="artwork[format]["+i+"][stock]") Stock
+  input(name="artwork[format]["+i+"][stock]", type="text", placeholder="Stock", value=format.stock)
+  div.controls
+    input.removeFormat(type="button", value="Remove")
+  hr                          
