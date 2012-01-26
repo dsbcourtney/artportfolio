@@ -1,5 +1,5 @@
 var im = require('imagemagick'),
-        imagesDir = '/Users/lewis/github/artportfolio/root/www/static/img/artwork';//TODO : change to environment var
+        imagesDir = '/Users/lewis/github/artportfolio/root/www/public/img/artwork';//TODO : change to environment var
 
 //  https://github.com/rsms/node-imagemagick
 var ImageTools = {

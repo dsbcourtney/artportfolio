@@ -8,6 +8,7 @@ function createViewData(mongoose) {
       getCommonViewData(model, mongoose, req, function(updatedModel) {
 
         updatedModel.viewType = "admin";
+        updatedModel.layout = 'adminlayout.jade';
         render(template, updatedModel, res);
 
       });

@@ -4,9 +4,10 @@ section.artwork-list
     table.artworks
       thead
         tr
-          td
+          td --
           td title
-          td
+          td --
+          td --
       tbody     
         each art in artworks
           tr
@@ -15,4 +16,6 @@ section.artwork-list
             td= art.title
             td 
               a(href="/admin/artwork/"+art.slug) edit 
+            td 
+              a.delete(href="/admin/artwork/"+art.slug, data-slug=art.slug, data-title=art.title) delete               
     a(href="/admin/artwork/new") Add New        

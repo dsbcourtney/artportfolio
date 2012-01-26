@@ -24,7 +24,7 @@ app.configure(function() {
 //  app.use(require('./middleware/locals'));
 //  app.use(messages());
     app.use(app.router);
-    app.use(express.static(__dirname + '/static'));
+    app.use(express.static(__dirname + '/public'));
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 
 });

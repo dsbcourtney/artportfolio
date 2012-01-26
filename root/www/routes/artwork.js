@@ -1,5 +1,5 @@
 var im = require('imagemagick'),
-        imagesDir = '/Users/lewis/github/artportfolio/root/www/static/img/artwork',
+        imagesDir = '/Users/lewis/github/artportfolio/root/www/public/img/artwork',
         ImageTools = require('../models/ImageTools.js');
 
 // http://nyteshade.posterous.com/posting-files-with-node-and-expressjs
@@ -54,8 +54,13 @@ module.exports = function(app, mongoose, vdp) {
 
     //Get an Artist Model instance
     var Artwork = mongoose.model('Artwork')
-            , pageTitle = 'Art Rebellion : Artwork'
-            , locals = {title : pageTitle, pageTitle: pageTitle};
+            , pageTitle = 'Art Rebellion : Artwork';
+
+    var locals = {
+      title : pageTitle ,
+      pageTitle : pageTitle ,
+      scripts : ['/js/admin/artwork-list.js']
+    };
 
     //find all artists
     Artwork.find({}, function(err, artworks) {
@@ -77,7 +82,7 @@ module.exports = function(app, mongoose, vdp) {
             , pageTitle
             , locals = {  method:"POST",
       methodOverride:"PUT",
-      scripts : ['/js/admin/update-artwork.js']};
+      scripts : ['/js/admin/artwork-details-form.js']};
 
     Artwork.findOne({slug : req.params.artworkSlug}, function(err, artwork) {
 
@@ -123,6 +128,25 @@ module.exports = function(app, mongoose, vdp) {
 
   });
 
+
+  /* --- --- --- partials / ajax handlers --- --- --- */
+
+  app.del('/admin/artwork/:artworkSlug', function(req, res) {
+
+    var Artwork = mongoose.model('Artwork');
+
+    Artwork.remove({slug : req.params.artworkSlug}, function(err) {
+      var result = {};
+
+      if (err) {
+        result = {result: 'error', error:err};
+      } else {
+        result = {result: 'success'};
+      }
+      res.send(result);
+      result = null;
+    })
+  });
 
   //add new format - partial ajax handler
   app.post('/admin/artwork/:artworkSlug/format/new.:format', function(req, res) {
@@ -184,24 +208,24 @@ module.exports = function(app, mongoose, vdp) {
       var fmt = artwork.format.id(req.params.formatId);
 
       if (!fmt) {
-        res.send(JSON.stringify({result: 'error', 
+        res.send(JSON.stringify({result: 'error',
           error : 'could not find format with specified id' + req.params.formatId}));
 
         return;
       }
 
       fmt.remove();
-      
-      artwork.save(function(err){
+
+      artwork.save(function(err) {
         if (err) {
           res.send(err, 500);
           return;
         }
-        
+
         res.contentType('application/json');
-        res.send(JSON.stringify({result: 'success'}));  
+        res.send(JSON.stringify({result: 'success'}));
       });
-      
+
     });
   });
 
@@ -253,7 +277,7 @@ function createArtwork(res, mongoose, image, next, artistSlug) {
         res.send(err, 500);
       }
 
-      next()
+      next();
     });
   })
 }

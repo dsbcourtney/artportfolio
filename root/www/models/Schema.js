@@ -19,7 +19,7 @@ var Artist = new Schema({
 
 
 var Format = new Schema({
-  hash : {type:String, lowercase: true, trim: true, unique: true},
+  hash : {type:String, lowercase: true, trim: true},
   type : String,
   detail : String,
   printsRun : Number,

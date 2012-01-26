@@ -22,8 +22,8 @@
 root/www/uploads/*
 ./root/www/uploads/*
 
-root/www/static/img/artwork/*
-./root/www/static/img/artwork/*
+root/www/public/img/artwork/*
+./root/www/public/img/artwork/*
 
 .idea/scopes/scope_settings.xml
 
