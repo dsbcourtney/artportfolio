@@ -68,6 +68,20 @@ var Visitor = new Schema({
   dateLoggedIn : {type :Date, 'default': new Date()}
 });
 
+// Shopping Cart Schema
+var Cart = new Schema({
+	id : Number,
+	sessId : String,
+	prodId : String,
+	prodName : String,
+	prodPrice : Number,
+	dateAdded : { type: Date, 'default': new Date()},
+	quantity : Number,
+	orderId : Number,
+	completed : { type : Boolean, 'default':false },
+	visitor : String
+});
+
 /**
  * Plugins
  */
@@ -109,10 +123,12 @@ Artist.plugin(slugGenerator({key : 'name'}));
 Artwork.plugin(slugGenerator({key : 'title'}));
 Artwork.plugin(createFormatHashes);
 Visitor.plugin(slugGenerator({key : 'email'})); // What if we want the slug to be the name but the key to be the email
+Cart.plugin(slugGenerator({key : 'id'}));
 
 mongoose.model('Artist', Artist);
 mongoose.model('Format', Format);
 mongoose.model('Artwork', Artwork);
 mongoose.model('Visitor', Visitor);
+mongoose.model('Cart', Cart);
 
 module.exports = mongoose;
