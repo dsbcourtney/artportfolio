@@ -1,0 +1,11 @@
+form(id="", method="post", action="/cart")
+	legend
+		label(for="prodId") Product Code:
+		input(type="text", name="product[prodId]", value="123a")
+		label(for="prodName") Product Name:
+		input(type="text", name="product[prodName]", value="Test Product")
+		label(for="quantity") Quantity:
+		input(type="text", name="product[quantity]", value="2")
+		label(for="price") Price:
+		input(type="text", name="product[price]", value="19.99")
+		input(type="submit", value="Add to cart")

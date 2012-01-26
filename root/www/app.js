@@ -36,6 +36,10 @@ require('./routes/artist')(app, arMongoose, viewDataProvider);
 require('./routes/artwork')(app, arMongoose, viewDataProvider);
 require('./routes/art-list')(app, arMongoose, viewDataProvider);
 require('./routes/visitor.js')(app, arMongoose, viewDataProvider);
+require('./routes/basket.js')(app, arMongoose, viewDataProvider);
+
+require('./routes/product.js')(app, arMongoose, viewDataProvider);
+
 
 //
 app.listen(3000);
