@@ -141,11 +141,25 @@ module.exports = function(app, mongoose, vdp) {
     });
   });
 
+  
+/* --- --- --- partials / ajax handlers --- --- --- */  
   //delete single artist
   app.del('/admin/artists/:artistSlug', function(req, res) {
-    //TODPO: implement delete
-    var locals = {title : 'Art Rebellion: [Artist Name]', pageTitle: '[Artist Name]'};
-    vdp.getAdminViewData(thenRender, 'admin/artists-form.jade', locals, req, res);
+    
+    var Artist = mongoose.model('Artist');
+    var result = {result : 'success'};
+    
+    Artist.findOne({slug : artistSlug}, function(err, artist){
+      if(err){
+        //throw err;
+        result.err = err;
+        result.result = 'error';
+        res.send(result);
+      }
+      
+      artist.remove();
+      res.send(result);
+    });
   });
 };
 
