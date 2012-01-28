@@ -130,7 +130,6 @@ module.exports = function(app, mongoose, vdp) {
 
 
   /* --- --- --- partials / ajax handlers --- --- --- */
-
   app.del('/admin/artwork/:artworkSlug', function(req, res) {
 
     var Artwork = mongoose.model('Artwork');
@@ -148,6 +147,7 @@ module.exports = function(app, mongoose, vdp) {
     })
   });
 
+  
   //add new format - partial ajax handler
   app.post('/admin/artwork/:artworkSlug/format/new.:format', function(req, res) {
     var Artwork = mongoose.model('Artwork'),
@@ -194,6 +194,7 @@ module.exports = function(app, mongoose, vdp) {
 
   });
 
+  
   //delete format - partial ajax handler
   app.del('/admin/artwork/:artworkSlug/format/:formatId', function(req, res) {
 

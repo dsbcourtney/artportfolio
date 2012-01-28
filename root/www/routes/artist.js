@@ -130,7 +130,7 @@ module.exports = function(app, mongoose, vdp) {
       }
 
       //update any artwork that is associated to the old slug:
-      Artwork.update({}, {}, {multi:true, upsert:false}, function(err) {
+      Artwork.update({artist : req.params.artistSlug}, {artist : req.body.artist.slug}, {multi:true, upsert:false}, function(err) {
 
         if (err) {
           res.send(err, 500);
@@ -138,8 +138,6 @@ module.exports = function(app, mongoose, vdp) {
 
         res.redirect('/admin/artists');
       });
-
-
     });
   });
 

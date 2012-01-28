@@ -5,6 +5,11 @@ module.exports = function(app, mongoose, vdp){
     vdp.getPublicViewData(thenRender, 'index.jade', locals, req, res);
   });  
   
+  app.get('/admin', function(req, res){
+    var locals = {title : 'Art Rebellion : Administration dashboard', pageTitle: 'Administration dashboard'};
+    vdp.getAdminViewData(thenRender, 'admin/dashboard.jade', locals, req, res);
+  });    
+  
 };
 
 /* --- --- --- private helper methods --- --- --- */

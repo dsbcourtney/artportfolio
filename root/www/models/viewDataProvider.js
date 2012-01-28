@@ -49,7 +49,7 @@ function getCommonViewData(model, mongoose, req, thenDo) {
   var Artist = mongoose.model('Artist');
 
   Artist.find({}, function(err, artists) {
-
+    
     if (err) {
       throw err;
     }
