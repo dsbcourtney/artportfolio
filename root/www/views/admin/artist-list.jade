@@ -5,13 +5,17 @@ section.artists-list
       thead
         tr
           td name
-          td
+          td status
+          td &nbsp;
+          td &nbsp;
       tbody     
         each artist in artists
           tr
             td= artist.name
+            td= artist.status
             td 
-              a(href="/admin/artists/"+artist.slug) edit 
+              a.action(href="/admin/artists/"+artist.slug) edit 
             td 
-              a(href="/admin/artists/"+artist.slug) delete               
-    a(href="/admin/artists/new") Add New        
+              a.action(href="/admin/artists/"+artist.slug) delete               
+    .controls
+      a.button(href="/admin/artists/new") Add New        

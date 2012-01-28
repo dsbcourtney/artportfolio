@@ -7,4 +7,5 @@ form(method="POST", enctype="multipart/form-data", action="/admin/artwork")
     each artist in artists 
         option(value=artist.slug)= artist.name  
   input(name="upload", type="hidden")
-  input(type="submit", value="submit")
+  .controls
+    input(type="submit", value="Create")

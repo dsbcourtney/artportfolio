@@ -5,7 +5,7 @@ html(lang="en-GB")
     meta(name="viewport", content="width=device-width")
     title!=title 
     link(rel='stylesheet', href= '/styles/reset.css')
-    link(rel='stylesheet', href= '/styles/default-styles.css', media)
+    link(rel='stylesheet', href= '/styles/admin-styles.css', media)
     script(type='text/javascript', src= '/js/libs/jquery-1.7.min.js')
     script(type='text/javascript', src= '/js/libs/require.js')
     script(type='text/javascript', src= '/js/admin/main.js')
@@ -15,6 +15,5 @@ html(lang="en-GB")
   body
     .page-container
       include /includes/admin-header
-      include /includes/admin-menu
       section!= body
       

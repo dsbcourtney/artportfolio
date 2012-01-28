@@ -16,7 +16,7 @@ form(method="POST", action=formAction)
   label(for="artwork[description]") Description
   textarea(name="artwork[description]")= artwork.description
   label(for="artwork[released]") Date Released
-  input(name="artwork[released]", type="text", placeholder="Date Released", value=artwork.released)       
+  input(name="artwork[released]", type="datetime", placeholder="Date Released", value=artwork.released)       
   fieldset#formats
     legend Formats
     each format, i in artwork.format
@@ -37,6 +37,6 @@ form(method="POST", action=formAction)
         option(value=status)= status
   input(type="hidden", name="_method", value=methodOverride)
   div.controls    
-    input(type="reset", value="cancel")
-    input(type="submit", value="submit")
+    a.button.negative(href="/admin/artwork") Cancel
+    input(type="submit", value="Save")
     

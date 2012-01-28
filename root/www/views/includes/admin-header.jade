@@ -1,1 +1,21 @@
-h1 Admin
+.admin-header
+  h1 Art Rebellion : Administration
+  a(href="/", title="Go to the Art Rebellion Site") Site Homepage
+  section.admin-menu
+    nav
+      ul
+        li 
+          a(href="/admin", title="Admin Dashboard") Dashboard      
+        li 
+          a(href="/admin/artwork/new", title="Add Art to the site") Add Artwork      
+        li 
+          a(href="/admin/artwork", title="View All Artwork") View Artwork
+        li 
+          a(href="/admin/artists/new", title="View an Artist to the Site") Add Artist        
+        li 
+          a(href="/admin/artists", title="View All Artists") View Artists
+
+      select.artist-filter
+        option -- All Artists --
+        each artist in artists
+          option(value=artist.slug)= artist.name

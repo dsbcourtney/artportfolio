@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 
   function bindShowHideFormatHandlers() {
-    $('.showHideFormat').on('click', showHideFormatHandler);
+    $(document).on('click', '.showHideFormat', showHideFormatHandler);
   }
 
 
@@ -31,24 +31,25 @@ $(document).ready(function() {
               });
     }
   }
-  
-  
+
+
   function bindRemoveFormatHandlers() {
     var count = 0;
 
-    $('#formats .removeFormat').each(function(i) {
-
-      $(this).on('click', removeFormatHandler);
-    });
+    if(typeof $btn === 'undefined'){
+      
+      $(document).on('click', '#formats .removeFormat', removeFormatHandler);
+      
+      return;
+    }
   }
 
-  
+
   $('#newFormat').click(function() {
     $.post('/admin/artwork/' + $('input[name="artwork[slug]"]').val() + '/format/new.html',
             function(data) {
+
               $('#formats').append(data);
-                bindShowHideFormatHandlers();
-                bindRemoveFormatHandlers();
             });
   });
 

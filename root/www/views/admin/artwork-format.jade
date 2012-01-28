@@ -6,16 +6,21 @@ div.format
   input(name="artwork[format]["+i+"][type]", type="text", placeholder="Type", value=format.type)
   label(for="artwork[format]["+i+"][detail]") Detail
   input(name="artwork[format]["+i+"][detail]", type="text", placeholder="Detail", value=format.detail)
-  label(for="artwork[format]["+i+"][printsRun]") Prints Run
-  input(name="artwork[format]["+i+"][printsRun]", type="text", placeholder="Prints Run", value=format.printsRun)        
-  label(for="artwork[format]["+i+"][width]") Width in centimeters
-  input(name="artwork[format]["+i+"][width]", type="text", placeholder="Width Centimeters", value=format.width)
-  label(for="artwork[format]["+i+"][height]") Height in centimeters
-  input(name="artwork[format]["+i+"][height]", type="text", placeholder="Height Centimeters", value=format.height)                
-  label(for="artwork[format]["+i+"][price]") Price &pound; (GBP)
-  input(name="artwork[format]["+i+"][price]", type="text", placeholder="Price &pound; (GBP)", value=format.price)
-  label(for="artwork[format]["+i+"][stock]") Stock
-  input(name="artwork[format]["+i+"][stock]", type="text", placeholder="Stock", value=format.stock)
+  ._5
+    label(for="artwork[format]["+i+"][printsRun]") Prints Run
+    input.small.number(name="artwork[format]["+i+"][printsRun]", type="text", placeholder="Prints Run", value=format.printsRun)        
+  ._5
+    label(for="artwork[format]["+i+"][width]") Width (cm)
+    input.small.number(name="artwork[format]["+i+"][width]", type="text", placeholder="Width Centimeters", value=format.width)
+  ._5
+    label(for="artwork[format]["+i+"][height]") Height (cm)
+    input.small.number(name="artwork[format]["+i+"][height]", type="text", placeholder="Height Centimeters", value=format.height)                
+  ._5
+    label(for="artwork[format]["+i+"][stock]") Stock
+    input.small.number(name="artwork[format]["+i+"][stock]", type="text", placeholder="Stock", value=format.stock)
+  ._5.last
+    label.medium(for="artwork[format]["+i+"][price]") Price &pound; (GBP)
+    input.medium.number(name="artwork[format]["+i+"][price]", type="text", placeholder="Price &pound; (GBP)", value=format.price)
   div.controls
     input.removeFormat(type="button", value="Remove")
   hr                          

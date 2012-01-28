@@ -1,0 +1,206 @@
+/* ---- ----  ---- ----  ---- ----  ---- ---- BASE ---- ----  ---- ----  ---- ----  ---- ---- */
+body {
+  margin: 20px;
+  text-align: center;
+  font: normal normal 14px/18px Arial, Helvatica, san-serif;
+}
+
+h1{
+  font: normal normal 14px/18px Georgia, "Times Roman", san-serif;
+}
+
+h1{
+  font-size: 20px;
+  line-height: 28px;
+}
+
+h2{
+  font-size: 16px;
+  line-height: 20px;
+}
+
+h3{
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 0;
+  margin: 0;
+}
+
+label {
+  line-height: 26px;
+}
+
+input, textarea, select {
+  font: normal normal 20px/26px Arial, Helvatica, san-serif;
+}
+
+.adminmenu a:after {
+  content: " ";
+  margin-right: 5px;
+}
+
+.action {
+  text-transform: uppercase;
+}
+
+/* ---- ----  ---- ----  ---- ----  ---- ---- LAYOUT ---- ----  ---- ----  ---- ----  ---- ---- */
+
+form {
+  display: block;
+}
+
+form ._5{
+  width:19.65%;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+form label,
+form legend {
+  width: 100%;
+  display: block;
+  margin-top: 3px;
+  color: #555;
+}
+
+form label+input,
+form label+textarea {
+  width: 100%;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  border: solid 1px #999;
+  padding: 6px;
+  box-shadow: inset 0px 1px 5px #999;
+}
+
+form label+input.number {
+  text-align: right;
+}
+
+form input.small {
+  width: 4em;
+}
+
+form input.medium {
+  width: 8em;
+}
+
+form label+textarea {
+  min-height: 200px;
+}
+
+.controls {
+  text-align: right;
+}
+
+form input[type="submit"],
+form input[type="reset"],
+.button{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  text-align: center;
+  line-height: 1em;
+  margin: 2px;
+  vertical-align: middle;
+  color: #ffffff;
+  min-width: 100px;
+  padding: 5px 30px;
+  background: -moz-linear-gradient(top, #42ff42 0%, #146600);
+  background: -webkit-gradient(linear, left top, left bottom, from(#42ff42), to(#146600));
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border: 1px solid #134201;
+  -moz-box-shadow: 0px 1px 3px rgba(000, 000, 000, 0.5), inset 0px 0px 2px rgba(255, 255, 255, 1);
+  -webkit-box-shadow: 0px 1px 3px rgba(000, 000, 000, 0.5), inset 0px 0px 2px rgba(255, 255, 255, 1);
+  text-shadow: 0px -1px 0px rgba(000, 000, 000, 0.4), 0px 1px 0px rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+}
+
+form input[type="reset"],
+a.button.negative{
+  background: -moz-linear-gradient(top, #ff0000 0%, #660000);
+  background: -webkit-gradient(linear, left top, left bottom, from(#ff0000), to(#660000));
+}
+
+form input[type="submit"]:active,
+form input[type="reset"]:active
+{
+  -webkit-box-shadow: 0px 0px 0px rgba(000, 000, 000, 0.5), inset 0px 0px 2px rgba(255, 255, 255, 1);
+}
+
+table{
+  width:100%;
+}
+
+  table tr{
+    width:100%;
+  }
+  
+  table thead{
+    text-transform: uppercase;
+  }
+
+    table tr:nth-child(odd) td{
+      background-color: rgba(0,0,0,0.1);
+    }
+
+    table tr td{
+      padding: 5px 5px;
+      border-bottom: 1px rgba(0,0,0,0.1) solid;
+      vertical-align: middle;
+    }
+
+  table thead tr:nth-child(odd) td{
+      padding: 7px 5px;
+      background-color: #fff;
+  }
+
+
+.controls{
+  margin-top: 10px;
+}
+
+.page-container {
+  width: 940px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.admin-header{
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  height:70px;
+}
+
+  .admin-header nav{
+    clear:both;
+    float: none;
+  }
+
+  .admin-header nav ul{
+    display: block;
+    float:left;
+    padding-top: 5px;
+  }
+
+    .admin-header nav ul li{
+      display:inline-block;
+      margin-right: 10px;
+      
+    }
+
+  .admin-header nav .artist-filter{
+    float: right;
+  }
