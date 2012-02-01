@@ -1,69 +1,16 @@
 section.content-body.collection
   ul.artwork
-    li
-      a(href='/artwork/artist-name/artwork-title')
-        img(src='/img/placeholder.jpg', alt='artwork placeholder')
-      span.title Artwork title
-      ul
-        li
-          p Original, 20" x 20"
-          span Call 0208 660 123456 for details
-          a(href='#print-type-info', title='print type information') ?
-      .tagCloud
-        a(href='/art-list/tag') Tag
-        a(href='/art-list/cloud') Cloud
-        a(href='/art-list/more-tags')
-          | More
-          | Tags
-    li
-      a(href='/artwork/artist-name/artwork-title')
-        img(src='/img/placeholder.jpg', alt='artwork placeholder')
-      span.title Another Artwork title
-      ul
-        li
-          p Limited edition 200 prints, 20" x 20"
-          span &pound;1234.00
-          button add to cart
-          a(href='#print-type-info', title='print type information') ?
-      .tagCloud
-        a(href='/art-list/tag') Tag
-        a(href='/art-list/cloud') Cloud
-        a(href='/art-list/more-tags')
-          | More
-          | Tags
-    li
-      a(href='/artwork/artist-name/artwork-title')
-        img(src='/img/placeholder.jpg', alt='artwork placeholder')
-      span.title More Artwork title
-      ul
-        li
-          p Limited edition 10 prints, 40" x 40"
-          span &pound;2234.00
-          button add to cart
-          a(href='#print-type-info', title='print type information') ?
-      .tagCloud
-        a(href='/art-list/tag') Tag
-        a(href='/art-list/cloud') Cloud
-        a(href='/art-list/more-tags')
-          | More
-          | Tags
-    li
-      a(href='/artwork/artist-name/artwork-title')
-        img(src='/img/placeholder.jpg', alt='artwork placeholder')
-      span.title etc title
-      ul
-        li
-          p Limited edition 10 prints, 40" x 40"
-          span &pound;2234.00
-          button add to cart
-          a(href='#print-type-info', title='print type information') ?
-        li
-          p Original, 20" x 20"
-          span Call 0208 660 123456 for details
-          a(href='#print-type-info', title='print type information') ?
-      .tagCloud
-        a(href='/art-list/tag') Tag
-        a(href='/art-list/cloud') Cloud
-        a(href='/art-list/more-tags')
-          | More
-          | Tag
+    each art, i in artwork
+      li
+        a(href='/artwork/'+art.artist+'/'+art.title')
+          img(src='/img/artwork/'+art.image.max800px, alt=art.title)
+        span.title= art.title
+        ul
+          li
+            each format, j in art.format
+              p #{format.type} #{format.detail}, #{format.width}cm x #{format.height}cm
+                button add to cart
+                a(href='#print-type-info', title='print type information') ?
+        .tagCloud
+          each tag in art.tag
+            a(href='/art-list/'+tag) #{tag}
