@@ -1,30 +1,8 @@
 section.content-body.artist
       img.hero(src='/img/placeholder.jpg', alt='artist image')
-      p
-        | Vivamus id mollis quam. Morbi ac commodo nulla. In condimentum orci id nisl
-        | volutpat bibendum. Quisque commodo
-        | hendrerit lorem quis egestas. Maecenas quis tortor arcu. Vivamus rutrum nunc non neque consectetur quis placerat
-        | neque lobortis. Nam vestibulum, arcu sodales feugiat consectetur, nisl orci bibendum elit, eu euismod magna
-        | sapien ut nibh. Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam
-        | pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin.
-      ul.collections
-        li
-          a(href='/artwork/second-artist/art-title')
-            img(src='/img/placeholder.jpg', alt='collection artwork')
-          span 5 items
-        li
-          a(href='/artwork/second-artist/art-title')
-            img(src='/img/placeholder.jpg', alt='collection artwork')
-          span 4 items
-        li
-          a(href='/artwork/second-artist/art-title')
-            img(src='/img/placeholder.jpg', alt='collection artwork')
-          span 3 items
-        li
-          a(href='/artwork/second-artist/art-title')
-            img(src='/img/placeholder.jpg', alt='collection artwork')
-          span 2 items
-        li
-          a(href='/artwork/second-artist/art-title')
-            img(src='/img/placeholder.jpg', alt='collection artwork')
-          span 1 item
+      p= artist.biography
+      ul.artist-artwork
+        each art, i in artwork
+          li
+            a(href='/artwork/'+artist.slug+'/'+art.slug, title=art.title)
+              img(src='/img/artwork/'+art.image.max200px, alt=art.title)

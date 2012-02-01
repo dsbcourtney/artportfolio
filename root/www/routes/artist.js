@@ -1,3 +1,5 @@
+var ArtistViewModelProvider = require('../models/ArtistViewModelProvider.js');
+
 module.exports = function(app, mongoose, vdp) {
 
   //TODO - some validation on the request data?
@@ -18,22 +20,29 @@ module.exports = function(app, mongoose, vdp) {
   });
 
   app.get('/artists/:artistSlug.:format?', function(req, res) {
-    var locals = {}
-            , Artist = mongoose.model('Artist');
-
-    Artist.findOne({slug:req.params.artistSlug}, function(err, artist) {
-
-      locals.title = 'Art Rebellion : ' + artist.name;
-      locals.pageTitle = locals.title;
-      locals.artists = artist;
-
-      if (err || !artist) {
-        res.send('not found', 404);
-      }
-      else {
-        vdp.getPublicViewData(thenRender, 'artist.jade', locals, req, res);
-      }
+    var model = {};
+    model.artistSlug = req.params.artistSlug;
+//            , 
+//        Artist = mongoose.model('Artist');
+    
+    //TODO: COMPLETE FROM HERE 01/02/2012    
+    ArtistViewModelProvider.buildModel(mongoose, model, function(updatedModel){
+      vdp.getPublicViewData(thenRender, 'artist.jade', updatedModel, req, res);
     });
+
+//    Artist.findOne({slug:req.params.artistSlug}, function(err, artist) {
+//
+//      locals.title = 'Art Rebellion : ' + artist.name;
+//      locals.pageTitle = locals.title;
+//      locals.artists = artist;
+//
+//      if (err || !artist) {
+//        res.send('not found', 404);
+//      }
+//      else {
+//        vdp.getPublicViewData(thenRender, 'artist.jade', locals, req, res);
+//      }
+//    });
 
   });
 
