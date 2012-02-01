@@ -1,15 +1,20 @@
 var im = require('imagemagick'),
-        imagesDir = '/Users/lewis/github/artportfolio/root/www/public/img/artwork',
-        ImageTools = require('../models/ImageTools.js');
+        ImageTools = require('../models/ImageTools.js'),
+        ArtworkViewModelProvider = require('../models/ArtworkViewModelProvider');
 
 // http://nyteshade.posterous.com/posting-files-with-node-and-expressjs
 module.exports = function(app, mongoose, vdp) {
 
   //view artwork
-  app.get('/artwork/:artistName/:artworkTitle', function(req, res) {
-    var locals = {title : 'Art Rebellion: [Artwork]', pageTitle: '[Artwork]'};
+  app.get('/artwork/:artistSlug/:artworkSlug', function(req, res) {
+    var locals = {title : 'Art Rebellion: [Artwork]', 
+      artSlug : req.params.artworkSlug,
+      artistSlug : req.params.artistSlug};
 
-    vdp.getPublicViewData(thenRender, 'artwork.jade', locals, req, res);
+    ArtworkViewModelProvider.buildModel(mongoose, locals, function getViewDataAndRender(updatedModel){
+      vdp.getPublicViewData(thenRender, 'artwork.jade', updatedModel, req, res);        
+    });
+    
   });
 
 
@@ -109,6 +114,15 @@ module.exports = function(app, mongoose, vdp) {
     req.body.artwork.slug = mongoose.utilities.getSlug(req.body.artwork.title);
     req.body.artwork.tag = req.body.artwork.tag.split(',');
     req.body.artwork.featured = (req.body.artwork.featured == "on");
+    
+    //fix tags - trim etc
+    for(var i = req.body.artwork.tag.length -1; i >= 0 ; i--){
+      req.body.artwork.tag[i] = req.body.artwork.tag[i].trim().toLowerCase();
+      //if(typeof req.body.artwork.tag[i] == 'string' && req.body.artwork.tag[i] === ''){
+      if(!req.body.artwork.tag[i]){
+        req.body.artwork.tag.splice(i,1);
+      }
+    }
 
     //mongoose.utilities.getFormatHash
     //TODO: figure out a way to add this as a Mongoose plugin.

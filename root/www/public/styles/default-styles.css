@@ -174,16 +174,27 @@ header nav .periphery li {
 }
 
 /* ---- ARTIST ---- */
+
 .gallery .featured-artwork li,
 .artist .collections li {
-  display: inline-block;
+  display: block;
+  float:left;
+  margin: 5px;
 }
 
-.gallery .featured-artwork img,
-.artist .collections img {
+.gallery .featured-artwork a,
+.artist .collections a {
+  position: relative;
+  display: block;
   width: 300px;
   height: 300px;
-  margin: 5px;
+  overflow: hidden;
+  background-color: #ccc;
+  text-align: center;
+}
+
+.gallery .featured-artwork img{
+  margin: 10px;  
 }
 
 .artist .collections li {
@@ -240,11 +251,15 @@ header nav .periphery li {
 
 /* ---- ARTWORK PAGE----*/
 .artwork .artwork-image {
-  width: 640px;
-  height: 800px;
+  max-width: 640px;
+  max-height: 800px;
 }
 
 footer {
+  display: block;
+  width: 100%;
+  clear:both;
+  float: none;
 
 }
 

@@ -76,7 +76,7 @@ function resizeImageAndSave(file, destPath, maxLargeDimension, next) {
 function getImageOritentation(file, next) {
   im.identify(file.path, function(err, features) {
     if (err) throw err
-
+    counter++;
     next(features.width >= features.height);
   })
 }
@@ -90,5 +90,6 @@ function getImageFileName(file, size) {
   return name + '-' + size + 'px' + extension;
 }
 
+var counter = 0;
 
 

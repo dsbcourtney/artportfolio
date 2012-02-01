@@ -147,6 +147,7 @@ module.exports = function(app, mongoose, vdp) {
   app.del('/admin/artists/:artistSlug', function(req, res) {
     
     var Artist = mongoose.model('Artist');
+    var Artwork = mongoose.model('Artwork');
     var result = {result : 'success'};
     
     Artist.findOne({slug : artistSlug}, function(err, artist){
@@ -156,9 +157,21 @@ module.exports = function(app, mongoose, vdp) {
         result.result = 'error';
         res.send(result);
       }
-      
+
       artist.remove();
-      res.send(result);
+      
+      Artwork.update({artist : artist.slug}, {artist : null}, function(updateError){
+        
+        if(updateError){
+          //throw err;
+          result.err = err;
+          result.result = 'error';
+          res.send(result);
+          return;
+        }
+
+        res.send(result);        
+      });
     });
   });
 };

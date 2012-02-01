@@ -17,23 +17,9 @@ section.content-body.gallery
     | pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin.
   h1 Featured Artwork  
   ul.featured-artwork
-    li
-      a(href='/artwork/artist-one/artwork-title')
-        img(src='img/placeholder.jpg', alt='featured artwork')
-    li
-      a(href='/artwork/artist-one/artwork-title')
-        img(src='img/placeholder.jpg', alt='featured artwork')
-    li
-      a(href='/artwork/artist-one/artwork-title')
-        img(src='img/placeholder.jpg', alt='featured artwork')
-    li
-      a(href='/artwork/artist-one/artwork-title')
-        img(src='img/placeholder.jpg', alt='featured artwork')
-    li
-      a(href='/artwork/artist-one/artwork-title')
-        img(src='img/placeholder.jpg', alt='featured artwork')
-    li
-      a(href='/artwork/artist-one/artwork-title')
-        img(src='img/placeholder.jpg', alt='featured artwork')
+    each artwork in featuredArtwork
+      li
+        a(href='/artwork/'+artwork.artist+'/'+artwork.slug, title=artwork.title)
+          img(src='img/artwork/'+artwork.image.max200px, alt=artwork.title)
 
 
