@@ -30,7 +30,10 @@ app.configure(function() {
 });
 
 //routes
-//site
+require('./routes/admin/default')(app, arMongoose, viewDataProvider);
+require('./routes/admin/artist')(app, arMongoose, viewDataProvider);
+require('./routes/admin/artwork')(app, arMongoose, viewDataProvider);
+
 require('./routes/default')(app, arMongoose, viewDataProvider);
 require('./routes/artist')(app, arMongoose, viewDataProvider);
 require('./routes/artwork')(app, arMongoose, viewDataProvider);
@@ -39,7 +42,6 @@ require('./routes/visitor.js')(app, arMongoose, viewDataProvider);
 require('./routes/basket.js')(app, arMongoose, viewDataProvider);
 
 require('./routes/product.js')(app, arMongoose, viewDataProvider);
-
 
 //
 app.listen(3000);
