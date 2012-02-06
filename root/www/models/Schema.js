@@ -14,6 +14,7 @@ var Artist = new Schema({
   dateUpdated : {type :Date, 'default': new Date()},
   websiteUrl  : String,
   featured    : Boolean,
+  keyArtwork  : String,
   status      : { type: String, 'default':'offline'}
 });
 

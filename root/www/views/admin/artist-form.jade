@@ -10,6 +10,14 @@ form(action=formAction, method=method)
 
       label(for="websiteUrl") Website Url
       input#websiteUrl(type="text", name="artist[websiteUrl]", placeholder="Website Url", value=artist.websiteUrl)
+      if(typeof(artistArtworks) !== 'undefined')
+        label(for="[keyArtwork]") Key Artwork
+        select(name="artist[keyArtwork]")
+          each artwork in artistArtworks
+            if artist.keyArtwork == artwork.slug 
+              option(value=artwork.slug, selected)= artwork.title
+            else  
+              option(value=artwork.slug)= artwork.title
       label(for="artist[featured]") Featured on Homepage
         input(name="artist[featured]", type="checkbox", checked=artist.featured)
       label(for="artist[status]") Site Status

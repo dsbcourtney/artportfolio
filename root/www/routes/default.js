@@ -1,5 +1,6 @@
 var HomepageViewModelProvider = require('../models/HomepageViewModelProvider.js');
 
+
 module.exports = function(app, mongoose, vdp){
   
   app.get('/', function(req, res){

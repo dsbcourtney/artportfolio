@@ -29,11 +29,14 @@ app.configure(function() {
 
 });
 
-//routes
+//admin routes
 require('./routes/admin/default')(app, arMongoose, viewDataProvider);
 require('./routes/admin/artist')(app, arMongoose, viewDataProvider);
+require('./routes/admin/art-list')(app, arMongoose, viewDataProvider);
 require('./routes/admin/artwork')(app, arMongoose, viewDataProvider);
 
+
+//public routes
 require('./routes/default')(app, arMongoose, viewDataProvider);
 require('./routes/artist')(app, arMongoose, viewDataProvider);
 require('./routes/artwork')(app, arMongoose, viewDataProvider);
