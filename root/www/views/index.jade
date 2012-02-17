@@ -1,25 +1,42 @@
-section.content-body.gallery
-  .introduction
-    img.hero(src='img/placeholder.jpg', alt='main homepage image')
-    p
-      | Homepage introduction text. Vivamus id mollis quam. Morbi ac commodo nulla. In condimentum orci id nisl
-      | volutpat bibendum. Quisque commodo
-      | hendrerit lorem quis egestas. Maecenas quis tortor arcu. Vivamus rutrum nunc non neque consectetur quis placerat
-      | neque lobortis. Nam vestibulum, arcu sodales feugiat consectetur, nisl orci bibendum elit, eu euismod magna
-      | sapien ut nibh. Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam
-      | pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin.
-  p.editorial
-    | Changing editorial content. Vivamus id mollis quam. Morbi ac commodo nulla. In condimentum orci id nisl
-    | volutpat bibendum. Quisque commodo
-    | hendrerit lorem quis egestas. Maecenas quis tortor arcu. Vivamus rutrum nunc non neque consectetur quis placerat
-    | neque lobortis. Nam vestibulum, arcu sodales feugiat consectetur, nisl orci bibendum elit, eu euismod magna
-    | sapien ut nibh. Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam
-    | pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin.
-  h1 Featured Artwork  
-  ul.featured-artwork
-    each artwork in featuredArtwork
-      li
-        a(href='/artwork/'+artwork.artist+'/'+artwork.slug, title=artwork.title)
-          img(src='img/artwork/'+artwork.image.max200px, alt=artwork.title)
-
-
+section.row
+  .span8 
+    .article.home-hero
+      .intro-text.editorial
+        h2 Welcome to Art Rebellion
+        p We have taken art to another level by focusing on contemporary and innovative art from established and up and coming artists.
+        a(href="/services") More about services
+  .span4.featurettes
+    .span4 
+      .introduction
+        .intro-text
+          h2 Valentines
+          a(href="#") Find out more
+    .span4 
+      .introduction
+        .intro-text 
+          h2 Join us for Coffee
+          a(href="#") Find out more
+section.row
+    .span4 
+      h3 The Gallery
+      blockquote "Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu ad litora torquent per conubia."
+      p Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu. Vivamus rutrum nunc non neque consectetur quis placerat neque lobortis. Nam vestibulum, arcu sodales feugiat consectetur, nisl orci bibendum elit, eu euismod magna sapien ut nibh. Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit.
+      p
+      a(href="#") Find out more
+    .span8 
+      h3 Featured Artists
+      - for(var i = 0; i < featuredArtists.length; i=i+2 )
+        - var fa = featuredArtists[i] 
+        .row
+          .span4 
+            .introduction
+              img(src="img/artwork/"+fa.keyArtwork.image.max500px)
+              a.discrete-title(href="/artists/"+fa.slug) 
+                span= fa.name
+          - var fa = featuredArtists[i+1]
+          - if(fa)
+            .span4 
+              .introduction
+                img(src="img/artwork/"+fa.keyArtwork.image.max500px)
+                a.discrete-title(href="/artists/"+fa.slug) 
+                  span= fa.name

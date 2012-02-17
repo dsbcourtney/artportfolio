@@ -2,22 +2,18 @@
 html(lang="en-GB")
   head
     meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width")
-    title!=title 
-    link(rel='stylesheet', href= '/styles/reset.css')
-    link(rel='stylesheet', href= '/styles/default-styles.css', media)
-    //[if !IE]>
-    <link type="text/css" rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/styles/phone.css" />
-    <link type="text/css" rel="stylesheet" media="only screen and (min-device-width: 768px) and (max-device-width: 1024px)" href="/styles/tablet.css" />
-    //<![endif]>
+    title!=title
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/styles/css/default.css')
     script(type='text/javascript', src= '/js/libs/jquery-1.7.min.js')
+    script(type='text/javascript', src= '/bootstrap/js/bootstrap.js')
     script(type='text/javascript', src= '/js/libs/require.js')
     script(type='text/javascript', src= '/js/main.js')
     - if(typeof(scripts) !== 'undefined') 
       each scr in scripts      
         script(type='text/javascript', src=scr)
   body
-    .page-container
+    .container
       include header
       section!= body
       include footer

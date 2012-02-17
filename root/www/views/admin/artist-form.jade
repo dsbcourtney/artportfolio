@@ -14,10 +14,10 @@ form(action=formAction, method=method)
         label(for="[keyArtwork]") Key Artwork
         select(name="artist[keyArtwork]")
           each artwork in artistArtworks
-            if artist.keyArtwork == artwork.slug 
-              option(value=artwork.slug, selected)= artwork.title
+            if artist.keyArtwork == artwork._id 
+              option(value=artwork._id, selected)= artwork.title
             else  
-              option(value=artwork.slug)= artwork.title
+              option(value=artwork._id)= artwork.title
       label(for="artist[featured]") Featured on Homepage
         input(name="artist[featured]", type="checkbox", checked=artist.featured)
       label(for="artist[status]") Site Status

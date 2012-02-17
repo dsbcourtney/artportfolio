@@ -1,30 +1,18 @@
-header
-  h1
-    a(href='/') Art Rebellion
-  nav
-    ul.artists
-    each artist in publishedArtists
+header.row
+  .span4
+    a(href="/", title="Art Rebellion Homepage")
+      h1 Art Rebellion
+  nav.span8.primary
+    ul.group
       li
-        a(href='/artists/'+artist.slug)= artist.name
-    ul.periphery
+        a.action(href="#", title="Select an Artist to view their artwork") Select an Artist
       li
-        a(href='/art-list', title='Browse all artwork') Browse All Artwork
+        a(href="#", title="The Art Rebellion blog") Blog
       li
-        a(href='/about', title='About the Art Rebellion Gallery') About
+        a(href="#", title="Find out more about Art Rebellion and our services") About
       li
-        a(href='http://blog.artrebellion.com', title='The Art Rebellion Gallery Blog') Blog
+        a(href="#", title="Contact Art Rebellion") Contact
       li
-        a(href='/shopping-cart', title='Current items in your gallery shopping cart') Cart
+        a.action(href="#", title="Your Shopping Cart") Cart
       li
-        a(href='/contact', title='Gallery contact details') Contact
-        if visitor
-          li
-            a(href='/visitor/logout', title='Log Out') Log Out
-        else
-          li
-            a(href='/login', title='Log In', id='aLogin') Log In
-          li
-            a(href='/register', title='Register', id='aRegister') Register
-.context-information
-  ul.breadcrumbs
-  h2 #{pageTitle}       
+        a.action(href="#", title="Log in") Log in

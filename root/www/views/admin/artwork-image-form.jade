@@ -5,7 +5,7 @@ form(method="POST", enctype="multipart/form-data", action="/admin/artwork")
   select(name="artist")
     option(value="") -- Not set --
     each artist in artists 
-        option(value=artist.slug)= artist.name  
+        option(value=artist._id)= artist.name  
   input(name="upload", type="hidden")
   .controls
     input(type="submit", value="Create")

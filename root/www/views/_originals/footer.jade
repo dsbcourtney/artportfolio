@@ -1,0 +1,41 @@
+footer
+  p.hcard
+    span Art Rebellion
+    span 171 Brighton Road
+    span Coulsdon
+    span Surrey
+    span CR5 2NH
+    span +44 (0)208 668 0007
+    a(href="info@artrebellion.co.uk", title="Email art rebellion") artrebellion@gmail.com
+  form(id="loginform", action="/visitor/login", method="post").userform
+    legend
+      label(for="email") Email:
+      input(type="text", name="visitor[email]")
+      label(for="pass") Password:
+      input(type="password", name="visitor[pass]")
+      input(type="submit", value="Login")
+      span
+        em
+        a(href="close", id="aLoginClose") close
+  form(id="registerform", action="/visitor/register", method="post").userform
+    legend
+      label(for="firstname") First name:
+      input(type="text", name="visitor[firstname]")
+      label(for="lastname") Last name:
+      input(type="text", name="visitor[lastname]")
+      label(for="email") E-mail:
+      input(type="text", name="visitor[email]")
+      label(for="mobile") Mobile:
+      input(type="text", name="visitor[mobile]")
+      label(for="newsletterOptIn") Newsletter Opt In:
+      input(type="checkbox", name="visitor[newsletterOptIn]")
+      label(for="emailsOptIn") Emails Opt In:
+      input(type="checkbox", name="visitor[emailsOptIn]")
+      label(for="pass") Password:
+      input(type="password", name="visitor[pass]")
+      label(for="repeat") Repeat password:
+      input(type="password", name="repeat")
+      input(type="submit", value="Register")
+      span
+        em
+          a(href="close", id="aRegisterClose") close

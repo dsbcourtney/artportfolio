@@ -1,8 +1,11 @@
-section.content-body.artist
-      img.hero(src='/img/placeholder.jpg', alt='artist image')
-      p= artist.biography
-      ul.artist-artwork
-        each art, i in artwork
-          li
-            a(href='/artwork/'+artist.slug+'/'+art.slug, title=art.title)
-              img(src='/img/artwork/'+art.image.max200px, alt=art.title)
+section.row
+  .span12
+    .artwork-browser
+section.row
+  h3 Other Artists
+  - each artist, i in artists
+    .span4 
+      .introduction
+        img(src="img/artwork/")
+        a.discrete-title(href="/artists/") 
+          span= artist.name    

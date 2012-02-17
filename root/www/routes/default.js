@@ -1,16 +1,17 @@
-var HomepageViewModelProvider = require('../models/HomepageViewModelProvider.js');
-
+var DefaultViewModelProvider = require('../models/DefaultViewModelProvider.js');
 
 module.exports = function(app, mongoose, vdp){
   
   app.get('/', function(req, res){
-    var model = {title : 'Art Rebellion', pageTitle: 'The Gallery'};
+    var model = {title : 'Art Rebellion Home'};
+    var view = 'index.jade';
     
-    HomepageViewModelProvider.buildModel(mongoose, model, function(updatedModel){
-    
-      //TODO: could we just use the reference to model instead of passing through
-      // the updated : updateModel param?
-      vdp.getPublicViewData(thenRender, 'index.jade', updatedModel, req, res);
+    DefaultViewModelProvider.buildModel(mongoose, model, function(updatedModel){
+      
+      //TODO: find out why this is being hit twice
+      //console.log(model);
+      
+      vdp.getPublicViewData(thenRender, view, updatedModel, req, res);
       
     });
   });  

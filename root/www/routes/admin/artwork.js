@@ -14,7 +14,7 @@ function artworkAdminRoutes(app, mongoose, vdp) {
 
   //upload artwork handler
   app.post('/admin/artwork.:format?', function (req, res) {
-
+ 
     var counter = 1;
 
     if (req.files.artImages[0] && req.files.artImages[0].type) {
@@ -96,17 +96,7 @@ function artworkAdminRoutes(app, mongoose, vdp) {
         return;
       }
 
-      //update the artist if this is the key art
-      Artist.update({keyArtwork:req.params.artworkSlug}, {keyArtwork:req.body.artwork.slug}, {multi:true, upsert:false},
-              function (err) {
-
-                if (err) {
-                  res.send(err, 500);
-                  return;
-                }
-
-                res.redirect('/admin/artwork');
-              });
+      res.redirect('/admin/artwork');
 
     });
     
@@ -226,7 +216,7 @@ function thenRender(template, model, res) {
 }
 
 
-function createArtwork(res, mongoose, image, next, artistSlug) {
+function createArtwork(res, mongoose, image, next, artist_id) {
   var Artwork = mongoose.model('Artwork'),
           Format = mongoose.model('Format'),
           newArtwork, newTitle, newSlug;
@@ -251,18 +241,21 @@ function createArtwork(res, mongoose, image, next, artistSlug) {
       title:newTitle,
       image:imageFiles,
       type:'original',
-      artist:artistSlug,
       description:'A new piece of work',
       released:new Date(),
       format:[]
     });
+    
+    if(artist_id){
+      newArtwork.artist = artist_id;
+    }
 
     newArtwork.format.push(newFormat);
 
     newArtwork.save(function (err) {
       if (err) {
-        //throw err;
-        res.send(err, 500);
+        throw err;
+        //res.send(err, 500);
       }
 
       next();

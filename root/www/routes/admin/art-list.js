@@ -31,27 +31,28 @@ function artListAdminRoutes(app, mongoose, vdp) {
   });
 
   //TODO : complete - 06/02/2012
-  //partials
-  app.post('/admin/artwork.:format?', function(req, res) {
-    //find all artists
-    var model = {};
-    var artQuery = Artwork.find({});
-  
-    artQuery.where('artist', req.body.artist);
-    artQuery.limit(req.body.limit);
-    artQuery.skip(req.body.skip);
-    
-    //artQuery.limit(10);
-    artQuery.exec(function(err, artworks) {
-      if (err) {
-        res.send(err, 500);
-        return;
-      }
-  
-      model.artworks = artworks;
-  
-    });
-  });  
+//  //partials
+//  app.post('/admin/artwork.:format?', function(req, res) {
+//    var Artwork = mongoose.model('Artwork');
+//    //find all artists
+//    var model = {};
+//    var artQuery = Artwork.find({});
+//  
+//    artQuery.where('artist', req.body.artist);
+//    artQuery.limit(req.body.limit);
+//    artQuery.skip(req.body.skip);
+//    
+//    //artQuery.limit(10);
+//    artQuery.exec(function(err, artworks) {
+//      if (err) {
+//        res.send(err, 500);
+//        return;
+//      }
+//  
+//      model.artworks = artworks;
+//  
+//    });
+//  });  
   
 }
 

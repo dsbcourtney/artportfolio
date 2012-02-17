@@ -51,7 +51,7 @@ function artistAdminRoutes(app, mongoose, vdp) {
       locals.formAction = "/admin/artists/" + artist.slug;
       locals.artist = artist;
       
-      Artwork.find({artist : req.params.artistSlug}, function(err, artwork){
+      Artwork.find({artist : artist._id}, function(err, artwork){
         locals.artistArtworks = artwork;
       });
 
@@ -96,17 +96,11 @@ function artistAdminRoutes(app, mongoose, vdp) {
 
       if (err) {
         res.send(err, 500);
+        return;
       }
 
-      //update any artwork that is associated to the old slug:
-      Artwork.update({artist:req.params.artistSlug}, {artist:req.body.artist.slug}, {multi:true, upsert:false}, function (err) {
-
-        if (err) {
-          res.send(err, 500);
-        }
-
-        res.redirect('/admin/artists');
-      });
+      res.redirect('/admin/artists');
+     
     });
   });
 

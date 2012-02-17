@@ -3,22 +3,23 @@ function createViewData(mongoose) {
   return {
 
     // The rendering function for admin
-    getAdminViewData : function(render, template, model, req, res) {
+    getAdminViewData:function (render, template, model, req, res) {
 
-      getCommonViewData(model, mongoose, req, function(updatedModel) {
+      getCommonViewData(model, mongoose, req, function (updatedModel) {
 
         updatedModel.viewType = "admin";
-        updatedModel.layout = 'adminlayout.jade';
+        updatedModel.layout = 'admin/adminlayout.jade';
         render(template, updatedModel, res);
 
       });
 
+
     },
 
     // The rendering function for public
-    getPublicViewData : function(render, template, model, req, res) {
+    getPublicViewData:function (render, template, model, req, res) {
 
-      getCommonViewData(model, mongoose, req, function(updatedModel) {
+      getCommonViewData(model, mongoose, req, function (updatedModel) {
 
         updatedModel.viewType = "public";
         render(template, updatedModel, res);
@@ -30,7 +31,7 @@ function createViewData(mongoose) {
 }
 
 
-module.exports = function(mongoose) {
+module.exports = function (mongoose) {
 
   return createViewData(mongoose);
 };
@@ -44,31 +45,17 @@ function getCommonViewData(model, mongoose, req, thenDo) {
     model.visitor = req.session.visitor;
   }
 
-
   // Stuff required on every page - ie. headers, footers
   var Artist = mongoose.model('Artist');
 
-  Artist.find({}, function(err, artists) {
-    
+  //FIND ALL ARTISTS
+  Artist.find({}, function (err, artists) {
     if (err) {
       throw err;
     }
 
     model.artists = artists;
 
-
-    Artist.find({status : 'published'}, function(err, publishedArtists) {
-
-      if (err) {
-        throw err;
-      }
-
-      model.publishedArtists = publishedArtists;
-
-      thenDo(model);
-    });
-
+    thenDo(model);
   });
-
-
 }

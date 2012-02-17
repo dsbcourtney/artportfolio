@@ -23,7 +23,7 @@ var ArtistViewModelProvider = {
       
       var Artwork = mongoose.model('Artwork');
 
-      Artwork.find({artist : model.artistSlug, status : 'published'}, function(err, artwork) {
+      Artwork.find({artist : model.artist._id, status : 'published'}, function(err, artwork) {
 
         if (err) {
           throw err;

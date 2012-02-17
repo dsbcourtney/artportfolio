@@ -1,11 +1,16 @@
+        
 var im = require('imagemagick'),
-        imagesDir = '/Users/lewis/github/artportfolio/root/www/public/img/artwork';//TODO : change to environment var
+    path = require('path'),    
+    imagesDir = path.resolve(__dirname, '../public/img/artwork');//'/Users/lewis/github/artportfolio/root/www/public/img/artwork';//TODO : change to environment var
+
+im.identify.path = "/usr/local/bin/identify"; 
+im.convert.path = "/usr/local/bin/convert";
 
 //  https://github.com/rsms/node-imagemagick
 var ImageTools = {
-  createCopies : function(file, onFinish, destPath, sizes) {
-    var sizes = sizes || [200, 500, 800, 1024],
-            destPath = destPath || imagesDir,
+  createCopies : function(file, onFinish, destPathIn, sizesIn) {
+    var sizes = sizesIn || [200, 500, 800, 1024],
+            destPath = destPathIn || imagesDir,
             imageFiles = {}, currentSize, counter = 1;
 
     if (fileIsImage(file)) {
@@ -16,8 +21,8 @@ var ImageTools = {
           throw 'size element' + i + ' is not a recognised positive integer';
         }
 
-        resizeImageAndSave(file, destPath, currentSize, function(op, filename) {
-          imageFiles[op] = filename;
+        resizeImageAndSave(file, destPath, currentSize, function(opts, filename) {
+          imageFiles[opts] = filename;
           
           if(counter == sizes.length){
             onFinish(imageFiles);
@@ -65,7 +70,9 @@ function resizeImageAndSave(file, destPath, maxLargeDimension, next) {
 
     im.resize(imgOptions
             , function(err, stdout, stderr) {
-              if (err) throw err
+              if (err){
+                throw err
+              }
 
               next('max'+maxLargeDimension+'px', newFileName);
             });
@@ -74,11 +81,25 @@ function resizeImageAndSave(file, destPath, maxLargeDimension, next) {
 
 //
 function getImageOritentation(file, next) {
-  im.identify(file.path, function(err, features) {
-    if (err) throw err
-    counter++;
-    next(features.width >= features.height);
-  })
+  
+  path.exists(file.path, function(exists){
+    
+    if(!exists){
+      throw 'path does not exist : ' + file.path;
+    }
+    
+    im.identify(file.path, function(err, features) {
+      if (err) {
+        throw err
+      }
+      counter++;
+      next(features.width >= features.height);
+    });
+
+  });
+  
+  
+
 }
 
 //

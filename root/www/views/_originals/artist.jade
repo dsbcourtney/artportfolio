@@ -1,0 +1,8 @@
+section.content-body.artist
+      img.hero(src='/img/placeholder.jpg', alt='artist image')
+      p= artist.biography
+      ul.artist-artwork
+        each art, i in artwork
+          li
+            a(href='/artwork/'+artist.slug+'/'+art.slug, title=art.title)
+              img(src='/img/artwork/'+art.image.max200px, alt=art.title)

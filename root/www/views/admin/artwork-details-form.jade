@@ -7,10 +7,10 @@ form(method="POST", action=formAction)
   select(name="artwork[artist]")
     option(value="") -- Not set --
     each artist in artists 
-      if artwork.artist == artist.slug 
-        option(value=artist.slug, selected)= artist.name 
+      if artwork.artist.toString() === artist._id.toString() 
+        option(value=artist._id, selected)= artist.name 
       else
-        option(value=artist.slug)= artist.name
+        option(value=artist._id)= artist.name
   label(for="artwork[type]") Type
   input(name="artwork[type]", type="text", placeholder="type", value=artwork.type)
   label(for="artwork[description]") Description

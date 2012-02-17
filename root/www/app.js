@@ -33,6 +33,7 @@ app.configure(function() {
 require('./routes/admin/default')(app, arMongoose, viewDataProvider);
 require('./routes/admin/artist')(app, arMongoose, viewDataProvider);
 require('./routes/admin/art-list')(app, arMongoose, viewDataProvider);
+
 require('./routes/admin/artwork')(app, arMongoose, viewDataProvider);
 
 
