@@ -13,7 +13,7 @@ var ArtistViewModelProvider = {
 
       model.title = 'Art Rebellion : ' + artist.name;
       model.pageTitle = model.title;
-      model.artist = artist;
+      model.selectedArtist = artist;
 
       thenGetArtForArtist();
 
@@ -23,7 +23,7 @@ var ArtistViewModelProvider = {
       
       var Artwork = mongoose.model('Artwork');
 
-      Artwork.find({artist : model.artist._id, status : 'published'}, function(err, artwork) {
+      Artwork.find({artist : model.selectedArtist._id, status : 'published'}, function(err, artwork) {
 
         if (err) {
           throw err;

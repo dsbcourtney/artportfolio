@@ -49,13 +49,15 @@ function getCommonViewData(model, mongoose, req, thenDo) {
   var Artist = mongoose.model('Artist');
 
   //FIND ALL ARTISTS
-  Artist.find({}, function (err, artists) {
-    if (err) {
-      throw err;
-    }
+  Artist.find({})
+          .populate('keyArtwork')
+          .run(function (err, artists) {
+            if (err) {
+              throw err;
+            }
 
-    model.artists = artists;
+            model.artists = artists;
 
-    thenDo(model);
-  });
+            thenDo(model);
+          });
 }

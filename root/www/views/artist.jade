@@ -1,11 +1,12 @@
 section.row
   .span12
     .artwork-browser
+h3 Other Artists
 section.row
-  h3 Other Artists
   - each artist, i in artists
-    .span4 
-      .introduction
-        img(src="img/artwork/")
-        a.discrete-title(href="/artists/") 
-          span= artist.name    
+    -if(artist.status === 'published' && artist.slug !== selectedArtist.slug)
+      .span4 
+        .introduction
+          img(src="/img/artwork/"+artist.keyArtwork.image.max500px)
+          a.discrete-title(href="/artists/"+artist.slug) 
+            span= artist.name    
