@@ -1,18 +1,23 @@
+.span12.search-container
+  input(type="search", placeholder="search", name="search")
+
 header.row
-  .span4
+  .span4.identity
     a(href="/", title="Art Rebellion Homepage")
-      h1 Art Rebellion
+      h1 art rebellion
   nav.span8.primary
     ul.group
       li
-        a.action(href="#", title="Select an Artist to view their artwork") Select an Artist
+        a.action(href="/artists", title="Select an Artist to view their artwork", id="select-artist-link") Select an Artist
       li
         a(href="#", title="The Art Rebellion blog") Blog
       li
-        a(href="#", title="Find out more about Art Rebellion and our services") About
+        a(href="/gallery/about", title="Find out more about Art Rebellion and our services") About
       li
-        a(href="#", title="Contact Art Rebellion") Contact
+        a(href="/gallery/contact", title="Contact Art Rebellion") Contact
+      //
+        li
+          a.action(href="#", title="Your Shopping Cart") Cart
       li
-        a.action(href="#", title="Your Shopping Cart") Cart
-      li
-        a.action(href="#", title="Log in") Log in
+        a.action(href="#loginModal", title="Log in", data-toggle="modal") Log in
+          

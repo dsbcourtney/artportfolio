@@ -1,12 +1,60 @@
+section.row.heroContent
+  .artist-container
+    .row
+      .span4.artist-or-art-detail 
+        h2= selectedArtist.name 
+        .art-actions
+          ul
+            - each art in artwork
+              - if(art.status === 'published')
+                li(data-slug=art.slug)
+                  h3= art.title
+                  - each format in art.format
+                      .format
+                        h5 #{format.type}, #{format.detail}
+                        - if(format.printsRun > 0)
+                          #{format.printsRun} of #{format.width}cm x #{format.height}cm 
+                          br
+                        &pound;#{format.price}
+                        .cta-purchase 
+                          a(href="/cart/add/"+art.slug+"/"+format._id) Call 0208 668 0007 to purchase
+      .span8
+        .controls
+          a.art-browser-button.btn(href="#art-browser") browse
+          &nbsp;
+          a.art-index-button.btn(href="#art-index") view all
+          &nbsp;
+          a.artist-bio-button.btn(href="/artists/"+selectedArtist.slug): span Biography                
+        .artist-bio
+          h2 Biography
+          #{selectedArtist.biography}    
+        .art-browser#art-browser
+          ul.group
+            - each art, i in artwork
+              li(data-slug=art.slug) 
+                a.artwork-link(href="/img/artwork/"+art.image.max1024px, title=art.title): img(src="/img/artwork/"+art.image.max500px)
+          a.control.previous(href="#previous") 
+            span previous
+          a.control.next(href="#next") 
+            span next
+        .art-index#art-index
+          ul.group
+            - each art, i in artwork
+              li(data-slug=art.slug) 
+                a.artwork-link(href="/img/artwork/"+art.image.max1024px, title=art.title): img(src="/img/artwork/"+art.image.max200px)
 section.row
-  .span12
-    .artwork-browser
-h3 Other Artists
-section.row
-  - each artist, i in artists
-    -if(artist.status === 'published' && artist.slug !== selectedArtist.slug)
-      .span4 
-        .introduction
-          img(src="/img/artwork/"+artist.keyArtwork.image.max500px)
-          a.discrete-title(href="/artists/"+artist.slug) 
-            span= artist.name    
+    h3 Other Artists
+    - each artist, i in artists
+      -var count = 0 , col 
+      -if(artist.status === 'published' && artist.slug !== selectedArtist.slug)
+        - col = count %3 
+        .span4 #{col}
+          .introduction
+            img(src="/img/artwork/"+artist.keyArtwork.image.max500px)
+            a.discrete-title(href="/artists/"+artist.slug) 
+              span= artist.name
+        - count++      
+.artwork-lightbox
+  h2
+  img
+                

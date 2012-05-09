@@ -3,10 +3,10 @@ html(lang="en-GB")
   head
     meta(charset="UTF-8")
     title!=title
-    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.css')
     link(rel='stylesheet', href='/styles/css/default.css')
     script(type='text/javascript', src= '/js/libs/jquery-1.7.min.js')
-    script(type='text/javascript', src= '/bootstrap/js/bootstrap.js')
+    script(type='text/javascript', src= '/bootstrap/js/bootstrap.min.js')
     script(type='text/javascript', src= '/js/libs/require.js')
     script(type='text/javascript', src= '/js/main.js')
     - if(typeof(scripts) !== 'undefined') 
@@ -14,6 +14,17 @@ html(lang="en-GB")
         script(type='text/javascript', src=scr)
   body
     .container
+      nav.all-artists
+        h2 Select an artist
+        section.row
+          - each artist, i in artists
+            -if(artist.status === 'published' && artist.slug)
+              .span4 
+                .introduction
+                  img(src="/img/artwork/"+artist.keyArtwork.image.max500px)
+                  a.discrete-title(href="/artists/"+artist.slug) 
+                    span= artist.name    
       include header
       section!= body
       include footer
+  

@@ -20,7 +20,9 @@ module.exports = function(app, mongoose, vdp) {
   });
 
   app.get('/artists/:artistSlug.:format?', function(req, res) {
-    var model = {};
+    var model = {
+      scripts : ['/js/artBrowser.js']
+    };
     model.artistSlug = req.params.artistSlug;
 
     ArtistViewModelProvider.buildModel(mongoose, model, function(updatedModel) {

@@ -2,7 +2,7 @@ module.exports = function(app, mongoose, vdp) {
 
     app.post('/visitor/login', function(req, res) {
         var Visitor = mongoose.model('Visitor'),
-            pageTitle = 'Art Rebellion : Visitor',
+            pageTitle = 'Art Rebellion : Login',
             message = '';
 
         Visitor.findOne({'email':req.body.visitor.email,'pass':req.body.visitor.pass}, function(err, visitor){
